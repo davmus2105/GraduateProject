@@ -1,0 +1,10 @@
+<dialogue name="peasant_dialogue_01">
+  <node id="0" npcText="Hello, wanderer">
+    <answer text="Hello" toNode="1" />
+    <answer text="Bye" exit="True" />
+  </node>
+  <node id="1" npcText="Why are you so good?">
+    <answer text="Cause i am from K-1-15" toNode="0" />
+    <answer text="Bye" exit="True" />
+  </node>
+</dialogue>
