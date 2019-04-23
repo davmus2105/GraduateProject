@@ -130,6 +130,7 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(false);
 //      Debug.Log("Exit from dialogue");
         inDialogue = false;
+        StopCoroutine("BuildDialogue");
     }    
     public void GetAnswers(DialogueElement dial_el) // Show all answer buttons and to set text in them
     {
@@ -208,6 +209,8 @@ public class DialogueManager : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
         }
+        if (dialogue[number].answers[chosenans].questid != 0)
+            QuestManager.Instance.AddQuest(dialogue[number].answers[chosenans].questid);
         if (dialogue[number].answers[chosenans].exit)
         {
             EndDialogue();
