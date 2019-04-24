@@ -216,7 +216,6 @@ public class DialogueManager : MonoBehaviour
             EndDialogue();
         }
         else
-//          Debug.Log("Building...");
             StartCoroutine("BuildDialogue", dialogue[number].answers[chosenans].toNode);
     }
     #endregion
