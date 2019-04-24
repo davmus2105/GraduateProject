@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using System.Xml;
 using System.IO;
+using QuestSystem;
 
 public class DialogueManager : MonoBehaviour
 {

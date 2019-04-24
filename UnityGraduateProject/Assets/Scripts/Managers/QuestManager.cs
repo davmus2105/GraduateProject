@@ -2,67 +2,79 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestManager : MonoBehaviour
+namespace QuestSystem
 {
-    #region Fields and properties
-
-
-    List<Quest> activequests;
-    List<Quest> comletedquests;
-    Dictionary<int, Quest> questdict;
-
-    public static QuestManager Instance => _instance;
-    private static QuestManager _instance;
-
-    #endregion
-    #region Monobehaviours methods    
-    private void Awake()
+    public class QuestManager : MonoBehaviour
     {
-        _instance = this;
-    }    
-    void Start()
-    {
+        #region Fields and properties
 
-    }
-    void Update()
-    {
-        
-    }
-    #endregion
-    #region Methods
-    public void AddQuest(int id)
-    {
-        if (activequests == null)
+
+        List<Quest> activequests;
+        List<Quest> comletedquests;
+        Dictionary<int, Quest> questdict; // here must be the list of all quests in game. Quests id is a key and the Quest is the value
+
+        public static QuestManager Instance => _instance;
+        private static QuestManager _instance;
+
+        #endregion
+        #region Monobehaviours methods    
+        private void Awake()
         {
-            activequests = new List<Quest>();
+            _instance = this;
         }
-        
-    }
-    public void CompleteQuest()
-    {
-
-    }
-    // --------------- private methods ---------------
-    // FindQuest should find quest in dictionary and return its value
-    Quest FindQuest(int questid)
-    {
-        if (questid <= 0)
+        void Start()
         {
-            Debug.Log("<color=red>Error : </color> id of quest can't be negative or equal 0");
-            return null;
-        }            
-        Quest quest;
-        if (!questdict.TryGetValue(questid, out quest))
-            Debug.Log("<color=red>Error : </color> there is no quest with id [" + questid + "] in quest dictionary");
-        return quest;
+
+        }
+        void Update()
+        {
+
+        }
+        #endregion
+        #region Methods
+        public void AddQuest(int id)
+        {
+            if (activequests == null)
+            {
+                activequests = new List<Quest>();
+            }
+
+        }
+        public void CompleteQuest()
+        {
+
+        }
+        // --------------- private methods ---------------
+        // FindQuest should find quest in dictionary and return its value
+        void Clear()
+        {
+            int length = activequests.Count;
+            for (int i = 0; i < length; i++)
+            {
+                if (!activequests[i].isActive)
+                    activequests.RemoveAt(i);
+            }
+        }
+        Quest FindQuest(int questid)
+        {
+            if (questid <= 0)
+            {
+                Debug.Log("<color=red>Error : </color> id of quest can't be negative or equal 0");
+                return null;
+            }
+            Quest quest;
+            if (!questdict.TryGetValue(questid, out quest))
+                Debug.Log("<color=red>Error : </color> there is no quest with id [" + questid + "] in quest dictionary");
+            return quest;
+        }
+
+        // ---- Quests dictionary methods ----
+        void SerializeDictionary()
+        {
+
+        }
+        #endregion
+
     }
-
-    // ---- Quests dictionary methods ----
-    void SerializeDictionary()
-    {
-
-    }
-#endregion
-
 }
 
