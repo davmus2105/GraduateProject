@@ -69,9 +69,9 @@ namespace QuestSystem
         }
 
         // ---- Quests dictionary methods ----
-        void SerializeDictionary()
+        void Load()
         {
-
+            // Load using Load Method from QuestGenerator class
         }
         #endregion
 

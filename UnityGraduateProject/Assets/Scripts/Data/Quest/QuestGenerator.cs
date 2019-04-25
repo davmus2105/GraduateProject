@@ -1,30 +1,171 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Xml;
+using System.IO;
 namespace QuestSystem
 {
     public class QuestGenerator : MonoBehaviour
     {
+        //public Dictionary<int, Quest> questDict;
+        public string filename = "quest_dictionary";
+        public string _temp_lang_path_ = "English";
+        public List<Quest> quests;
 
+        Quest quest;
+        QuestGoal goal;        
+
+        public void Generate()
+        {
+            string path = Application.streamingAssetsPath + "/Localisation/" 
+                          + _temp_lang_path_ + "/Quests/" + filename + ".xml";
+
+            XmlNode usernode;
+            XmlElement element;
+
+            XmlDocument xmlDoc = new XmlDocument();
+            XmlNode rootNode = xmlDoc.CreateElement("quests");
+            XmlAttribute attribute;
+            XmlText text;
+            xmlDoc.AppendChild(rootNode);
+            for (int i = 0; i < quests.Count; i++)
+            {
+                usernode = xmlDoc.CreateElement("quest");
+                attribute = xmlDoc.CreateAttribute("id");
+                attribute.Value = quests[i].id.ToString();
+                usernode.Attributes.Append(attribute);
+                // title element
+                element = xmlDoc.CreateElement("title");
+                text = xmlDoc.CreateTextNode(quests[i].title);
+                element.AppendChild(text);
+                usernode.AppendChild(element);
+                // description element
+                element = xmlDoc.CreateElement("description");
+                text = xmlDoc.CreateTextNode(quests[i].description);
+                element.AppendChild(text);
+                usernode.AppendChild(element);
+                // goal element
+                element = xmlDoc.CreateElement("goal");
+                if (quests[i].goal.goaltype != GOALTYPE.None)
+                    element.SetAttribute("goaltype", quests[i].goal.goaltype.ToString("g")); // goaltype attribute
+                if (quests[i].goal.requeredAmount > 1) // required amount attribute
+                    element.SetAttribute("required_amount", quests[i].goal.requeredAmount.ToString());
+                if (quests[i].goal.idGoal > 0) // id of the goal attribute
+                    element.SetAttribute("idgoal", quests[i].goal.idGoal.ToString());
+                usernode.AppendChild(element);                
+                rootNode.AppendChild(usernode);
+            }
+            xmlDoc.Save(path);
+            Debug.Log(this + " Створено XML файл діалогу [" + filename + "] за адресою: " + path);
+        }
+
+        public void Load()
+        {
+            quests = new List<Quest>();
+            try //XML elements reading and loading attributes values to collections
+            {
+                string path = Application.streamingAssetsPath + "/Localisation/" 
+                              + _temp_lang_path_ + "/Quests/" + filename + ".xml";
+                XmlDocument xmlDoc = new XmlDocument();
+                xmlDoc.Load(path);
+                XmlElement xmlroot = xmlDoc.DocumentElement; // Reading root node in document
+                foreach (XmlNode xnode in xmlroot)   // Reading all nodes 'quest'
+                {
+                    quest = new Quest();
+                    if (xnode.Attributes.Count > 0) // Get attribute 'id' in 'quest'
+                    {
+                        XmlNode attr = xnode.Attributes.GetNamedItem("id");
+                        if (attr != null)
+                            quest.id = int.Parse(attr.Value);
+                    }
+                    foreach (XmlNode childnode in xnode.ChildNodes) // Get nodes 'goal'            
+                    {
+                        if (childnode.Name == "title")
+                        {
+                            quest.title = childnode.InnerText;
+                        }
+                        if (childnode.Name == "description")
+                        {
+                            quest.description = childnode.InnerText;
+                        }
+                        if (childnode.Name == "goal")
+                        {
+                            int tempint;  // Temp variable to store integer values
+                            if (childnode.Attributes.Count > 0)         // Get attributes
+                            {
+                                XmlNode attr = childnode.Attributes.GetNamedItem("goaltype");       // 'goaltype'
+                                if (attr != null)
+                                {
+                                    GOALTYPE type;
+                                    try
+                                    {
+                                        type = (GOALTYPE)System.Enum.Parse(typeof(GOALTYPE), attr.Value);
+                                    }
+                                    catch
+                                    {
+                                        Debug.LogWarning("An error occurred while reading the goaltype attribute in the quest with id " + quest.id);
+                                        type = GOALTYPE.None;
+                                    }
+                                    quest.goal.goaltype = type;
+                                }
+                                else
+                                    quest.goal.goaltype = GOALTYPE.None;
+
+                                attr = childnode.Attributes.GetNamedItem("required_amount");             // 'required amount'
+                                if (attr != null && int.TryParse(attr.Value, out tempint) && tempint > 1)
+                                    quest.goal.requeredAmount = tempint;
+                                else quest.goal.requeredAmount = 1;
+
+                                attr = childnode.Attributes.GetNamedItem("idgoal");        // 'idgoal'     
+                                if (attr != null && int.TryParse(attr.Value, out tempint) && tempint > 0)
+                                    quest.goal.idGoal = tempint;
+                                else quest.goal.idGoal = 0;
+                            }
+                        }
+                        
+                    }
+                    quests.Add(quest);                    
+                }
+            }
+            catch (System.Exception error)
+            {
+                Debug.Log(this + " Error of dialogue file reading: " + filename + ".xml >> Error: " + error.Message);
+            }
+        }
+
+        /*public Dictionary<int, Quest> LoadDictionary()
+        {
+
+        }*/
     }
 
     [System.Serializable]
     public class Quest
     {
-        int id;
-        string title;
-        string description;
+        public string title;
+        public int id;
+        public string description;
         public bool isActive;
-        QuestGoal goal;
+        public QuestGoal goal;
+
+        public Quest(int _id = 0, string _title = "Default quest title", string _description = "Default description of the quest", bool isactive = false)
+        {
+            id = _id;
+            title = _title;
+            description = _description;
+            isActive = isactive;
+            goal = new QuestGoal(this);
+        }
     }
 
     [System.Serializable]
     public class QuestGoal
     {
-        GOALTYPE goaltype;
+        Quest parentquest;
+        public GOALTYPE goaltype;
         int currentAmount;        
-        int requeredAmount;
-        int idGoal; // id of character to interact with to obtain the goal (if 0, then there no special character) (this will be used to kill somebody, or to speak with somebody)
+        public int requeredAmount;
+        public int idGoal; // id of character to interact with to obtain the goal (if 0, then there no special character) (this will be used to kill somebody, or to speak with somebody)
         
         bool CompareId(int id)
         {
@@ -45,12 +186,25 @@ namespace QuestSystem
             }
             return false;
         }
+
+        // -------- Constructors --------
+        public QuestGoal(Quest _parentquest, GOALTYPE _goal = GOALTYPE.None, int _reqamount = 1, int _idgoal = 0)
+        {
+            parentquest = _parentquest;
+            goaltype = GOALTYPE.None;
+            currentAmount = 0;
+            requeredAmount = _reqamount;
+            idGoal = _idgoal;
+
+        }
     }
     public enum GOALTYPE
     {
+        None,
         Kill,
         Get,
         Speak,
+        
     }
 }
 

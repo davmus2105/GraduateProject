@@ -531,6 +531,106 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &135819639
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 135819642}
+  - component: {fileID: 135819641}
+  - component: {fileID: 135819640}
+  m_Layer: 0
+  m_Name: GENERATORS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &135819640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135819639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c730a595b4457d418c8e0d323b3ade5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filename: quest_dictionary
+  _temp_lang_path_: English
+  quests:
+  - title: Everyone must die
+    id: 1
+    description: You have to kill 4 enemies
+    isActive: 0
+    goal:
+      goaltype: 1
+      requeredAmount: 4
+      idGoal: 0
+  - title: Find your way
+    id: 2
+    description: You need to speak with a mearchant
+    isActive: 0
+    goal:
+      goaltype: 3
+      requeredAmount: 1
+      idGoal: 0
+--- !u!114 &135819641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135819639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c96830cb49282140bf096a3d1ddcfef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filename: peasant_dialogue_01
+  _temp_lang_path_: English
+  node:
+  - npcText: Hello, wanderer
+    node_id: 0
+    playerAnswer:
+    - text: Hello
+      toNode: 1
+      questid: 0
+      exit: 0
+    - text: Bye
+      toNode: 0
+      questid: 0
+      exit: 1
+  - npcText: Why are you so good?
+    node_id: 1
+    playerAnswer:
+    - text: Cause i am from K-1-15
+      toNode: 0
+      questid: 0
+      exit: 0
+    - text: Bye
+      toNode: 0
+      questid: 0
+      exit: 1
+--- !u!4 &135819642
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135819639}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.050328255, y: 0.27469254, z: -0.14718962}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &266342909
 GameObject:
   m_ObjectHideFlags: 0
@@ -967,7 +1067,6 @@ GameObject:
   m_Component:
   - component: {fileID: 425774980}
   - component: {fileID: 425774981}
-  - component: {fileID: 425774982}
   - component: {fileID: 425774983}
   - component: {fileID: 425774984}
   m_Layer: 0
@@ -1004,39 +1103,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pools: []
---- !u!114 &425774982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 425774979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c96830cb49282140bf096a3d1ddcfef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  filename: peasant_dialogue_01
-  _temp_lang_path_: English
-  node:
-  - npcText: Hello, wanderer
-    node_id: 0
-    playerAnswer:
-    - text: Hello
-      toNode: 1
-      exit: 0
-    - text: Bye
-      toNode: 0
-      exit: 1
-  - npcText: Why are you so good?
-    node_id: 1
-    playerAnswer:
-    - text: Cause i am from K-1-15
-      toNode: 0
-      exit: 0
-    - text: Bye
-      toNode: 0
-      exit: 1
 --- !u!114 &425774983
 MonoBehaviour:
   m_ObjectHideFlags: 0
