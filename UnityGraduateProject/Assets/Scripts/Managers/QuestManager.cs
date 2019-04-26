@@ -10,7 +10,7 @@ namespace QuestSystem
 
 
         List<Quest> activequests;
-        List<Quest> comletedquests;
+        List<int> completedquests; // store id of comleted quests
         Dictionary<int, Quest> questdict; // here must be the list of all quests in game. Quests id is a key and the Quest is the value
 
         public static QuestManager Instance => _instance;
@@ -34,18 +34,63 @@ namespace QuestSystem
         #region Methods
         public void AddQuest(int id)
         {
+            Quest thisQuest, questindict;
+            if (!questdict.TryGetValue(id, out questindict))
+            {
+                Debug.LogWarning("There no quest with id [" + id + "] in quest dictionary.");
+                return;
+            }
             if (activequests == null)
             {
                 activequests = new List<Quest>();
             }
-
+            else // Check for containing quest to add in lists of active quests and comleted
+            {                
+                foreach(var quest in activequests)
+                {
+                    if (quest.id == id)                    
+                        return;                    
+                }
+                if (completedquests == null)
+                {
+                    completedquests = new List<int>();
+                }
+                else
+                {
+                    foreach (var questid in completedquests)
+                    {
+                        if (questid == id && questindict.one_time)                           
+                            return;                           
+                    }
+                }                
+            }
+            // Create a new object
+            thisQuest = new Quest(_id: id, _title: questindict.title,
+                                  _description: questindict.description,
+                                  isactive: true, onetime: questindict.one_time);
+            activequests.Add(thisQuest);
         }
-        public void CompleteQuest()
+        public void CompleteQuest(int id)
         {
-
+            if (completedquests == null)
+                completedquests = new List<int>();
+            if (activequests == null)
+            {
+                activequests = new List<Quest>();
+                return;
+            }            
+            foreach (var quest in activequests)
+            {
+                if (quest.id == id)
+                {
+                    if (!completedquests.Contains(id))
+                        completedquests.Add(id);
+                    activequests.Remove(quest);
+                    return;
+                }
+            }
         }
         // --------------- private methods ---------------
-        // FindQuest should find quest in dictionary and return its value
         void Clear()
         {
             int length = activequests.Count;
@@ -55,6 +100,7 @@ namespace QuestSystem
                     activequests.RemoveAt(i);
             }
         }
+        // FindQuest should find quest in dictionary and return its value
         Quest FindQuest(int questid)
         {
             if (questid <= 0)
@@ -67,11 +113,28 @@ namespace QuestSystem
                 Debug.Log("<color=red>Error : </color> there is no quest with id [" + questid + "] in quest dictionary");
             return quest;
         }
-
         // ---- Quests dictionary methods ----
         void Load()
         {
             // Load using Load Method from QuestGenerator class
+            List<Quest> quests = QuestGenerator.Instance.LoadQuestList();
+            // Get new or clear dictionary for new keys and values
+            if (questdict == null)
+                questdict = new Dictionary<int, Quest>();
+            else
+                questdict.Clear();
+            try
+            {
+                foreach (var quest in quests) // going through quest list
+                {
+                    questdict.Add(quest.id, quest);
+                }
+            }
+            catch
+            {
+                Debug.LogWarning("ERROR: some error in the filling of the quest dictionary");
+            }
+            
         }
         #endregion
 

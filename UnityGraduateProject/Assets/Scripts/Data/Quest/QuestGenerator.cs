@@ -12,8 +12,16 @@ namespace QuestSystem
         public string _temp_lang_path_ = "English";
         public List<Quest> quests;
 
+        public static QuestGenerator Instance => _instance ;
+        private static QuestGenerator _instance;
+
         Quest quest;
-        QuestGoal goal;        
+        QuestGoal goal;
+
+        private void Awake()
+        {
+            _instance = this;
+        }
 
         public void Generate()
         {
@@ -31,9 +39,17 @@ namespace QuestSystem
             for (int i = 0; i < quests.Count; i++)
             {
                 usernode = xmlDoc.CreateElement("quest");
+                // attribute id
                 attribute = xmlDoc.CreateAttribute("id");
                 attribute.Value = quests[i].id.ToString();
                 usernode.Attributes.Append(attribute);
+                // attribute one-time
+                if (quests[i].one_time)
+                {
+                    attribute = xmlDoc.CreateAttribute("one_time");
+                    attribute.Value = quests[i].one_time.ToString();
+                    usernode.Attributes.Append(attribute);
+                }                
                 // title element
                 element = xmlDoc.CreateElement("title");
                 text = xmlDoc.CreateTextNode(quests[i].title);
@@ -43,7 +59,7 @@ namespace QuestSystem
                 element = xmlDoc.CreateElement("description");
                 text = xmlDoc.CreateTextNode(quests[i].description);
                 element.AppendChild(text);
-                usernode.AppendChild(element);
+                usernode.AppendChild(element);                
                 // goal element
                 element = xmlDoc.CreateElement("goal");
                 if (quests[i].goal.goaltype != GOALTYPE.None)
@@ -72,11 +88,20 @@ namespace QuestSystem
                 foreach (XmlNode xnode in xmlroot)   // Reading all nodes 'quest'
                 {
                     quest = new Quest();
-                    if (xnode.Attributes.Count > 0) // Get attribute 'id' in 'quest'
+                    if (xnode.Attributes.Count > 0) // Get attribute 'id' and 'one_time' in 'quest'
                     {
+                        int tempint;
+                        bool o_time;
                         XmlNode attr = xnode.Attributes.GetNamedItem("id");
-                        if (attr != null)
-                            quest.id = int.Parse(attr.Value);
+                        if (attr != null && int.TryParse(attr.Value, out tempint))
+                            quest.id = tempint;
+                        attr = xnode.Attributes.GetNamedItem("one_time");
+                        if (attr != null && bool.TryParse(attr.Value, out o_time))
+                        {
+                            quest.one_time = o_time;
+                        }
+                        else
+                            quest.one_time = false;
                     }
                     foreach (XmlNode childnode in xnode.ChildNodes) // Get nodes 'goal'            
                     {
@@ -132,11 +157,13 @@ namespace QuestSystem
                 Debug.Log(this + " Error of dialogue file reading: " + filename + ".xml >> Error: " + error.Message);
             }
         }
-
-        /*public Dictionary<int, Quest> LoadDictionary()
+        
+        public List<Quest> LoadQuestList()
         {
-
-        }*/
+            if (quests == null)
+                Load();
+            return quests;
+        }
     }
 
     [System.Serializable]
@@ -146,14 +173,16 @@ namespace QuestSystem
         public int id;
         public string description;
         public bool isActive;
+        public bool one_time;
         public QuestGoal goal;
 
-        public Quest(int _id = 0, string _title = "Default quest title", string _description = "Default description of the quest", bool isactive = false)
+        public Quest(int _id = 0, string _title = "Default quest title", string _description = "Default description of the quest", bool isactive = false, bool onetime = false)
         {
             id = _id;
             title = _title;
             description = _description;
             isActive = isactive;
+            one_time = onetime;
             goal = new QuestGoal(this);
         }
     }
