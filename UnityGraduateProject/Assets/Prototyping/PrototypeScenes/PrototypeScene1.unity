@@ -568,6 +568,7 @@ MonoBehaviour:
     id: 1
     description: You have to kill 4 enemies
     isActive: 0
+    one_time: 0
     goal:
       goaltype: 1
       requeredAmount: 4
@@ -576,6 +577,7 @@ MonoBehaviour:
     id: 2
     description: You need to speak with a mearchant
     isActive: 0
+    one_time: 1
     goal:
       goaltype: 3
       requeredAmount: 1
