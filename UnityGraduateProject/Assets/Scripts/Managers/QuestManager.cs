@@ -9,7 +9,7 @@ namespace QuestSystem
         #region Fields and properties
 
 
-        List<Quest> activequests;
+        public List<Quest> activequests;
         List<int> completedquests; // store id of comleted quests
         Dictionary<int, Quest> questdict; // here must be the list of all quests in game. Quests id is a key and the Quest is the value
 
