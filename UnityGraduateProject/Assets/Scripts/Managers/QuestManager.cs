@@ -35,6 +35,8 @@ namespace QuestSystem
         public void AddQuest(int id)
         {
             Quest thisQuest, questindict;
+            if (questdict == null)
+                Load();
             if (!questdict.TryGetValue(id, out questindict))
             {
                 Debug.LogWarning("There no quest with id [" + id + "] in quest dictionary.");
