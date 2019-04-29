@@ -28,7 +28,7 @@ namespace QuestSystem
         }
         void Update()
         {
-
+            
         }
         #endregion
         #region Methods
@@ -41,6 +41,16 @@ namespace QuestSystem
         public void AddQuest(int id)
         {
             Quest thisQuest, questindict;
+            if (activequests == null)
+            {
+                activequests = new List<Quest>();
+            }
+            else if (activequests.Count >= 3)
+            {
+                // ERROR: You cant have more then 3 quests simultaniously
+                HUD_Controller.Instance.ShowInfoMessage("You already have 3 quests");
+                return;
+            }
             if (questdict == null)
                 Load();
             if (!questdict.TryGetValue(id, out questindict))
@@ -48,11 +58,7 @@ namespace QuestSystem
                 Debug.LogWarning("There no quest with id [" + id + "] in quest dictionary.");
                 return;
             }
-            if (activequests == null)
-            {
-                activequests = new List<Quest>();
-            }
-            else // Check for containing quest to add in lists of active quests and comleted
+            if (activequests.Count > 0 && activequests.Count < 3) // Check for containing quest to add in lists of active quests and comleted
             {                
                 foreach(var quest in activequests)
                 {
