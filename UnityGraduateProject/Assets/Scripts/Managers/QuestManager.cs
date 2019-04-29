@@ -32,6 +32,12 @@ namespace QuestSystem
         }
         #endregion
         #region Methods
+        public List<Quest> GetActiveQuests()
+        {
+            if (activequests == null || activequests.Count == 0)
+                return null;
+            return activequests;
+        }
         public void AddQuest(int id)
         {
             Quest thisQuest, questindict;

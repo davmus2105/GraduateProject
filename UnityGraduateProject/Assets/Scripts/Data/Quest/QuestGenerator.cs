@@ -189,7 +189,7 @@ namespace QuestSystem
 
     [System.Serializable]
     public class QuestGoal
-    {
+    {        
         Quest parentquest;
         public GOALTYPE goaltype;
         int currentAmount;        
