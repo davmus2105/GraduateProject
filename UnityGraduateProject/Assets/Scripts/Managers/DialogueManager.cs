@@ -24,7 +24,7 @@ public class DialogueManager : MonoBehaviour
     bool isanswerchosed; // if answer is chosed then it is true
     // --------- Constants ---------
     public const int MAX_LETTERS_IN_NPCTEXT = 270;
-    public const float SEC_WAIT_IN_DIALOGUE = 5f;
+    public const float SEC_WAIT_IN_DIALOGUE = 5f; // How long the npc text will be shown
     List<DialogueElement> dialogue;
     DialogueElement dialogue_el;
     Answer answer;
@@ -158,22 +158,22 @@ public class DialogueManager : MonoBehaviour
     IEnumerator BuildNpcText(DialogueElement dial_el)
     {
         string text = dial_el.npcText;
-        int len = dial_el.npcText.Length;
+        int len = text.Length;
         if (len > MAX_LETTERS_IN_NPCTEXT)
         {
-            int count = Mathf.FloorToInt(MAX_LETTERS_IN_NPCTEXT / len);
+            int count = Mathf.FloorToInt(len / MAX_LETTERS_IN_NPCTEXT);
             // ----------- Splitting up ---------
             for (int i = 0; i < count; i++)
             {
-                int pos = MAX_LETTERS_IN_NPCTEXT * i+1; // Current position to place '/'
+                int pos = MAX_LETTERS_IN_NPCTEXT * (i+1); // Current position to place '/'
                 if (text[pos] != ' ')
                 {
                     for (int c = pos; c >= pos - 15; c--)
                     {
                         if (text[c] == ' ')
                         {
-                            text.Remove(c, 1);
-                            text.Insert(c, "/");
+                            text = text.Remove(c, 1);
+                            text = text.Insert(c, "@");
                             break;
                         }
                         else
@@ -182,17 +182,17 @@ public class DialogueManager : MonoBehaviour
                 }
                 else
                 {
-                    text.Remove(pos, 1);
-                    text.Insert(pos, "/");
+                    text = text.Remove(pos, 1);
+                    text = text.Insert(pos, "@");
                 }
             }
-            string[] splittedText = text.Split('/');
+            string[] splittedText = text.Split('@');
             // ------------ Splitting up is ended --------------
-            for (int i = 0; i < count; i++)
+            foreach(string sptext in splittedText)
             {
-                npctext.text = splittedText[i];
+                npctext.text = sptext;
                 yield return new WaitForSeconds(SEC_WAIT_IN_DIALOGUE);
-            }
+            }            
         }
         else
         {
