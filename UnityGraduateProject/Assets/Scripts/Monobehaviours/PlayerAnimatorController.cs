@@ -13,6 +13,9 @@ public class PlayerAnimatorController : MonoBehaviour
     int arm = Animator.StringToHash("arm_disarm");
     int slash = Animator.StringToHash("slash");    
     bool isArmored;
+    // ----- instances of managers to work with -----
+    HUD_Controller hudController;
+    DialogueManager dialogueManager;
 
     void Start()
     {
@@ -26,6 +29,9 @@ public class PlayerAnimatorController : MonoBehaviour
                       Find("Hand.R").Find("WeaponInHandPlace").gameObject;
         isArmored = false;
         inhandplace.SetActive(false);
+        // ---- Instances ----
+        hudController = HUD_Controller.Instance;
+        dialogueManager = DialogueManager.Instance;
     }
     void Update()
     {
@@ -61,14 +67,15 @@ public class PlayerAnimatorController : MonoBehaviour
     }
     void Attack()
     {
+        if (dialogueManager.inDialogue || hudController.inQuestMenu)
+            return;
         if (isArmored)
         {
             animator.SetTrigger(slash);
         }
         else
         {
-            Debug.Log("Warning!!!");
-            HUD_Controller.Instance.ShowInfoMessage("You are not armored");
+            hudController.ShowInfoMessage("You are not armored");
         }
     }
     void ArmDisarm()
@@ -87,14 +94,14 @@ public class PlayerAnimatorController : MonoBehaviour
     void EquipWeapon()
     {
         inhandplace.SetActive(true);
-        HUD_Controller.Instance.WeaponIsReady(true);
+        hudController.WeaponIsReady(true);
         // backplace.SetActive(false);
         // Show weapon and sounds
     }
     void HideWeapon()
     {
         inhandplace.SetActive(false);
-        HUD_Controller.Instance.WeaponIsReady(false);
+        hudController.WeaponIsReady(false);
         // backplace.SetActive(true);
         // Hide weapon and sounds
     }

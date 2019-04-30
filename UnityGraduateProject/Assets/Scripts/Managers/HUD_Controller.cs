@@ -21,6 +21,7 @@ public class HUD_Controller : MonoBehaviour
     [SerializeField] Text[] t_quests; // array of quest titles
     [SerializeField] Text quest_description;
     const int MAX_ACTIVE_QUEST_AMOUNT = 3;
+    public bool inQuestMenu;
     
 
     
@@ -43,6 +44,7 @@ public class HUD_Controller : MonoBehaviour
         // ---- Quests -----
         quest_panel = hud.transform.Find("QuestPanel").gameObject;
         quest_panel.SetActive(false);
+        inQuestMenu = false;
         Transform temp_panel = quest_panel.transform.Find("buttons_panel");
         b_quests = new Transform[] { temp_panel.Find("b_quest_1"),
                                      temp_panel.Find("b_quest_2"),
@@ -63,13 +65,18 @@ public class HUD_Controller : MonoBehaviour
     {
         weapon.SetActive(isready);
     }
+    public void SetActiveHUD(bool isactive)
+    {
+        hud.SetActive(isactive);
+    }
 
     // ----------------- Quest Methods -------------------
     public void ShowHideQuestPanel()
     {
         if (quest_panel.activeSelf)
         {
-            quest_panel.SetActive(false);
+            inQuestMenu = false;
+            quest_panel.SetActive(false);            
             return;
         }            
         quests = QuestManager.Instance.GetActiveQuests();
@@ -84,7 +91,8 @@ public class HUD_Controller : MonoBehaviour
             b_quests[i].gameObject.SetActive(true);
         }
         GetQuestDescription(0);
-        quest_panel.SetActive(true);
+        inQuestMenu = true;
+        quest_panel.SetActive(true);        
     }
     public void GetQuestDescription(int num)
     {

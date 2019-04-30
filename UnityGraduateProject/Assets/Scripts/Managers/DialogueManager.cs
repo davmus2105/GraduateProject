@@ -30,6 +30,10 @@ public class DialogueManager : MonoBehaviour
     Answer answer;
     Transform[] b_answers;
     Text[] t_answers;
+
+    // ---- Instances ----
+    HUD_Controller hudController;
+
     private static DialogueManager _instance;
     public static DialogueManager Instance => _instance;
     #endregion
@@ -55,7 +59,9 @@ public class DialogueManager : MonoBehaviour
         {
             t_answers[i] = b_answers[i].GetComponentInChildren<Text>();
         }
-        npctext = npctextPanel.transform.Find("npcText").GetComponent<Text>();        
+        npctext = npctextPanel.transform.Find("npcText").GetComponent<Text>();
+        // ---- instances ----
+        hudController = HUD_Controller.Instance;
     }
     #endregion
     #region DialogueManagers Methods
@@ -122,6 +128,7 @@ public class DialogueManager : MonoBehaviour
     {
         Load(language, file_name);
         inDialogue = true;
+        hudController.SetActiveHUD(false);
         dialoguePanel.SetActive(true);
         HideAllAnswers();          
         StartCoroutine("BuildDialogue", 0);
@@ -129,7 +136,7 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         dialoguePanel.SetActive(false);
-//      Debug.Log("Exit from dialogue");
+        hudController.SetActiveHUD(true);
         inDialogue = false;
         StopCoroutine("BuildDialogue");
     }    
