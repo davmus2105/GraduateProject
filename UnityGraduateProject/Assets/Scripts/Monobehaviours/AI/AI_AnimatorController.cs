@@ -31,23 +31,26 @@ namespace AI
         #endregion
         #region Methods
         // Common animation behaviours
-        void Move(float _speed)
+        public void Move(float _speed)
         {
             // Moving animation
             animator.SetFloat(speed_hash, _speed);
         }
 
-        void Death()
+        public void Death()
         {
             // Death animation consist of:
             // 1. Coroutine "DeathAnimation" and after a few seconds to call destroing
             // 2. Destroing (put to pool the object)
         }
 
-        // Peasant animations
+        // ---------- Peasant animations ----------
+        public void Toiling() // Animation of work in the field
+        {
 
+        }
 
-        // Martial methods
+        // ---------- Martial Animations ----------
         void Slash()
         {
             animator.SetTrigger(slash); // slash animation
