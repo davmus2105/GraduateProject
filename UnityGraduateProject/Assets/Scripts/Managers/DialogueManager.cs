@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using System.Xml;
 using System.IO;
+using QuestSystem;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -23,12 +24,16 @@ public class DialogueManager : MonoBehaviour
     bool isanswerchosed; // if answer is chosed then it is true
     // --------- Constants ---------
     public const int MAX_LETTERS_IN_NPCTEXT = 270;
-    public const float SEC_WAIT_IN_DIALOGUE = 5f;
+    public const float SEC_WAIT_IN_DIALOGUE = 5f; // How long the npc text will be shown
     List<DialogueElement> dialogue;
     DialogueElement dialogue_el;
     Answer answer;
     Transform[] b_answers;
     Text[] t_answers;
+
+    // ---- Instances ----
+    HUD_Controller hudController;
+
     private static DialogueManager _instance;
     public static DialogueManager Instance => _instance;
     #endregion
@@ -54,7 +59,9 @@ public class DialogueManager : MonoBehaviour
         {
             t_answers[i] = b_answers[i].GetComponentInChildren<Text>();
         }
-        npctext = npctextPanel.transform.Find("npcText").GetComponent<Text>();        
+        npctext = npctextPanel.transform.Find("npcText").GetComponent<Text>();
+        // ---- instances ----
+        hudController = HUD_Controller.Instance;
     }
     #endregion
     #region DialogueManagers Methods
@@ -121,6 +128,7 @@ public class DialogueManager : MonoBehaviour
     {
         Load(language, file_name);
         inDialogue = true;
+        hudController.SetActiveHUD(false);
         dialoguePanel.SetActive(true);
         HideAllAnswers();          
         StartCoroutine("BuildDialogue", 0);
@@ -128,8 +136,9 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         dialoguePanel.SetActive(false);
-//      Debug.Log("Exit from dialogue");
+        hudController.SetActiveHUD(true);
         inDialogue = false;
+        StopCoroutine("BuildDialogue");
     }    
     public void GetAnswers(DialogueElement dial_el) // Show all answer buttons and to set text in them
     {
@@ -156,22 +165,22 @@ public class DialogueManager : MonoBehaviour
     IEnumerator BuildNpcText(DialogueElement dial_el)
     {
         string text = dial_el.npcText;
-        int len = dial_el.npcText.Length;
+        int len = text.Length;
         if (len > MAX_LETTERS_IN_NPCTEXT)
         {
-            int count = Mathf.FloorToInt(MAX_LETTERS_IN_NPCTEXT / len);
+            int count = Mathf.FloorToInt(len / MAX_LETTERS_IN_NPCTEXT);
             // ----------- Splitting up ---------
             for (int i = 0; i < count; i++)
             {
-                int pos = MAX_LETTERS_IN_NPCTEXT * i+1; // Current position to place '/'
+                int pos = MAX_LETTERS_IN_NPCTEXT * (i+1); // Current position to place '/'
                 if (text[pos] != ' ')
                 {
                     for (int c = pos; c >= pos - 15; c--)
                     {
                         if (text[c] == ' ')
                         {
-                            text.Remove(c, 1);
-                            text.Insert(c, "/");
+                            text = text.Remove(c, 1);
+                            text = text.Insert(c, "@");
                             break;
                         }
                         else
@@ -180,17 +189,17 @@ public class DialogueManager : MonoBehaviour
                 }
                 else
                 {
-                    text.Remove(pos, 1);
-                    text.Insert(pos, "/");
+                    text = text.Remove(pos, 1);
+                    text = text.Insert(pos, "@");
                 }
             }
-            string[] splittedText = text.Split('/');
+            string[] splittedText = text.Split('@');
             // ------------ Splitting up is ended --------------
-            for (int i = 0; i < count; i++)
+            foreach(string sptext in splittedText)
             {
-                npctext.text = splittedText[i];
+                npctext.text = sptext;
                 yield return new WaitForSeconds(SEC_WAIT_IN_DIALOGUE);
-            }
+            }            
         }
         else
         {
@@ -208,12 +217,13 @@ public class DialogueManager : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
         }
+        if (dialogue[number].answers[chosenans].questid != 0)
+            QuestManager.Instance.AddQuest(dialogue[number].answers[chosenans].questid);
         if (dialogue[number].answers[chosenans].exit)
         {
             EndDialogue();
         }
         else
-//          Debug.Log("Building...");
             StartCoroutine("BuildDialogue", dialogue[number].answers[chosenans].toNode);
     }
     #endregion

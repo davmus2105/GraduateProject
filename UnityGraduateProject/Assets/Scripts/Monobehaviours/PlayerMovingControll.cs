@@ -35,7 +35,8 @@ public class PlayerMovingControll : BaseMonoBehaviour
     private void Update()
     {
         if (canMove)
-            Moving();       
+            Moving();
+        Inputs();
     }
 
     void Moving()
@@ -80,5 +81,13 @@ public class PlayerMovingControll : BaseMonoBehaviour
             movevector.y -= gravity * Time.deltaTime;
         }        
         charcontr.Move(movevector * Time.deltaTime);
+    }
+    void Inputs()
+    {
+        if (Input.GetButtonDown("Quests"))
+        {
+            HUD_Controller.Instance.ShowHideQuestPanel();
+            Debug.Log("Show quest panel");
+        }
     }
 }

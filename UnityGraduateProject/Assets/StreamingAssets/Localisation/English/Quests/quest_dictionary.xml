@@ -1,0 +1,12 @@
+<quests>
+  <quest id="1">
+    <title>Everyone must die</title>
+    <description>You have to kill 4 enemies</description>
+    <goal goaltype="Kill" required_amount="4" />
+  </quest>
+  <quest id="2" one_time="True">
+    <title>Find your way</title>
+    <description>You need to speak with a mearchant</description>
+    <goal goaltype="Speak" />
+  </quest>
+</quests>
