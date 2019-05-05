@@ -2,22 +2,56 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AI_AnimatorController : MonoBehaviour
+namespace AI
 {
-    #region Fields and properties
-    AI_CharacterController aicontroller;
-    #endregion
-    #region Monobehaviours methods
-    void Start()
+    public class AI_AnimatorController : MonoBehaviour
     {
+        #region Fields and properties
+        AI_CharacterController aicontroller;
+        Animator animator;
+        GameObject inhandplace;
 
+        // Hashes for animator states
+        int speed_hash = Animator.StringToHash("speed");
+        int arm = Animator.StringToHash("arm_disarm");
+        int slash = Animator.StringToHash("slash");
+        #endregion
+        #region Monobehaviours methods
+        void Start()
+        {
+            aicontroller = GetComponent<AI_CharacterController>();
+            if (!aicontroller)
+                aicontroller = gameObject.AddComponent<AI_CharacterController>();
+            animator = GetComponent<Animator>();
+            inhandplace = transform.Find("Armature").Find("Hips").Find("LowerSpine").
+                      Find("Chest").Find("ShoulderConnector.R").Find("Shoulder.R").
+                      Find("UpperArm.R").Find("LowerArm.R").
+                      Find("Hand.R").Find("WeaponInHandPlace").gameObject;
+        }        
+        #endregion
+        #region Methods
+        // Common animation behaviours
+        void Move(float _speed)
+        {
+            // Moving animation
+            animator.SetFloat(speed_hash, _speed);
+        }
+
+        void Death()
+        {
+            // Death animation consist of:
+            // 1. Coroutine "DeathAnimation" and after a few seconds to call destroing
+            // 2. Destroing (put to pool the object)
+        }
+
+        // Peasant animations
+
+
+        // Martial methods
+        void Slash()
+        {
+            animator.SetTrigger(slash); // slash animation
+        }
+        #endregion
     }
-
-    void Update()
-    {
-
-    }
-    #endregion
-    #region Methods
-    #endregion
 }
