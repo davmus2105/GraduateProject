@@ -23,7 +23,7 @@ namespace TES // TES - Trigger Event System
 
         private void OnTriggerEnter(Collider col)
         {
-            
+            ExecuteComponents(onTriggerEnter, col);
         }
     }
 }
