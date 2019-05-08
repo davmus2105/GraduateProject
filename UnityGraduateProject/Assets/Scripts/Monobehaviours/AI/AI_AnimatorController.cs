@@ -11,10 +11,13 @@ namespace AI
         Animator animator;
         GameObject inhandplace;
 
+        const float AFTER_DEATH_WAIT = 6f;
+
         // Hashes for animator states
         int speed_hash = Animator.StringToHash("speed");
         int arm = Animator.StringToHash("arm_disarm");
         int slash = Animator.StringToHash("slash");
+        int die = Animator.StringToHash("die");
         #endregion
         #region Monobehaviours methods
         void Start()
@@ -56,5 +59,10 @@ namespace AI
             animator.SetTrigger(slash); // slash animation
         }
         #endregion
+        IEnumerable DeathAnimation()
+        {
+            animator.SetTrigger(die);
+            yield return new WaitForSeconds(AFTER_DEATH_WAIT);
+        }
     }
 }
