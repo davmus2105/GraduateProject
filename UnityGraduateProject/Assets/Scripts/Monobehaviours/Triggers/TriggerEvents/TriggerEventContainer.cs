@@ -8,8 +8,22 @@ namespace TES // TES - Trigger Event System
     {
         public List<TriggerEventComponent> onTriggerEnter, 
                                            onTriggerStay, 
-                                           onTriggerExit;       
+                                           onTriggerExit;
 
+        void ExecuteComponents(List<TriggerEventComponent> list, Collider collider)
+        {
+            if (list != null)
+            {
+                foreach (var component in list)
+                {
+                    component.ExecuteEvent(collider);
+                }
+            }           
+        }
 
+        private void OnTriggerEnter(Collider col)
+        {
+            
+        }
     }
 }

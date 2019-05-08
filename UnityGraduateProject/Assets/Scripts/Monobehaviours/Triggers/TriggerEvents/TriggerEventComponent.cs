@@ -3,8 +3,8 @@
 namespace TES
 {
     [System.Serializable]
-    public class TriggerEventComponent : ScriptableObject
+    public abstract class TriggerEventComponent : ScriptableObject
     {
-        
+        public abstract void ExecuteEvent(Collider collider = null);
     }
 }
