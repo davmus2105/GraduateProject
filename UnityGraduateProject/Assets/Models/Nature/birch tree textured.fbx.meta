@@ -9,7 +9,12 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: birch tree
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: birch
+    second: {fileID: 2100000, guid: 62d1e1ac99ca1824296a602f981046b7, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 41cf9577cc238344dbdbae89225fd67f
+guid: c5fc31982ad324449a775be4ea1b7eae
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -8,7 +8,7 @@ ModelImporter:
     2100000: colors
     2300000: //RootNode
     3300000: //RootNode
-    4300000: tripod and bowler
+    4300000: mounth
   externalObjects: {}
   materials:
     importMaterials: 1
