@@ -3,14 +3,19 @@ using System.Collections.Generic;
 
 
 
+[System.Serializable]
 public class HealthComponent : BaseComponent
 {
     float health;
     float max_health;
 
-    public HealthComponent(Actor addingActor, string componentName = "health_component")
+    const float STD_HEALTH = 100f;
+
+    public HealthComponent(Actor addingActor, float _health = STD_HEALTH, float maxHealth = STD_HEALTH, string componentName = "health_component")
         : base(addingActor, componentName)
     {
+        health = _health;
+        max_health = maxHealth;
     }
 
     public float GetHealth()
@@ -37,14 +42,24 @@ public class HealthComponent : BaseComponent
     }
 }
 
+[System.Serializable]
 public class CharacterInfoComponent : BaseComponent
 {
+    public int Id => id;
+    private int id;
     private string character_name;
+    private string std_name = "Character Without Name";
 
-    public CharacterInfoComponent(Actor addingActor, string charactersName, string componentName = "CharacterInfoComponent")
+    public CharacterInfoComponent(Actor addingActor, int _id, string charactersName = "", string componentName = "CharacterInfoComponent")
         : base(addingActor, componentName)
-    {      
-        character_name = charactersName;
+    {
+        // set a name
+        if (string.IsNullOrEmpty(charactersName))
+            character_name = std_name;
+        else
+            character_name = charactersName;
+        // set an id
+        id = _id;
     }
 
     public string GetCharacterName()
@@ -53,6 +68,7 @@ public class CharacterInfoComponent : BaseComponent
     }
 }
 
+[System.Serializable]
 public class InventoryComponent : BaseComponent
 {
     public Weapon weapon;

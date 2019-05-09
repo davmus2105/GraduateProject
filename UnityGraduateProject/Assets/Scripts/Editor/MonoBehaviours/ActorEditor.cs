@@ -1,11 +1,52 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEngine;
 using UnityEditor;
 
 [CustomEditor(typeof(Actor))]
 public class ActorEditor : Editor
 {
     Actor actor;
-    bool showcharinfo, showhealth, showinv;
+    bool ShowCharInfo {
+        get { return ShowCharInfo; }
+        set
+        {
+            if (value)
+            {
+                if (actor.charinfo == null)
+                    actor.charinfo = new CharacterInfoComponent(actor, 1);
+            }
+            ShowCharInfo = value;
+        }
+    }
+    bool ShowHealth
+    {
+        get { return ShowHealth; }
+        set
+        {
+            if (value)
+            {
+                if (actor.health == null)
+                    actor.health = new HealthComponent(actor);
+            }
+            ShowHealth = value;
+        }
+    }
+    bool ShowInv
+    {
+        get { return ShowInv; }
+        set
+        {
+            if (value)
+            {
+                if (actor.inventory == null)
+                {
+                    actor.inventory = new InventoryComponent(actor);
+                }                
+            }
+            ShowInv = value;
+        }
+    }
+    float health, max_health;
 
     private void OnEnable()
     {
@@ -18,67 +59,38 @@ public class ActorEditor : Editor
         actor = (Actor)target;
         GUILayout.BeginVertical();
         EditorGUI.indentLevel++;
-        showcharinfo = EditorGUILayout.Foldout(showcharinfo, "CharInfoComponent");
-        if (showcharinfo)
+        ShowCharInfo = EditorGUILayout.Foldout(ShowCharInfo, "CharInfoComponent");
+        if (ShowCharInfo)
         {
-            if (actor.charinfo != null)
-            {
-                EditorGUILayout.LabelField("Characters name: ", actor.charinfo.GetCharacterName());
-            }
-            {
-                GUILayout.BeginHorizontal();
-                if (GUILayout.Button("ADD"))
-                {
-                    actor.charinfo = new CharacterInfoComponent(actor, "Player");
-                }
-                if (GUILayout.Button("LOAD"))
-                {
-
-                }
-                GUILayout.EndHorizontal();
-            }
+            EditorGUILayout.LabelField("Characters name: ", actor.charinfo.GetCharacterName());
         }
-        showhealth = EditorGUILayout.Foldout(showhealth, "Health");
-        if (showhealth)
-        {
-            if (actor.health != null)
-            {
-              //  EditorGUILayout.LabelField("Health: ", actor.health);
-            }
-            {
-                GUILayout.BeginHorizontal();
-                if (GUILayout.Button("ADD"))
-                {
-                    actor.health = new HealthComponent(actor);
-                }
-                if (GUILayout.Button("LOAD"))
-                {
-
-                }
-                GUILayout.EndHorizontal();
-            }
+        ShowHealth = EditorGUILayout.Foldout(ShowHealth, "Health");
+        if (ShowHealth)
+        {            
+            EditorGUILayout.LabelField("Health: ", actor.health.GetHealth().ToString() + "/" + actor.health.GetMaxHealth().ToString());
+            EditorGUILayout.HelpBox("You can set your values to health and to max health", MessageType.Info);
+            // Set health and max health
+            // ---- SET health
+            GUILayout.BeginHorizontal();
+            health = EditorGUILayout.FloatField("Set health", health);
+            if (GUILayout.Button("SET"))
+                actor.health.SetHealth(health);
+            GUILayout.EndHorizontal();
+            // ---- SET max health
+            GUILayout.BeginHorizontal();
+            max_health = EditorGUILayout.FloatField("Set max health", max_health);
+            if (GUILayout.Button("SET"))
+                actor.health.SetMaxHealth(max_health);
+            GUILayout.EndHorizontal();           
         }
-        showinv = EditorGUILayout.Foldout(showinv, "Inventory");
-        if (showinv)
+        ShowInv = EditorGUILayout.Foldout(ShowInv, "Inventory");
+        if (ShowInv)
         {
-            if (actor.inventory != null)
-            {
-
-            }
-            {
-                GUILayout.BeginHorizontal();
-                if (GUILayout.Button("ADD"))
-                {
-                    actor.inventory = new InventoryComponent(actor);
-                }
-                if (GUILayout.Button("LOAD"))
-                {
-
-                }
-                GUILayout.EndHorizontal();
-            }
+            
+            
         }
         EditorGUI.indentLevel--;
         GUILayout.EndVertical();
     }
 }
+#endif
