@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &464129650
+--- !u!1 &391153026874991436
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,46 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 464129654}
-  - component: {fileID: 464129653}
-  - component: {fileID: 464129652}
-  - component: {fileID: 464129651}
+  - component: {fileID: 2993840634140734146}
+  - component: {fileID: 3472142427154463726}
+  - component: {fileID: 7479609911779903247}
+  - component: {fileID: 5114813503756525874}
   m_Layer: 0
-  m_Name: broken wooden ference 1
+  m_Name: mountain optimized v3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &464129654
+--- !u!4 &2993840634140734146
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 464129650}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0.074441, y: -0.3696, z: 2.5538}
-  m_LocalScale: {x: 121.6122, y: 147.41, z: 147.41}
+  m_GameObject: {fileID: 391153026874991436}
+  m_LocalRotation: {x: -0.21211232, y: 0.67454314, z: 0.6745431, w: 0.21211226}
+  m_LocalPosition: {x: -2.8941343, y: -0.0071446896, z: 6.946451}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &464129653
+  m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 145.08801}
+--- !u!33 &3472142427154463726
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 464129650}
-  m_Mesh: {fileID: 4300000, guid: 66c3a16745d221b49a4bd7c7c334863f, type: 3}
---- !u!23 &464129652
+  m_GameObject: {fileID: 391153026874991436}
+  m_Mesh: {fileID: 4300000, guid: 73359c7cd985093448c6334aeeb40697, type: 3}
+--- !u!23 &7479609911779903247
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 464129650}
+  m_GameObject: {fileID: 391153026874991436}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -78,17 +78,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &464129651
+--- !u!64 &5114813503756525874
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 464129650}
+  m_GameObject: {fileID: 391153026874991436}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 0
-  m_CookingOptions: -1
-  m_Mesh: {fileID: 4300000, guid: 66c3a16745d221b49a4bd7c7c334863f, type: 3}
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 73359c7cd985093448c6334aeeb40697, type: 3}

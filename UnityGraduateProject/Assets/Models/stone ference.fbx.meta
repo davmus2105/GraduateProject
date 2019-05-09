@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ec482907cda12e845a88f5e5947c75b6
+guid: d776a89c4945a89459e608f412bb7204
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -8,8 +8,7 @@ ModelImporter:
     2100000: colors
     2300000: //RootNode
     3300000: //RootNode
-    4300000: tripod and bowler
-    6400000: //RootNode
+    4300000: fence
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -46,9 +45,9 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.6
+    globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
