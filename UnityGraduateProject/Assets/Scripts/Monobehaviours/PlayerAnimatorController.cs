@@ -20,7 +20,7 @@ public class PlayerAnimatorController : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        playerMoving = GetComponent<PlayerMovingControll>();
+        playerMoving = GetComponentInParent<PlayerMovingControll>();
         backplace = transform.Find("Armature").Find("Hips").Find("LowerSpine").
                     Find("Chest").Find("WeaponOnBackPlace").gameObject;
         inhandplace = transform.Find("Armature").Find("Hips").Find("LowerSpine").

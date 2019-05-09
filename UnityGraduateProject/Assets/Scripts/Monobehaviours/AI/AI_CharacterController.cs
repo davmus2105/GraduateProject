@@ -17,7 +17,7 @@ namespace AI
         private NavMeshAgent agent;
 
         // fields for targeting
-        [SerializeField] private GameObject target;
+        [SerializeField] private Transform target;
 
         // fields for moving
         [SerializeField] private float movSpeed;
@@ -61,6 +61,7 @@ namespace AI
             anim_contr = gameObject.GetComponent<AI_AnimatorController>();
             if (anim_contr == null)
                 anim_contr = gameObject.AddComponent<AI_AnimatorController>();
+            target = GameObject.FindGameObjectWithTag("player").transform.Find("Model"); // Find player transform
         }
 
         void Update()
@@ -114,7 +115,7 @@ namespace AI
         void AI_Behaviour_Enemy()
         {
             // Attack player
-
+            
         }
         #endregion
     }
