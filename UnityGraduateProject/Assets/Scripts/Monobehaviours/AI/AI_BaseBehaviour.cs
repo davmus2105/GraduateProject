@@ -15,6 +15,7 @@ namespace AI {
         // ---- protected fields ----
         protected int ai_id;
         protected Transform target; // player transform target
+        protected AI_AnimatorController animator;
 
         // ---- Constructors ----       
         public AI_BaseBehaviour(int id)
