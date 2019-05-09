@@ -4,11 +4,11 @@ using UnityEngine.AI;
 using UnityEngine;
 
 namespace AI {
-    public abstract class AI_BaseBehaviour : MonoBehaviour
+    public abstract class AI_BaseBehaviour : MonoBehaviour, IDie
     {
         #region Fields and Constructors
         // ---- public fields ----        
-
+        public bool canMove;
 
         // ---- protected fields ----    
         protected Actor actor; // Actor component for this ai
@@ -17,7 +17,7 @@ namespace AI {
         protected NavMeshAgent agent;
 
         // ---- Constructors ----       
-        public AI_BaseBehaviour(int id, string charname = "")
+        public AI_BaseBehaviour()
         {
             target = GameObject.FindGameObjectWithTag("Player").transform.Find("Model");
             ai_count++;
@@ -29,6 +29,14 @@ namespace AI {
 
         #endregion
         #region Monobehaviour methods
+        private void Start()
+        {
+            canMove = true;
+        }
+        private void Update()
+        {
+            AiBehaviour();
+        }
         private void OnEnable()
         {
             ai_count++;
@@ -40,6 +48,7 @@ namespace AI {
         #endregion
         #region Methods
         protected abstract void AiBehaviour();
+        public abstract void Die();
         #endregion
     }
 

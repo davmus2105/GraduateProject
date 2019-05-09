@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovingControll : BaseMonoBehaviour
+public class PlayerMovingControll : BaseMonoBehaviour, IDie
 {
     [SerializeField] float movespeed;
     [SerializeField] float gravity;
@@ -89,5 +89,9 @@ public class PlayerMovingControll : BaseMonoBehaviour
             HUD_Controller.Instance.ShowHideQuestPanel();
             Debug.Log("Show quest panel");
         }
+    }
+    public void Die()
+    {
+        canMove = false;
     }
 }
