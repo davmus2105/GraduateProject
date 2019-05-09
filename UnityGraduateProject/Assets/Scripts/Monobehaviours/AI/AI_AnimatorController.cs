@@ -8,6 +8,7 @@ namespace AI
     {
         #region Fields and properties
         AI_CharacterController aicontroller;
+        AI_BaseBehaviour ai_controller;
         Animator animator;
         GameObject inhandplace;
 
@@ -22,16 +23,20 @@ namespace AI
         #region Monobehaviours methods
         void Start()
         {
-            aicontroller = GetComponent<AI_CharacterController>();
-            if (!aicontroller)
-                aicontroller = gameObject.AddComponent<AI_CharacterController>();
+            ai_controller = GetComponent<AI_BaseBehaviour>();
+            if (!ai_controller)
+                ai_controller = gameObject.AddComponent<AI_BaseBehaviour>();
             animator = GetComponent<Animator>();
             inhandplace = transform.Find("Armature").Find("Hips").Find("LowerSpine").
                       Find("Chest").Find("ShoulderConnector.R").Find("Shoulder.R").
                       Find("UpperArm.R").Find("LowerArm.R").
                       Find("Hand.R").Find("WeaponInHandPlace").gameObject;
-        }        
+        }
         #endregion
+        private void Update()
+        {
+            Move(ai_controller.agent.speed);
+        }
         #region Methods
         // Common animation behaviours
         public void Move(float _speed)
@@ -42,9 +47,9 @@ namespace AI
 
         public void Death()
         {
-            // Death animation consist of:
+            // Death animation consist of:            
             // 1. Coroutine "DeathAnimation" and after a few seconds to call destroing
-            // 2. Destroing (put to pool the object)
+            StartCoroutine("DeathAnimation");
         }
 
         // ---------- Peasant animations ----------
@@ -58,11 +63,27 @@ namespace AI
         {
             animator.SetTrigger(slash); // slash animation
         }
+
+        // --------- Animations Events ----------
+        void SetCanMoveTrue()
+        {
+            ai_controller.canMove = true;
+        }
+        void SetCanMoveFalse()
+        {
+            ai_controller.canMove = false;
+        }
+        void PlayFootstepSound()
+        {
+            // Make audiomanager and add to it footsteps
+        }
         #endregion
         IEnumerable DeathAnimation()
         {
             animator.SetTrigger(die);
             yield return new WaitForSeconds(AFTER_DEATH_WAIT);
+            // Call method Death() from ai_controller
+            ai_controller.Death();
         }
     }
 }
