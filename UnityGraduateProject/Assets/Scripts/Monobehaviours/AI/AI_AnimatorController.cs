@@ -16,14 +16,17 @@ namespace AI
 
         // Hashes for animator states
         int speed_hash = Animator.StringToHash("speed");
-        int arm = Animator.StringToHash("arm_disarm");
+        int arm = Animator.StringToHash("arm");
+        int disarm = Animator.StringToHash("disarm");
         int slash = Animator.StringToHash("slash");
         int die = Animator.StringToHash("die");
+
+        public bool isArmored;
         #endregion
         #region Monobehaviours methods
         void Start()
         {
-            ai_controller = GetComponent<AI_BaseBehaviour>();
+            ai_controller = GetComponentInParent<AI_BaseBehaviour>();
             if (!ai_controller)
                 ai_controller = gameObject.AddComponent<AI_BaseBehaviour>();
             animator = GetComponent<Animator>();
@@ -31,6 +34,8 @@ namespace AI
                       Find("Chest").Find("ShoulderConnector.R").Find("Shoulder.R").
                       Find("UpperArm.R").Find("LowerArm.R").
                       Find("Hand.R").Find("WeaponInHandPlace").gameObject;
+
+            isArmored = false;
         }
         #endregion
         private void Update()
@@ -59,9 +64,28 @@ namespace AI
         }
 
         // ---------- Martial Animations ----------
-        void Slash()
+        public void Slash()
         {
             animator.SetTrigger(slash); // slash animation
+        }
+
+        public void Arm()
+        {
+            isArmored = true;
+            animator.SetTrigger(arm);
+        }
+        public void Disarm()
+        {
+            isArmored = false;
+            animator.SetTrigger(disarm);
+        }
+        void EquipWeapon()
+        {
+            inhandplace.SetActive(true);
+        }
+        void HideWeapon()
+        {
+            inhandplace.SetActive(false);
         }
 
         // --------- Animations Events ----------

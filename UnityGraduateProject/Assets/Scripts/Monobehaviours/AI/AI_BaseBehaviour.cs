@@ -9,9 +9,13 @@ namespace AI {
         #region Fields and Constructors               
         // fields for moving
         public bool canMove;
-        [SerializeField] protected float movSpeed;
+        [SerializeField] protected float runSpeed;
+        [SerializeField] protected float walkSpeed;
+        [SerializeField] protected float walkDistance;
         [SerializeField] protected float stoppingDistance;
-        protected Vector3 destinationPoint;       
+        [SerializeField] protected float targetDistance;
+        protected Vector3 destinationPoint;
+        
         
 
 
@@ -25,7 +29,7 @@ namespace AI {
         // ---- Constructors ----       
         public AI_BaseBehaviour()
         {
-            target = GameObject.FindGameObjectWithTag("Player").transform.Find("Model");
+            
             ai_count++;
         }
         #endregion
@@ -39,14 +43,16 @@ namespace AI {
         {
             canMove = true;
             destinationPoint = transform.position;
+            animator = GetComponentInChildren<AI_AnimatorController>();
             agent = GetComponent<NavMeshAgent>();
-            agent.speed = movSpeed;
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+            agent.speed = runSpeed;
             agent.stoppingDistance = stoppingDistance;
         }
         private void Update()
         {
             AiBehaviour();
-            Move();
+            SpeedRegulation(agent.remainingDistance);
         }
         private void OnEnable()
         {
@@ -58,13 +64,28 @@ namespace AI {
         }
         #endregion
         #region Methods
-        protected abstract void AiBehaviour();
-        protected void Move()
+        protected abstract void AiBehaviour();        
+        protected void SpeedRegulation(float Distance)
         {
-            if (canMove)
+            var smoothSpeedVelocity = (1f - Distance * Time.deltaTime) * 0.1f;
+            if (Distance <= stoppingDistance)
             {
-                agent.SetDestination(destinationPoint);                
-            }            
+                agent.speed = Mathf.Lerp(agent.speed, 0f, smoothSpeedVelocity);
+
+            }
+            else if (Distance <= walkDistance)
+            {
+                agent.speed = Mathf.Lerp(agent.speed, walkSpeed, smoothSpeedVelocity);
+
+            }
+            else if (Distance > walkDistance)
+            {
+                agent.speed = Mathf.Lerp(agent.speed, runSpeed, smoothSpeedVelocity);
+            }
+            if (Distance <= 0.01f)
+            {
+                agent.speed = 0f;
+            }
         }
         public void Die()
         {
@@ -73,7 +94,7 @@ namespace AI {
         }
         public virtual void Death()
         {
-            // 1. Make an event of death.
+            // 1. Call an event of death if this is an enemy (In EventManager)            
             // 2. Pooling the AI.
         }
         #endregion
