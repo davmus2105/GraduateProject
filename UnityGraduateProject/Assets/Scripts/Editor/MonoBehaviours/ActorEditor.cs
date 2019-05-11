@@ -18,7 +18,7 @@ public class ActorEditor : Editor
         actor = (Actor)target;
     }
     
-    /*public override void OnInspectorGUI()
+   /* public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
         EditorGUILayout.LabelField("Name: ", actor.CharacterName);
@@ -117,7 +117,7 @@ public class ActorEditor : Editor
             return;
         health.floatValue += _health;
         if (health.floatValue > max_health.floatValue)
-            health = max_health;
+            health.floatValue = max_health.floatValue;
     }
     public void GetDamage(float _damage)
     {

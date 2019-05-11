@@ -45,7 +45,6 @@ public class Actor : MonoBehaviour
     [SerializeField] private float health;
     [SerializeField] private float max_health;
 
-    private Actor instance;
 
     const float STD_HEALTH = 100f;
     const float STD_MAX_HEALTH = 100f;
@@ -90,6 +89,7 @@ public class Actor : MonoBehaviour
         health -= _damage;
         if (health <= 0)
         {
+            Debug.Log(character_name + " is dead");
             connectedBehaviour.Die();
         }
     }
@@ -102,13 +102,6 @@ public class Actor : MonoBehaviour
         max_health = maxHealth;
     }
     // ---------------------------------------
-    private void Awake()
-    {
-        if (!instance)
-        {
-            instance = gameObject.AddComponent<Actor>();
-        }
-    }
     private void Start()
     {
         connectedBehaviour = transform.GetComponent<IDie>();

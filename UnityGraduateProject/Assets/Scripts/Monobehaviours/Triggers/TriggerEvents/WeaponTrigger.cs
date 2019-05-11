@@ -11,7 +11,6 @@ namespace TES {
 
         public override void ExecuteEvent(Collider collider, TriggerEventContainer container)
         {
-
             if (collider.tag != container.host.tag && tagsToDamage.Contains(collider.tag))
             {
                 Debug.Log(collider.tag + "is damaged");

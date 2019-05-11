@@ -8,6 +8,7 @@ public class PlayerAnimatorController : MonoBehaviour
     Animator animator;
     PlayerMovingControll playerMoving;
     GameObject backplace, inhandplace;
+    Collider weaponCollider;
     int speed_hash = Animator.StringToHash("speed");
     int jump_hash = Animator.StringToHash("jump");
     int arm = Animator.StringToHash("arm_disarm");
@@ -27,6 +28,8 @@ public class PlayerAnimatorController : MonoBehaviour
                       Find("Chest").Find("ShoulderConnector.R").Find("Shoulder.R").
                       Find("UpperArm.R").Find("LowerArm.R").
                       Find("Hand.R").Find("WeaponInHandPlace").gameObject;
+        weaponCollider = inhandplace.GetComponentInChildren<Collider>();
+        weaponCollider.enabled = false;
         isArmored = false;
         inhandplace.SetActive(false);
         // ---- Instances ----
@@ -49,6 +52,14 @@ public class PlayerAnimatorController : MonoBehaviour
     void ChangeArmoredState()
     {
         animator.SetTrigger(arm);
+    }
+    void TurnOnWeaponCollider()
+    {
+        weaponCollider.enabled = true;
+    }
+    void TurnOffWeaponCollider()
+    {
+        weaponCollider.enabled = false;
     }
     void KeyInputControll()
     {
@@ -81,6 +92,7 @@ public class PlayerAnimatorController : MonoBehaviour
     void ArmDisarm()
     {
         isArmored = !isArmored;
+        weaponCollider = inhandplace.GetComponentInChildren<Collider>();
         animator.SetTrigger(arm);
     }
     void SetCanMoveTrue()

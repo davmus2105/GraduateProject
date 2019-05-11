@@ -21,6 +21,7 @@ namespace AI
         int slash = Animator.StringToHash("slash");
         int die = Animator.StringToHash("die");
 
+        Collider weaponCollider;
         public bool isArmored;
         #endregion
         #region Monobehaviours methods
@@ -34,7 +35,8 @@ namespace AI
                       Find("Chest").Find("ShoulderConnector.R").Find("Shoulder.R").
                       Find("UpperArm.R").Find("LowerArm.R").
                       Find("Hand.R").Find("WeaponInHandPlace").gameObject;
-
+            weaponCollider = inhandplace.GetComponentInChildren<Collider>();
+            weaponCollider.enabled = false;
             isArmored = false;
         }
         #endregion
@@ -72,6 +74,7 @@ namespace AI
         public void Arm()
         {
             isArmored = true;
+            weaponCollider = inhandplace.GetComponentInChildren<Collider>();
             animator.SetTrigger(arm);
         }
         public void Disarm()
@@ -101,12 +104,21 @@ namespace AI
         {
             // Make audiomanager and add to it footsteps
         }
-        #endregion
-        IEnumerable DeathAnimation()
+        void TurnOnWeaponCollider()
         {
-            animator.SetTrigger(die);
+            weaponCollider.enabled = true;
+        }
+        void TurnOffWeaponCollider()
+        {
+            weaponCollider.enabled = false;
+        }
+        #endregion
+        IEnumerator DeathAnimation()
+        {
+            animator.SetTrigger(die);            
             yield return new WaitForSeconds(AFTER_DEATH_WAIT);
             // Call method Death() from ai_controller
+
             ai_controller.Death();
         }
     }

@@ -93,7 +93,7 @@ namespace AI {
             animator.Death();
         }
         public virtual void Death()
-        {
+        {            
             // 1. Call an event of death if this is an enemy (In EventManager)            
             // 2. Pooling the AI.
         }

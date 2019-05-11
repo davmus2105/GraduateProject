@@ -735,8 +735,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1461554000821455614}
-  - component: {fileID: 7054029242985728423}
   - component: {fileID: 5116023904112852188}
+  - component: {fileID: 7054029242985728423}
   - component: {fileID: 1635935508935154839}
   m_Layer: 0
   m_Name: Player
@@ -761,6 +761,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5116023904112852188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461554000821455615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a9afcecebfb156429083c62867b4a68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character_name: 
+  health: 0
+  max_health: 0
 --- !u!143 &7054029242985728423
 CharacterController:
   m_ObjectHideFlags: 0
@@ -779,21 +794,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.9, z: 0}
---- !u!114 &5116023904112852188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1461554000821455615}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a9afcecebfb156429083c62867b4a68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  character_name: 
-  health: 0
-  max_health: 0
 --- !u!114 &1635935508935154839
 MonoBehaviour:
   m_ObjectHideFlags: 0
