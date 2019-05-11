@@ -10,12 +10,12 @@ public class DialogueTriggerEditor : Editor
     private void OnEnable()
     {
         dialTrigger = new SerializedObject(target);
+        dialName = dialTrigger.FindProperty("dialogue_name");
     }
     public override void OnInspectorGUI()
     {
         EditorGUILayout.HelpBox("Dialogue trigger component", MessageType.Info);
-        dialTrigger.Update();
-        dialName = dialTrigger.FindProperty("dialogue_name");       
+        dialTrigger.Update();               
         dialName.stringValue = EditorGUILayout.TextField("dialogue name: ", dialName.stringValue);
         dialTrigger.ApplyModifiedProperties();
     }

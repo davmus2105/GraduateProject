@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class Actor : BaseMonoBehaviour
+public class Actor : MonoBehaviour
 {
     public string CharacterName
     {
@@ -14,13 +14,45 @@ public class Actor : BaseMonoBehaviour
             }
         }
     }    
+    public float Health
+    {
+        get
+        {
+            return health;
+        }
+        set
+        {
+            if (value <= max_health || value > 0f)                
+                health = value;
+        }
+    }
+    public float MaxHealth
+    {
+        get
+        {
+            return max_health;
+        }
+        set
+        {
+            if (value < health)
+                return;
+            else
+                max_health = value;
+        }
+    }
 
-    private string character_name;
-    private float health;
-    private float max_health;
+    [SerializeField] private string character_name;
+    [SerializeField] private float health;
+    [SerializeField] private float max_health;
 
-    private IDie connectedBehaviour; // AI behaviour or playerController components
+    private Actor instance;
+
+    const float STD_HEALTH = 100f;
+    const float STD_MAX_HEALTH = 100f;
+    const string STD_CHRCTR_NAME = "Новик";
+    public IDie connectedBehaviour; // AI behaviour or playerController components
     #region Methods
+    // ------- Health methods ----------------
     public float GetHealth()
     {
         return health;
@@ -32,16 +64,51 @@ public class Actor : BaseMonoBehaviour
         else
             health = _health;
     }
+    public void AddHealth(float _health)
+    {
+        if (_health <= 0)
+            return;
+        health += _health;
+        if (health > max_health)
+            health = max_health;
+    }
+    public float GetMaxHealth()
+    {
+        return max_health;
+    }
+    public void SetMaxHealth(float maxHealth)
+    {
+        if (maxHealth < health)
+            return;
+        else
+            max_health = maxHealth;
+    }
     public void GetDamage(float _damage)
     {
+        if (_damage <= 0)
+            return;
         health -= _damage;
         if (health <= 0)
         {
             connectedBehaviour.Die();
         }
     }
-
-
+    // ---------------------------------------
+    // ------------ Constructors -------------
+    public Actor(string char_name = STD_CHRCTR_NAME, float _health = STD_HEALTH, float maxHealth = STD_MAX_HEALTH)
+    {
+        character_name = char_name;
+        health = _health;
+        max_health = maxHealth;
+    }
+    // ---------------------------------------
+    private void Awake()
+    {
+        if (!instance)
+        {
+            instance = gameObject.AddComponent<Actor>();
+        }
+    }
     private void Start()
     {
         connectedBehaviour = transform.GetComponent<IDie>();

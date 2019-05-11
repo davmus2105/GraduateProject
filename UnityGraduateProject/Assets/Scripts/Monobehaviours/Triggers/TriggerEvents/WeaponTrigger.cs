@@ -9,10 +9,12 @@ namespace TES {
         [SerializeField] float damage;
         List<string> tagsToDamage = new List<string>{ "Player", "Enemy" };
 
-        public override void ExecuteEvent(Collider collider)
+        public override void ExecuteEvent(Collider collider, TriggerEventContainer container)
         {
-            if (tagsToDamage.Contains(collider.tag))
+
+            if (collider.tag != container.host.tag && tagsToDamage.Contains(collider.tag))
             {
+                Debug.Log(collider.tag + "is damaged");
                 collider.GetComponent<Actor>().GetDamage(damage);
             }
         }

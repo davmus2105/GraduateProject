@@ -9,6 +9,12 @@ namespace TES // TES - Trigger Event System
         public List<TriggerEventComponent> onTriggerEnter, 
                                            onTriggerStay, 
                                            onTriggerExit;
+        public GameObject host;
+
+        private void Start()
+        {
+            host = transform.parent.gameObject;
+        }
 
         void ExecuteComponents(List<TriggerEventComponent> list, Collider collider)
         {
@@ -16,7 +22,7 @@ namespace TES // TES - Trigger Event System
             {
                 foreach (var component in list)
                 {
-                    component.ExecuteEvent(collider);
+                    component.ExecuteEvent(collider, this);
                 }
             }           
         }
