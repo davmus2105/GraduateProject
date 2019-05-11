@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eaed52c3351002945a83de7cd18aae07, type: 3}
-  m_Name: DialogueTriggerComponent
+  m_Name: DialogueTrigger 0001
   m_EditorClassIdentifier: 
   dialogue_name: peasant_dialogue_01
