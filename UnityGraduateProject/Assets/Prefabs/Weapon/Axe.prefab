@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!65 &6949472672578817422
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2806360449502712026}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.25018156, y: 0.04500001, z: 0.30748588}
-  m_Center: {x: 0.06672181, y: 1.8687618e-15, z: 0.6617093}
 --- !u!1 &8093000239664889003
 GameObject:
   m_ObjectHideFlags: 0
@@ -22,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5992747714302491282}
+  - component: {fileID: 3762136235815681787}
+  - component: {fileID: 1334898595443444374}
   m_Layer: 0
   m_Name: Axe
   m_TagString: Untagged
@@ -44,6 +33,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3762136235815681787
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8093000239664889003}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.05, y: 0.25, z: 0.3}
+  m_Center: {x: 0, y: -0.07, z: 0.42}
+--- !u!114 &1334898595443444374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8093000239664889003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b20930ac6711e9345a2a344a0ff3052d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter: []
+  onTriggerStay: []
+  onTriggerExit: []
 --- !u!1001 &2806360449502746234
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -109,12 +126,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4664bb674958b19498ef8b739ff3fc51, type: 3}
---- !u!1 &2806360449502712026 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: 4664bb674958b19498ef8b739ff3fc51,
-    type: 3}
-  m_PrefabInstance: {fileID: 2806360449502746234}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2806360449503137018 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 4664bb674958b19498ef8b739ff3fc51,

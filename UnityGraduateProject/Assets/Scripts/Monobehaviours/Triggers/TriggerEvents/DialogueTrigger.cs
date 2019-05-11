@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TES
 {
-    [CreateAssetMenu(fileName = "DialogueTriggerComponent", menuName = "TES/Components/DialogueTrigger/")]
+    [CreateAssetMenu(fileName="DialogueTriggerComponent", menuName="TES/Components/DialogueTrigger")]
     public class DialogueTrigger : TriggerEventComponent
     {
         public string dialogue_name;        

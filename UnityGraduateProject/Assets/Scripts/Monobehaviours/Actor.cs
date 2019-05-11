@@ -19,7 +19,7 @@ public class Actor : BaseMonoBehaviour
     private float health;
     private float max_health;
 
-    private IDie target;
+    private IDie connectedBehaviour; // AI behaviour or playerController components
     #region Methods
     public float GetHealth()
     {
@@ -37,14 +37,14 @@ public class Actor : BaseMonoBehaviour
         health -= _damage;
         if (health <= 0)
         {
-            target.Die();
+            connectedBehaviour.Die();
         }
     }
 
 
     private void Start()
     {
-        target = transform.GetComponent<IDie>();
+        connectedBehaviour = transform.GetComponent<IDie>();
     }
     #endregion
 }
