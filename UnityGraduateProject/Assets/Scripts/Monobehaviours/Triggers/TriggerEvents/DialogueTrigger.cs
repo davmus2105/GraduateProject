@@ -11,9 +11,8 @@ namespace TES
 
         public override void ExecuteEvent(Collider collider = null, TriggerEventContainer container = null)
         {
-            if (collider.tag != "Player")
+            if (collider.tag == "Player")
             {
-                Debug.Log("Player had being entered in dialogue trigger");
                 DialogueManager.Instance.StartDialogue(dialogue_name);
             }
         }

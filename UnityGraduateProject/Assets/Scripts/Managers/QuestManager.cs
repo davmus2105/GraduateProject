@@ -58,7 +58,7 @@ namespace QuestSystem
                 Debug.LogWarning("There no quest with id [" + id + "] in quest dictionary.");
                 return;
             }
-            if (activequests.Count > 0 && activequests.Count < 3) // Check for containing quest to add in lists of active quests and comleted
+            if (activequests.Count > 0) // Check for containing quest to add in lists of active quests and comleted
             {                
                 foreach(var quest in activequests)
                 {
@@ -82,7 +82,15 @@ namespace QuestSystem
             thisQuest = new Quest(_id: id, _title: questindict.title,
                                   _description: questindict.description,
                                   isactive: true, onetime: questindict.one_time);
+            // goal 
+            thisQuest.goal.goaltype = questindict.goal.goaltype;
+            thisQuest.goal.idGoal = questindict.goal.idGoal;
+            thisQuest.goal.requeredAmount = questindict.goal.requeredAmount;
             activequests.Add(thisQuest);
+            if (thisQuest.goal.goaltype == GOALTYPE.Kill && thisQuest.goal.idGoal == 0)
+            {
+                EventManager.StartListening("EnemyDeath", thisQuest.IncrementGoal);
+            }
         }
         public void CompleteQuest(int id)
         {
@@ -150,6 +158,9 @@ namespace QuestSystem
             }
             
         }
+        #endregion
+        #region Listeners of QuestManager        
+        
         #endregion
 
     }
