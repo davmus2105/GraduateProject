@@ -9,6 +9,7 @@ namespace AI {
         #region Fields and Constructors               
         // fields for moving
         public bool canMove;
+        bool isDead;
         [SerializeField] protected float runSpeed;
         [SerializeField] protected float walkSpeed;
         [SerializeField] protected float walkDistance;
@@ -48,11 +49,15 @@ namespace AI {
             target = GameObject.FindGameObjectWithTag("Player").transform;
             agent.speed = runSpeed;
             agent.stoppingDistance = stoppingDistance;
+            isDead = false;
         }
         private void Update()
         {
-            AiBehaviour();
-            SpeedRegulation(agent.remainingDistance);
+            if (!isDead)
+            {
+                AiBehaviour();
+                SpeedRegulation(agent.remainingDistance);
+            }            
         }
         private void OnEnable()
         {
@@ -90,6 +95,7 @@ namespace AI {
         public void Die()
         {
             canMove = false;
+            isDead = true;
             animator.Death();
         }
         public virtual void Death()

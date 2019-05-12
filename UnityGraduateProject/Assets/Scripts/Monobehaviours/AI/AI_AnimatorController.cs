@@ -115,7 +115,7 @@ namespace AI
         #endregion
         IEnumerator DeathAnimation()
         {
-            animator.SetTrigger(die);            
+            animator.SetTrigger(die);    
             yield return new WaitForSeconds(AFTER_DEATH_WAIT);
             // Call method Death() from ai_controller
 
