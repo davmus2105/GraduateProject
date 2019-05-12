@@ -40,7 +40,7 @@ namespace AI {
 
         #endregion
         #region Monobehaviour methods
-        private void Start()
+        protected virtual void Start()
         {
             canMove = true;
             destinationPoint = transform.position;
