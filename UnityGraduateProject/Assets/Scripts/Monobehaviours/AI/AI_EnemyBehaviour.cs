@@ -9,9 +9,17 @@ namespace AI {
         [SerializeField] float huntDistance;
         [SerializeField] float attackDistance;
         [SerializeField] bool isAttacking;
+        Transform peasant;
         #endregion
         #region MonoBehaviours methods
-
+        private void OnEnable()
+        {
+            AI_Manager.Instance.AddEnemy(this);
+        }
+        private void OnDisable()
+        {
+            AI_Manager.Instance.RemoveEnemy(this);
+        }
         #endregion
         #region Methods
         public override void Death()
@@ -21,6 +29,7 @@ namespace AI {
         }
         protected override void AiBehaviour()
         {
+            ChooseTarget();
             targetDistance = Vector3.Distance(target.transform.position, transform.position);
             if (targetDistance < huntDistance)
             {
@@ -68,7 +77,20 @@ namespace AI {
             agent.isStopped = false;
             destinationPoint = target.position;            
         }    
-        
+        void ChooseTarget()
+        {
+            FindPeasant();
+            if (peasant != null && Vector3.Distance(transform.position, player.position) > huntDistance)
+            {
+                target = peasant;
+            }
+            else
+                target = player;
+        }
+        void FindPeasant()
+        {
+            peasant = AI_Manager.Instance.FindNearestPeasant(transform.position, huntDistance);
+        }
         void Idle()
         {
             

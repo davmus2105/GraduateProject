@@ -22,7 +22,8 @@ namespace AI {
 
         // ---- instances fields ----    
         protected Actor actor; // Actor component for this ai
-        protected Transform target; // player transform target
+        protected Transform target; 
+        protected Transform player; // player transform 
         protected AI_AnimatorController animator;    
         
         public NavMeshAgent agent;
@@ -46,7 +47,8 @@ namespace AI {
             destinationPoint = transform.position;
             animator = GetComponentInChildren<AI_AnimatorController>();
             agent = GetComponent<NavMeshAgent>();
-            target = GameObject.FindGameObjectWithTag("Player").transform;
+            player = GameObject.FindGameObjectWithTag("Player").transform;
+            target = player;
             agent.speed = runSpeed;
             agent.stoppingDistance = stoppingDistance;
             isDead = false;
@@ -70,7 +72,7 @@ namespace AI {
         #endregion
         #region Methods
         protected abstract void AiBehaviour();        
-        protected void SpeedRegulation(float Distance)
+        protected virtual void SpeedRegulation(float Distance)
         {
             var smoothSpeedVelocity = (1f - Distance * Time.deltaTime) * 0.1f;
             if (Distance <= stoppingDistance)
