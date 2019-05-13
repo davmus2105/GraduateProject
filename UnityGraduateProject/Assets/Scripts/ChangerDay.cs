@@ -13,10 +13,14 @@ public class ChangerDay : MonoBehaviour
     // Update is called once per frame
      void Update()
     {
-        float OffsetX = Time.time * ScrollX;
+        float OffsetX = Time.time * ScrollX; // 0.5 > 0.01  time.delta = 0.02 * 0.5
         float OffsetY = Time.time * ScrollY;
         float counter = OffsetX;
         GetComponent<Renderer>().material.mainTextureOffset = new Vector2(OffsetX,OffsetY);
+        if (OffsetX > 1.1f )
+        {
+            OffsetX = 0.2f;
+        }
         /*Sun.transform.RotateAround(Vector3(0, 0, 0), Vector3.right, 10f * Time.deltaTime);
         Moon.transform.RotateAround(Vector3.zero, Vector3.right, 10f * Time.deltaTime);*/
         //Sun.transform.Rotate(-200, speed * Time.deltaTime, 0);
