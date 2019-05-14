@@ -15,15 +15,18 @@ public class PlayerMovingControll : BaseMonoBehaviour, IDie
     {
         get
         {
-            return isBlocking;
+            return isblocking;
         }
         set
         {
-            isBlocking = value;
-            animcontr.BlockAnimation(value);
+            isblocking = value;
+            actor.isBlocking = isblocking;
+            animcontr.BlockAnimation(isblocking);
         }
     }
+    bool isblocking;
     PlayerAnimatorController animcontr;
+    Actor actor;
     Transform player;
     [SerializeField] Transform charRotTarget;
     Vector3 movevector;
@@ -39,6 +42,8 @@ public class PlayerMovingControll : BaseMonoBehaviour, IDie
         animcontr = GetComponentInChildren<PlayerAnimatorController>();
         charRotTarget = Camera.main.transform.GetChild(0);
         canMove = true;
+        isblocking = false;
+        actor = GetComponent<Actor>();
 
         // Vars start:
         turnSpeed = 2f;

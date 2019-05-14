@@ -56,6 +56,10 @@ public class PlayerAnimatorController : MonoBehaviour
     public void BlockAnimation(bool isBlocking)
     {
         ResetAllTriggers();
+        if (isBlocking)
+            SetCanMoveFalse();            
+        else
+            SetCanMoveTrue();
         animator.SetBool(block, isBlocking);
     }
     void ResetAllTriggers()

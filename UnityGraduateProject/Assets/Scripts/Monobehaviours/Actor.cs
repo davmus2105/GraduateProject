@@ -44,6 +44,7 @@ public class Actor : MonoBehaviour
     [SerializeField] private string character_name;
     [SerializeField] private float health;
     [SerializeField] private float max_health;
+    public bool isBlocking;
 
 
     const float STD_HEALTH = 100f;
@@ -84,7 +85,7 @@ public class Actor : MonoBehaviour
     }
     public void GetDamage(float _damage)
     {
-        if (_damage <= 0)
+        if (_damage <= 0 || isBlocking)
             return;
         health -= _damage;
         if (health <= 0)
@@ -105,6 +106,7 @@ public class Actor : MonoBehaviour
     private void Start()
     {
         connectedBehaviour = transform.GetComponent<IDie>();
+        isBlocking = false;
     }
     #endregion
 }
