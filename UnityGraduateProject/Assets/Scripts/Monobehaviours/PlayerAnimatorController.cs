@@ -12,7 +12,9 @@ public class PlayerAnimatorController : MonoBehaviour
     int speed_hash = Animator.StringToHash("speed");
     int jump_hash = Animator.StringToHash("jump");
     int arm = Animator.StringToHash("arm_disarm");
-    int slash = Animator.StringToHash("slash");    
+    int slash = Animator.StringToHash("slash");
+    int block = Animator.StringToHash("block");
+    int[] triggers;
     bool isArmored;
     // ----- instances of managers to work with -----
     HUD_Controller hudController;
@@ -20,6 +22,7 @@ public class PlayerAnimatorController : MonoBehaviour
 
     void Start()
     {
+        triggers = new int[] { jump_hash, speed_hash, arm, slash, block};
         animator = GetComponent<Animator>();
         playerMoving = GetComponentInParent<PlayerMovingControll>();
         backplace = transform.Find("Armature").Find("Hips").Find("LowerSpine").
@@ -47,10 +50,24 @@ public class PlayerAnimatorController : MonoBehaviour
     }
     public void JumpAnimation()
     {
+        ResetAllTriggers();
         animator.SetTrigger(jump_hash);
+    }
+    public void BlockAnimation(bool isBlocking)
+    {
+        ResetAllTriggers();
+        animator.SetBool(block, isBlocking);
+    }
+    void ResetAllTriggers()
+    {
+        for (int i = 0; i < triggers.Length; i++)
+        {
+            animator.ResetTrigger(triggers[i]);
+        }            
     }
     void ChangeArmoredState()
     {
+        ResetAllTriggers();
         animator.SetTrigger(arm);
     }
     void TurnOnWeaponCollider()

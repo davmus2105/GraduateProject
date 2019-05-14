@@ -11,6 +11,18 @@ public class PlayerMovingControll : BaseMonoBehaviour, IDie
     [SerializeField] CharacterController charcontr;
     float inputX, inputY, angle;
     public bool canMove;
+    public bool isBlocking
+    {
+        get
+        {
+            return isBlocking;
+        }
+        set
+        {
+            isBlocking = value;
+            animcontr.BlockAnimation(value);
+        }
+    }
     PlayerAnimatorController animcontr;
     Transform player;
     [SerializeField] Transform charRotTarget;
@@ -89,6 +101,10 @@ public class PlayerMovingControll : BaseMonoBehaviour, IDie
             HUD_Controller.Instance.ShowHideQuestPanel();
             Debug.Log("Show quest panel");
         }
+        if (Input.GetButtonDown("Block"))
+            isBlocking = true;
+        else if (Input.GetButtonUp("Block"))
+            isBlocking = false;           
     }
     public void Die()
     {
