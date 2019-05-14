@@ -20,13 +20,15 @@ namespace AI
         int disarm = Animator.StringToHash("disarm");
         int slash = Animator.StringToHash("slash");
         int die = Animator.StringToHash("die");
-
+        int block = Animator.StringToHash("block");
+        int[] triggers;
         Collider weaponCollider;
         public bool isArmored;
         #endregion
         #region Monobehaviours methods
         void Start()
         {
+            triggers = new int[] { speed_hash, arm, disarm, slash, die, block};
             ai_controller = GetComponentInParent<AI_BaseBehaviour>();
             if (!ai_controller)
                 ai_controller = gameObject.AddComponent<AI_BaseBehaviour>();
@@ -51,6 +53,23 @@ namespace AI
         {
             // Moving animation
             animator.SetFloat(speed_hash, _speed);
+        }
+
+        public void BlockAnimation(bool isBlocking)
+        {
+            ResetAllTriggers();
+            if (isBlocking)
+                SetCanMoveFalse();
+            else
+                SetCanMoveTrue();
+            animator.SetBool(block, isBlocking);
+        }
+        void ResetAllTriggers()
+        {
+            for (int i = 0; i < triggers.Length; i++)
+            {
+                animator.ResetTrigger(triggers[i]);
+            }
         }
 
         public void Death()

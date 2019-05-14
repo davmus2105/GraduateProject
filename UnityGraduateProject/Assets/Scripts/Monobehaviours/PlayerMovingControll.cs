@@ -10,7 +10,7 @@ public class PlayerMovingControll : BaseMonoBehaviour, IDie
     [SerializeField] float rotSmooth;
     [SerializeField] CharacterController charcontr;
     float inputX, inputY, angle;
-    public bool canMove;
+    public bool canMove, isDead;
     public bool isBlocking
     {
         get
@@ -114,5 +114,11 @@ public class PlayerMovingControll : BaseMonoBehaviour, IDie
     public void Die()
     {
         canMove = false;
+        isDead = true;
+        animcontr.Death();
+    }
+    public void Death()
+    {
+        EventManager.TriggerEvent("PlayerDeath");
     }
 }

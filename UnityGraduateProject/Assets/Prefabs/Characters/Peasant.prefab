@@ -72,9 +72,10 @@ GameObject:
   - component: {fileID: 2397506409306886205}
   - component: {fileID: 1229749682519772033}
   - component: {fileID: 2909713570275652080}
+  - component: {fileID: 1033326214995068523}
   - component: {fileID: 7345882171122545986}
-  - component: {fileID: 5199804382282986163}
   - component: {fileID: 8821489200008937817}
+  - component: {fileID: 7981186516314706082}
   m_Layer: 0
   m_Name: Peasant
   m_TagString: Untagged
@@ -130,6 +131,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isArmored: 0
+--- !u!114 &1033326214995068523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417894855444009659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a9afcecebfb156429083c62867b4a68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character_name: "\u0421\u0435\u043B\u044E\u043A"
+  health: 50
+  max_health: 50
+  isBlocking: 0
 --- !u!195 &7345882171122545986
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -152,20 +169,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!136 &5199804382282986163
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 417894855444009659}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1.8
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!114 &8821489200008937817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,6 +192,20 @@ MonoBehaviour:
   dangerRadius: 7
   dirToFlee: {x: 0, y: 0, z: 0}
   huntingEnemies: []
+--- !u!136 &7981186516314706082
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417894855444009659}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1.8
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!1 &646877677792492498
 GameObject:
   m_ObjectHideFlags: 0

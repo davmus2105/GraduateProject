@@ -9,12 +9,27 @@ namespace AI {
         [SerializeField] float huntDistance;
         [SerializeField] float attackDistance;
         [SerializeField] bool isAttacking;
+        bool isblocking;
+        bool isBlocking
+        {
+            get
+            {
+                return isblocking;
+            }
+            set
+            {
+                isblocking = value;
+                actor.isBlocking = isblocking;
+                animator.BlockAnimation(isblocking);
+            }
+        }
         Transform peasant;
         #endregion
         #region MonoBehaviours methods
         private void OnEnable()
         {
             AI_Manager.Instance.AddEnemy(this);
+            isblocking = false;
         }
         private void OnDisable()
         {
@@ -30,39 +45,44 @@ namespace AI {
         protected override void AiBehaviour()
         {
             ChooseTarget();
-            targetDistance = Vector3.Distance(target.transform.position, transform.position);
-            if (targetDistance < huntDistance)
+            if (target)
             {
-                isAttacking = true;
-                animator.Arm();
-                if (targetDistance <= attackDistance)
+                targetDistance = Vector3.Distance(target.transform.position, transform.position);
+                if (targetDistance < huntDistance)
                 {
-                    agent.SetDestination(transform.position);
-                    //CanMove = false;
-                    if (canMove)
-                        Attack();
+                    isAttacking = true;
+                    animator.Arm();
+                    if (targetDistance <= attackDistance)
+                    {
+                        agent.SetDestination(transform.position);
+                        //CanMove = false;
+                        if (canMove)
+                            Attack();
+                    }
+                    else
+                    {
+                        //CanMove = true;
+                        agent.SetDestination(target.transform.position);
+                    }
+
+                    if (!canMove)
+                    {
+                        agent.updateRotation = false;
+                        Vector3 rotToPlayer = target.transform.position - transform.position;
+                        rotToPlayer.y = 0;
+                        transform.rotation = Quaternion.LookRotation(rotToPlayer, transform.up);
+                        agent.updateRotation = true;
+                    }
+
                 }
                 else
                 {
-                    //CanMove = true;
-                    agent.SetDestination(target.transform.position);
+                    isAttacking = false;
                 }
-
-                if (!canMove)
-                {
-                    agent.updateRotation = false;
-                    Vector3 rotToPlayer = target.transform.position - transform.position;
-                    rotToPlayer.y = 0;
-                    transform.rotation = Quaternion.LookRotation(rotToPlayer, transform.up);
-                    agent.updateRotation = true;
-                }
-
+                agent.isStopped = !this.canMove;
             }
             else
-            {
-                isAttacking = false;
-            }
-            agent.isStopped = !this.canMove;
+                Idle();
         }
 
         void Attack()
@@ -84,8 +104,15 @@ namespace AI {
             {
                 target = peasant;
             }
-            else
+            else if (!playerMovContr.isDead)
+            {
                 target = player;
+            }
+            else
+            {
+                target = null;
+            }
+                
         }
         void FindPeasant()
         {

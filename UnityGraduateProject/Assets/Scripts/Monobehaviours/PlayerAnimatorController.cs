@@ -9,11 +9,13 @@ public class PlayerAnimatorController : MonoBehaviour
     PlayerMovingControll playerMoving;
     GameObject backplace, inhandplace;
     Collider weaponCollider;
+    const float AFTER_DEATH_WAIT = 6f;
     int speed_hash = Animator.StringToHash("speed");
     int jump_hash = Animator.StringToHash("jump");
     int arm = Animator.StringToHash("arm_disarm");
     int slash = Animator.StringToHash("slash");
     int block = Animator.StringToHash("block");
+    int die = Animator.StringToHash("die");
     int[] triggers;
     bool isArmored;
     // ----- instances of managers to work with -----
@@ -22,7 +24,7 @@ public class PlayerAnimatorController : MonoBehaviour
 
     void Start()
     {
-        triggers = new int[] { jump_hash, speed_hash, arm, slash, block};
+        triggers = new int[] { jump_hash, speed_hash, arm, slash, block, die};
         animator = GetComponent<Animator>();
         playerMoving = GetComponentInParent<PlayerMovingControll>();
         backplace = transform.Find("Armature").Find("Hips").Find("LowerSpine").
@@ -61,6 +63,12 @@ public class PlayerAnimatorController : MonoBehaviour
         else
             SetCanMoveTrue();
         animator.SetBool(block, isBlocking);
+    }
+    public void Death()
+    {
+        // Death animation consist of:            
+        // 1. Coroutine "DeathAnimation" and after a few seconds to call destroing
+        StartCoroutine("DeathAnimation");
     }
     void ResetAllTriggers()
     {
@@ -110,6 +118,7 @@ public class PlayerAnimatorController : MonoBehaviour
             hudController.ShowInfoMessage("You are not armored");
         }
     }
+    
     void ArmDisarm()
     {
         isArmored = !isArmored;
@@ -141,5 +150,15 @@ public class PlayerAnimatorController : MonoBehaviour
     void PlayFootstepSound()
     {
         // Make audiomanager and add to it footsteps
+    }
+
+    // ------ Coroutines -------
+    IEnumerator DeathAnimation()
+    {
+        animator.SetTrigger(die);
+        yield return new WaitForSeconds(AFTER_DEATH_WAIT);
+        // Call method Death() from ai_controller
+
+        playerMoving.Death();
     }
 }
