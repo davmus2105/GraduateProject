@@ -176,14 +176,25 @@ namespace QuestSystem
         public bool one_time;
         public QuestGoal goal;
 
-        public Quest(int _id = 0, string _title = "Default quest title", string _description = "Default description of the quest", bool isactive = false, bool onetime = false)
+        public Quest(int _id = 0, string _title = "Default quest title", string _description = "Default description of the quest", bool isactive = false, bool onetime = false, QuestGoal qGoal = null)
         {
             id = _id;
             title = _title;
             description = _description;
             isActive = isactive;
             one_time = onetime;
-            goal = new QuestGoal(this);
+            if (qGoal == null)
+                goal = new QuestGoal(this);
+            else
+                goal = qGoal;
+        }
+
+        public void IncrementGoal()
+        {
+            if (goal.Reach())
+            {
+                QuestManager.Instance.CompleteQuest(id);
+            }
         }
     }
 
@@ -192,7 +203,7 @@ namespace QuestSystem
     {        
         Quest parentquest;
         public GOALTYPE goaltype;
-        int currentAmount;        
+        public int currentAmount;        
         public int requeredAmount;
         public int idGoal; // id of character to interact with to obtain the goal (if 0, then there no special character) (this will be used to kill somebody, or to speak with somebody)
         

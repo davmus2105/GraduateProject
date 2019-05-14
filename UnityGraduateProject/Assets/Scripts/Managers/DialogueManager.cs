@@ -67,14 +67,18 @@ public class DialogueManager : MonoBehaviour
     #region DialogueManagers Methods
     public List<DialogueElement> Load(string langfolder, string filename) // Read xml file to get dialogs from it
     {
+        string path = Application.streamingAssetsPath + "/Localisation/" + langfolder + "/Dialogues/" + filename + ".xml";
+        if (!File.Exists(Application.streamingAssetsPath + "/Localisation/" + langfolder + "/Dialogues/" + filename + ".xml"))
+        {
+            return null;
+        }
         if (langfolder + filename == lastfilename)
         {
             return dialogue;
         }
         dialogue = new List<DialogueElement>();
         try //XML elements reading and loading attributes values to collections
-        {
-            string path = Application.streamingAssetsPath + "/Localisation/" + langfolder + "/Dialogues/" + filename + ".xml";
+        {            
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load(path);
             XmlElement xmlroot = xmlDoc.DocumentElement; // Reading root node in document
@@ -126,7 +130,8 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(string file_name, string language = "English")
     {
-        Load(language, file_name);
+        if (Load(language, file_name) == null)
+            return;
         inDialogue = true;
         hudController.SetActiveHUD(false);
         dialoguePanel.SetActive(true);

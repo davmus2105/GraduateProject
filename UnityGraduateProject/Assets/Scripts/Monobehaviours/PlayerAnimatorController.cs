@@ -8,10 +8,15 @@ public class PlayerAnimatorController : MonoBehaviour
     Animator animator;
     PlayerMovingControll playerMoving;
     GameObject backplace, inhandplace;
+    Collider weaponCollider;
+    const float AFTER_DEATH_WAIT = 6f;
     int speed_hash = Animator.StringToHash("speed");
     int jump_hash = Animator.StringToHash("jump");
     int arm = Animator.StringToHash("arm_disarm");
-    int slash = Animator.StringToHash("slash");    
+    int slash = Animator.StringToHash("slash");
+    int block = Animator.StringToHash("block");
+    int die = Animator.StringToHash("die");
+    int[] triggers;
     bool isArmored;
     // ----- instances of managers to work with -----
     HUD_Controller hudController;
@@ -19,14 +24,17 @@ public class PlayerAnimatorController : MonoBehaviour
 
     void Start()
     {
+        triggers = new int[] { jump_hash, speed_hash, arm, slash, block, die};
         animator = GetComponent<Animator>();
-        playerMoving = GetComponent<PlayerMovingControll>();
+        playerMoving = GetComponentInParent<PlayerMovingControll>();
         backplace = transform.Find("Armature").Find("Hips").Find("LowerSpine").
                     Find("Chest").Find("WeaponOnBackPlace").gameObject;
         inhandplace = transform.Find("Armature").Find("Hips").Find("LowerSpine").
                       Find("Chest").Find("ShoulderConnector.R").Find("Shoulder.R").
                       Find("UpperArm.R").Find("LowerArm.R").
                       Find("Hand.R").Find("WeaponInHandPlace").gameObject;
+        weaponCollider = inhandplace.GetComponentInChildren<Collider>();
+        weaponCollider.enabled = false;
         isArmored = false;
         inhandplace.SetActive(false);
         // ---- Instances ----
@@ -44,11 +52,43 @@ public class PlayerAnimatorController : MonoBehaviour
     }
     public void JumpAnimation()
     {
+        ResetAllTriggers();
         animator.SetTrigger(jump_hash);
+    }
+    public void BlockAnimation(bool isBlocking)
+    {
+        ResetAllTriggers();
+        if (isBlocking)
+            SetCanMoveFalse();            
+        else
+            SetCanMoveTrue();
+        animator.SetBool(block, isBlocking);
+    }
+    public void Death()
+    {
+        // Death animation consist of:            
+        // 1. Coroutine "DeathAnimation" and after a few seconds to call destroing
+        StartCoroutine("DeathAnimation");
+    }
+    void ResetAllTriggers()
+    {
+        for (int i = 0; i < triggers.Length; i++)
+        {
+            animator.ResetTrigger(triggers[i]);
+        }            
     }
     void ChangeArmoredState()
     {
+        ResetAllTriggers();
         animator.SetTrigger(arm);
+    }
+    void TurnOnWeaponCollider()
+    {
+        weaponCollider.enabled = true;
+    }
+    void TurnOffWeaponCollider()
+    {
+        weaponCollider.enabled = false;
     }
     void KeyInputControll()
     {
@@ -78,9 +118,11 @@ public class PlayerAnimatorController : MonoBehaviour
             hudController.ShowInfoMessage("You are not armored");
         }
     }
+    
     void ArmDisarm()
     {
         isArmored = !isArmored;
+        weaponCollider = inhandplace.GetComponentInChildren<Collider>();
         animator.SetTrigger(arm);
     }
     void SetCanMoveTrue()
@@ -108,5 +150,15 @@ public class PlayerAnimatorController : MonoBehaviour
     void PlayFootstepSound()
     {
         // Make audiomanager and add to it footsteps
+    }
+
+    // ------ Coroutines -------
+    IEnumerator DeathAnimation()
+    {
+        animator.SetTrigger(die);
+        yield return new WaitForSeconds(AFTER_DEATH_WAIT);
+        // Call method Death() from ai_controller
+
+        playerMoving.Death();
     }
 }

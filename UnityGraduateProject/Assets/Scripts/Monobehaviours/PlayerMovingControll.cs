@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovingControll : BaseMonoBehaviour
+public class PlayerMovingControll : BaseMonoBehaviour, IDie
 {
     [SerializeField] float movespeed;
     [SerializeField] float gravity;
@@ -10,8 +10,23 @@ public class PlayerMovingControll : BaseMonoBehaviour
     [SerializeField] float rotSmooth;
     [SerializeField] CharacterController charcontr;
     float inputX, inputY, angle;
-    public bool canMove;
+    public bool canMove, isDead;
+    public bool isBlocking
+    {
+        get
+        {
+            return isblocking;
+        }
+        set
+        {
+            isblocking = value;
+            actor.isBlocking = isblocking;
+            animcontr.BlockAnimation(isblocking);
+        }
+    }
+    bool isblocking;
     PlayerAnimatorController animcontr;
+    Actor actor;
     Transform player;
     [SerializeField] Transform charRotTarget;
     Vector3 movevector;
@@ -23,10 +38,12 @@ public class PlayerMovingControll : BaseMonoBehaviour
     private void Start()
     {
         charcontr = GetComponent<CharacterController>();
-        player = transform.parent;
-        animcontr = GetComponent<PlayerAnimatorController>();
+        player = transform.Find("Model");
+        animcontr = GetComponentInChildren<PlayerAnimatorController>();
         charRotTarget = Camera.main.transform.GetChild(0);
         canMove = true;
+        isblocking = false;
+        actor = GetComponent<Actor>();
 
         // Vars start:
         turnSpeed = 2f;
@@ -50,30 +67,30 @@ public class PlayerMovingControll : BaseMonoBehaviour
             movevector *= movespeed;*/
                                        
             if (Input.GetButton("Right"))
-            {
-                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, transform.rotation.y + 90, 0), rotSmooth);
+            {                
+                player.rotation = Quaternion.Lerp(player.rotation, Quaternion.Euler(0, player.rotation.y + 90, 0), rotSmooth);
                 speed = movespeed;
             }
             if (Input.GetButton("Left"))
             {
-                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, transform.rotation.y - 90, 0), rotSmooth);
+                player.rotation = Quaternion.Lerp(player.rotation, Quaternion.Euler(0, player.rotation.y - 90, 0), rotSmooth);
                 speed = movespeed;
             }
             if (Input.GetButton("Forward"))
             {
-                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, transform.rotation.y, 0), rotSmooth);
+                player.rotation = Quaternion.Lerp(player.rotation, Quaternion.Euler(0, player.rotation.y, 0), rotSmooth);
                 speed = movespeed;
             }
             if (Input.GetButton("Back"))
             {
-                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, transform.rotation.y + 180, 0), rotSmooth);
+                player.rotation = Quaternion.Lerp(player.rotation, Quaternion.Euler(0, player.rotation.y + 180, 0), rotSmooth);
                 speed = movespeed;
             }
             if (speed != 0)
                 isMoving = true;
             else
                 isMoving = false;
-            movevector = transform.TransformDirection(Vector3.forward);
+            movevector = player.TransformDirection(Vector3.forward);
             movevector *= speed;
         }
         else
@@ -89,5 +106,19 @@ public class PlayerMovingControll : BaseMonoBehaviour
             HUD_Controller.Instance.ShowHideQuestPanel();
             Debug.Log("Show quest panel");
         }
+        if (Input.GetButtonDown("Block"))
+            isBlocking = true;
+        else if (Input.GetButtonUp("Block"))
+            isBlocking = false;           
+    }
+    public void Die()
+    {
+        canMove = false;
+        isDead = true;
+        animcontr.Death();
+    }
+    public void Death()
+    {
+        EventManager.TriggerEvent("PlayerDeath");
     }
 }
