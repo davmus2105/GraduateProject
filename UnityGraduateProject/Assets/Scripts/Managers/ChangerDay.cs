@@ -27,18 +27,22 @@ public class ChangerDay : MonoBehaviour
     }
     void Update()
     {
-       OffsetX = Time.time * Dayspeed; // 0.5 > 0.01  time.delta = 0.02 * 0.5
+        OffsetX += Time.deltaTime * Dayspeed; 
         skyrend.material.mainTextureOffset = new Vector2(OffsetX, 0); //cloudsrend.material.mainTextureOffset = new Vector2(OffsetX, 0);
         cloudsrend.material.mainTextureOffset = new Vector2(OffsetX, 0);
-       
-        
+
+        if (OffsetX > 1)
+        { OffsetX = 0;
+            skyrend.material.mainTextureOffset = new Vector2(OffsetX, 0); //cloudsrend.material.mainTextureOffset = new Vector2(OffsetX, 0);
+            cloudsrend.material.mainTextureOffset = new Vector2(OffsetX, 0);
+        }
         //Sun.transform.Rotate(-200, speed * Time.deltaTime, 0);
-        Sun.transform.RotateAround(Vector3.zero, Vector3.right, Dayspeed * 400 * Time.deltaTime);
-        Moon.transform.RotateAround(Vector3.zero, Vector3.right, Dayspeed * 400 * Time.deltaTime);
+        Sun.transform.RotateAround(Vector3.zero, Vector3.right, Dayspeed *370* Time.deltaTime);
+        Moon.transform.RotateAround(Vector3.zero, Vector3.right, Dayspeed *370* Time.deltaTime);
         //sun_moon.rotation = Quaternion.Euler(sun_moon.rotation.x -speed,0,0);
 
         
-          if (counter < OffsetX)
+        /*  if (counter < OffsetX)
         {
             Debug.Log(Zero(OffsetX));// 51,00039
             OffsetX = Zero(OffsetX);
@@ -46,17 +50,19 @@ public class ChangerDay : MonoBehaviour
             cloudsrend.material.mainTextureOffset = new Vector2(OffsetX, 0);
             Debug.Log("Offset is!!! Some changing");
         }
-        /*else
+        else
         {
             OffsetX = Time.deltaTime * Dayspeed;
-        }*/
+        }
+        */
     }
-    public float Zero(float Value)
+    /*public float Zero(float Value)
     {
         float a = 1f;
         
         return a;
     }
+    */
 
 
 }
