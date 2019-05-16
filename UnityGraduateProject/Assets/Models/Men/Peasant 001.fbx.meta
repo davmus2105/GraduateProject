@@ -122,7 +122,7 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.17999999
+    previousCalculatedGlobalScale: 0.19
     hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
@@ -132,7 +132,7 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
@@ -302,132 +302,132 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
     - name: Hips
       parentName: Armature
-      position: {x: -0, y: 0.035655595, z: 0.83645505}
+      position: {x: -0, y: 0.037636463, z: 0.8829248}
       rotation: {x: 0.6970321, y: -0.000000085477836, z: -0.000000083092694, w: 0.71703994}
       scale: {x: 1, y: 0.99999994, z: 0.99999994}
     - name: LowerSpine
       parentName: Hips
-      position: {x: 3.1974422e-16, y: 0.18532954, z: 0.0000000013411044}
+      position: {x: 3.375078e-16, y: 0.19562563, z: 0.0000000014156103}
       rotation: {x: -0.057500158, y: -3.6106355e-15, z: 0.0000000137091005, w: 0.9983455}
       scale: {x: 1, y: 1, z: 0.99999994}
     - name: Chest
       parentName: LowerSpine
-      position: {x: 2.276448e-15, y: 0.18717541, z: 0}
+      position: {x: 2.4029175e-15, y: 0.19757405, z: 0}
       rotation: {x: 0.07161876, y: 0.00000011890319, z: -0.0000000085376195, w: 0.9974321}
       scale: {x: 1, y: 1.0000001, z: 1}
     - name: Neck
       parentName: Chest
-      position: {x: 1.5246592e-22, y: 0.19972742, z: 0}
+      position: {x: 1.6093626e-22, y: 0.21082339, z: 0}
       rotation: {x: 0.24243256, y: -0.000000115653044, z: -0.000000028900208, w: 0.9701683}
       scale: {x: 1, y: 1, z: 1}
     - name: Head
       parentName: Neck
-      position: {x: 2.4343962e-15, y: 0.08837756, z: 0.0000000013411044}
+      position: {x: 2.5696405e-15, y: 0.09328742, z: 0.0000000014156103}
       rotation: {x: -0.2991985, y: -3.6013466e-14, z: 0.00000007133445, w: 0.9541909}
       scale: {x: 1, y: 1, z: 0.9999999}
     - name: Head_end
       parentName: Head
-      position: {x: -0, y: 0.16336016, z: 0}
+      position: {x: -0, y: 0.17243573, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: ShoulderConnector.L
       parentName: Chest
-      position: {x: 1.5246592e-22, y: 0.19972742, z: 0}
+      position: {x: 1.6093626e-22, y: 0.21082339, z: 0}
       rotation: {x: 0.6562734, y: -0.26325923, z: -0.6562731, w: -0.26325935}
       scale: {x: 1.0000007, y: 1.0000002, z: 1.0000001}
     - name: Shoulder.L
       parentName: ShoulderConnector.L
-      position: {x: 0.0000000042314947, y: 0.056377057, z: 0.000000022455477}
+      position: {x: 0.0000000044665778, y: 0.059509117, z: 0.000000023703004}
       rotation: {x: 0.23611973, y: 0.0052230954, z: -0.036199633, w: 0.9710354}
       scale: {x: 1, y: 0.99999994, z: 0.99999994}
     - name: UpperArm.L
       parentName: Shoulder.L
-      position: {x: -0.000000002682209, y: 0.15852433, z: -0.000000011860394}
+      position: {x: -0.0000000028312206, y: 0.16733125, z: -0.000000012519305}
       rotation: {x: 0.14609767, y: 0.0626618, z: 0.04699442, w: 0.9861646}
       scale: {x: 1, y: 1, z: 1}
     - name: LowerArm.L
       parentName: UpperArm.L
-      position: {x: -0, y: 0.25445926, z: 0.0000000563814}
+      position: {x: -0, y: 0.2685959, z: 0.0000000595137}
       rotation: {x: 0.016362183, y: -0.016691793, z: 0.03266909, w: 0.9991929}
       scale: {x: 0.99999994, y: 0.99999994, z: 1}
     - name: Hand
       parentName: LowerArm.L
-      position: {x: -0.00000006437301, y: 0.20245601, z: -0.000000015925616}
+      position: {x: -0.000000067949294, y: 0.21370357, z: -0.000000016810374}
       rotation: {x: -0.08752401, y: 0.0744799, z: 0.07048821, w: 0.9908702}
       scale: {x: 1, y: 1, z: 1}
     - name: Hand_end
       parentName: Hand
-      position: {x: -0, y: 0.110140234, z: 0}
+      position: {x: -0, y: 0.11625914, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: ShoulderConnector.R
       parentName: Chest
-      position: {x: 1.5246592e-22, y: 0.19972742, z: 0}
+      position: {x: 1.6093626e-22, y: 0.21082339, z: 0}
       rotation: {x: 0.6562734, y: 0.26325923, z: 0.6562731, w: -0.26325935}
       scale: {x: 1.0000007, y: 1.0000002, z: 1.0000001}
     - name: Shoulder.R
       parentName: ShoulderConnector.R
-      position: {x: -0.000000004231432, y: 0.056377057, z: 0.000000022455485}
+      position: {x: -0.0000000044665116, y: 0.059509117, z: 0.000000023703013}
       rotation: {x: 0.23611973, y: -0.0052230954, z: 0.036199633, w: 0.9710354}
       scale: {x: 1, y: 0.99999994, z: 0.99999994}
     - name: UpperArm.R
       parentName: Shoulder.R
-      position: {x: 0.000000002682209, y: 0.15852433, z: -0.000000011860394}
+      position: {x: 0.0000000028312206, y: 0.16733125, z: -0.000000012519305}
       rotation: {x: 0.1460976, y: -0.06266173, z: -0.04699437, w: 0.9861646}
       scale: {x: 1, y: 1, z: 1}
     - name: LowerArm.R
       parentName: UpperArm.R
-      position: {x: -0, y: 0.25445926, z: 0.0000000563814}
+      position: {x: -0, y: 0.2685959, z: 0.0000000595137}
       rotation: {x: 0.016361974, y: 0.016691748, z: -0.032668773, w: 0.9991929}
       scale: {x: 0.99999994, y: 0.99999994, z: 1}
     - name: Hand.R
       parentName: LowerArm.R
-      position: {x: 0.00000006437301, y: 0.20245601, z: -0.000000015925616}
+      position: {x: 0.000000067949294, y: 0.21370357, z: -0.000000016810374}
       rotation: {x: -0.11873758, y: -0.81333137, z: 0.029000325, w: 0.56881684}
       scale: {x: 0.99999994, y: 1, z: 1}
     - name: Hand.R_end
       parentName: Hand.R
-      position: {x: -0, y: 0.1068769, z: 0}
+      position: {x: -0, y: 0.11281451, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: UpperLeg.L
       parentName: Hips
-      position: {x: -0.0935066, y: -0.0452312, z: -0.0012802028}
+      position: {x: -0.09870141, y: -0.047744047, z: -0.0013513252}
       rotation: {x: 0.998815, y: -0.04638661, z: -0.0014304946, w: -0.014659236}
       scale: {x: 1.0000024, y: 1.0000001, z: 1.0000001}
     - name: LowerLeg.L
       parentName: UpperLeg.L
-      position: {x: -3.2479874e-10, y: 0.34031188, z: -0.0000000041071324}
+      position: {x: -3.4284312e-10, y: 0.35921812, z: -0.0000000043353063}
       rotation: {x: 0.028454186, y: -0.00017583341, z: -0.00757003, w: 0.99956644}
       scale: {x: 1, y: 0.9999999, z: 1}
     - name: Foot.L
       parentName: LowerLeg.L
-      position: {x: 8.1723556e-10, y: 0.4067472, z: 0.0000000030174852}
+      position: {x: 8.626376e-10, y: 0.42934427, z: 0.0000000031851233}
       rotation: {x: -0.0016720641, y: 0.747426, z: -0.6622456, w: -0.05274936}
       scale: {x: 0.9999999, y: 0.9999999, z: 0.99999994}
     - name: Foot.L_end
       parentName: Foot.L
-      position: {x: -0, y: 0.19630821, z: 0}
+      position: {x: -0, y: 0.20721422, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: UpperLeg.R
       parentName: Hips
-      position: {x: 0.0935066, y: -0.0452312, z: -0.0012802474}
+      position: {x: 0.09870141, y: -0.047744047, z: -0.0013513722}
       rotation: {x: 0.99881476, y: 0.046392124, z: 0.0014296045, w: -0.014657177}
       scale: {x: 1.000003, y: 1, z: 1.0000002}
     - name: LowerLeg.R
       parentName: UpperLeg.R
-      position: {x: -0.000000008172356, y: 0.34031194, z: 6.9150696e-10}
+      position: {x: -0.000000008626376, y: 0.35921818, z: 7.29924e-10}
       rotation: {x: 0.028454179, y: 0.0001757902, z: 0.0075700097, w: 0.99956644}
       scale: {x: 1, y: 1, z: 1.0000001}
     - name: Foot.R
       parentName: LowerLeg.R
-      position: {x: 0.0000000014458784, y: 0.40674722, z: -0.0000000027241187}
+      position: {x: 0.000000001526205, y: 0.4293443, z: -0.0000000028754588}
       rotation: {x: 0.0016720634, y: 0.7474258, z: -0.6622457, w: 0.052749842}
       scale: {x: 0.99999994, y: 0.9999994, z: 0.9999998}
     - name: Foot.R_end
       parentName: Foot.R
-      position: {x: -0, y: 0.19630821, z: 0}
+      position: {x: -0, y: 0.20721422, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: PeasantModel
