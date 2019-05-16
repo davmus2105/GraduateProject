@@ -341,7 +341,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1461554000113339338}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c6cbe1ddf7a223c4f8230526844cb726, type: 3}
   m_Name: 
@@ -371,7 +371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5790a8c5e74f4224380c6b09538f7f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetZ: 4
+  offsetZ: 6
   offsetY: 4
   smooth: 5
   target: {fileID: 0}
@@ -776,6 +776,7 @@ MonoBehaviour:
   character_name: 
   health: 0
   max_health: 0
+  isBlocking: 0
 --- !u!143 &7054029242985728423
 CharacterController:
   m_ObjectHideFlags: 0
@@ -807,11 +808,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movespeed: 5
-  gravity: 2
+  gravity: 20
   turnSpeed: 1
   rotSmooth: 0.5
   charcontr: {fileID: 0}
   canMove: 0
+  isDead: 0
   charRotTarget: {fileID: 5240067607210325725}
   isMoving: 0
 --- !u!1 &1461554000902850677

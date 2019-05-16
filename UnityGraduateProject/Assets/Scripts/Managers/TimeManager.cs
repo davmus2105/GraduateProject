@@ -67,6 +67,6 @@ public class TimeManager : MonoBehaviour
     }
     void SunMoonRot()
     {
-        sunMoon.rotation = Quaternion.Euler((currentTime * 360f) - 90, 0f, 0f);
+        sunMoon.rotation = Quaternion.Euler((currentTime * 360f), 0f, 0f);
     }
 }
