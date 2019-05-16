@@ -20,6 +20,9 @@ public class TimeManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        clouds = GameObject.Find("[SCENE]").transform.Find("===== STATIC =====").Find("Clouds").gameObject;
+        sky = GameObject.Find("[SCENE]").transform.Find("===== STATIC =====").Find("SkyDome").gameObject;
+        sunMoon = GameObject.Find("[SCENE]").transform.Find("===== DYNAMIC =====").Find("SunMoon");
         skyrend = sky.GetComponent<Renderer>();
         cloudsrend = clouds.GetComponent<Renderer>();
     }
