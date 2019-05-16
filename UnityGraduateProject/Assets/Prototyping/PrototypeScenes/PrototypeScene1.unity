@@ -1785,6 +1785,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9174673515902379560, guid: 760529ebfad26b64fb82b232972b640f,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 425774985}
+    - target: {fileID: 9174673515902379560, guid: 760529ebfad26b64fb82b232972b640f,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetRes
+      objectReference: {fileID: 0}
+    - target: {fileID: 9174673516644166559, guid: 760529ebfad26b64fb82b232972b640f,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 425774985}
+    - target: {fileID: 9174673516644166559, guid: 760529ebfad26b64fb82b232972b640f,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetQuality
+      objectReference: {fileID: 0}
     - target: {fileID: 9174673517281904959, guid: 760529ebfad26b64fb82b232972b640f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1949,26 +1969,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Back
-      objectReference: {fileID: 0}
-    - target: {fileID: 9174673516644166559, guid: 760529ebfad26b64fb82b232972b640f,
-        type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 425774985}
-    - target: {fileID: 9174673516644166559, guid: 760529ebfad26b64fb82b232972b640f,
-        type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetQuality
-      objectReference: {fileID: 0}
-    - target: {fileID: 9174673515902379560, guid: 760529ebfad26b64fb82b232972b640f,
-        type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 425774985}
-    - target: {fileID: 9174673515902379560, guid: 760529ebfad26b64fb82b232972b640f,
-        type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetRes
       objectReference: {fileID: 0}
     - target: {fileID: 9174673516572688591, guid: 760529ebfad26b64fb82b232972b640f,
         type: 3}

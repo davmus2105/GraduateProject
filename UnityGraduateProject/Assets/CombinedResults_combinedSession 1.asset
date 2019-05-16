@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a7375f37a1ffc945b478bd41f115dab, type: 3}
+  m_Name: CombinedResults_combinedSession 1
+  m_EditorClassIdentifier: 
+  showCombinedMaterials: 0
+  showCombinedMeshes: 0
+  combinedMaterials:
+  - material: {fileID: 0}
+    uvs:
+    - serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    uvs2: []
+    scaleFactors:
+    - 1
+    meshUVBounds:
+    - serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    isOriginalMaterial: 1
+    displayedIndex: 0
+    showCombinedMaterial: 0
+    showUVs: 0
+    showMeshUVBounds: 0
+  meshResults: []
+  materialCombinedCount: 1
+  combinedMaterialCount: 1
+  meshesCombinedCount: 10
+  skinnedMeshesCombinedCount: 0
+  totalVertexCount: 0
+  subMeshCount: 0
