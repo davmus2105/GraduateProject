@@ -1,0 +1,539 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a7375f37a1ffc945b478bd41f115dab, type: 3}
+  m_Name: CombinedResults_props
+  m_EditorClassIdentifier: 
+  showCombinedMaterials: 0
+  showCombinedMeshes: 0
+  combinedMaterials:
+  - material: {fileID: 2100000, guid: dd0f18eba02e04044a86f364e9069f34, type: 2}
+    uvs:
+    - serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0.31640625
+      height: 0.31640625
+    - serializedVersion: 2
+      x: 0.31640625
+      y: 0
+      width: 0.31640625
+      height: 0.31640625
+    - serializedVersion: 2
+      x: 0.6328125
+      y: 0
+      width: 0.31640625
+      height: 0.31640625
+    - serializedVersion: 2
+      x: 0
+      y: 0.31640625
+      width: 0.31640625
+      height: 0.31640625
+    - serializedVersion: 2
+      x: 0
+      y: 0.6328125
+      width: 0.31640625
+      height: 0.31640625
+    - serializedVersion: 2
+      x: 0.31640625
+      y: 0.31640625
+      width: 0.31640625
+      height: 0.31640625
+    - serializedVersion: 2
+      x: 0.6328125
+      y: 0.31640625
+      width: 0.31640625
+      height: 0.31640625
+    - serializedVersion: 2
+      x: 0.31640625
+      y: 0.6328125
+      width: 0.31640625
+      height: 0.19140625
+    uvs2: []
+    scaleFactors:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    meshUVBounds:
+    - serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    - serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    - serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    - serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    - serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    - serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    - serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    - serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 2.4488
+    isOriginalMaterial: 0
+    displayedIndex: 0
+    showCombinedMaterial: 0
+    showUVs: 0
+    showMeshUVBounds: 0
+  meshResults:
+  - names:
+    - Plane (7)
+    - Plane (8)
+    - Plane (9)
+    - Plane (10)
+    - Plane (11)
+    - Plane (12)
+    - Plane (17)
+    - Plane (18)
+    - Plane (19)
+    - Plane (20)
+    - Plane (21)
+    - Plane (23)
+    - Plane (31)
+    - Plane (32)
+    - Plane (33)
+    - Plane (34)
+    - Plane (35)
+    - Plane (36)
+    - Plane (37)
+    - Plane (38)
+    - Plane (40)
+    - Plane (41)
+    - Plane (44)
+    - Plane (45)
+    - Plane (46)
+    - barrel1
+    - barrel2
+    - barrel2.001
+    - barrel2.002
+    - barrel2.003
+    - barrel2.004
+    - barrel2.005
+    - barrel2.006
+    - barrel2.007
+    - barrel2.008
+    - barrel2.009
+    - barrel2.010
+    - barrel2.011
+    - barrel2.012
+    - Circle.001
+    - Circle.003
+    - Cube.000
+    - Cube.013
+    - Cube.059
+    - Cube.076
+    - CrateOne100
+    - CrateOne100
+    - CrateOne100
+    - Wood_A
+    - Wood_B
+    - Wood_C
+    - Wood_B (1)
+    - Wood_A (1)
+    - Wood_A (2)
+    - Wood_A (3)
+    - Wood_A (4)
+    - Wood_A (5)
+    - Wood_A (6)
+    - Wood_B (2)
+    - Wood_B (3)
+    - Wood_B (4)
+    - Wood_B (5)
+    - Wood_B (6)
+    - Wood_C (1)
+    - Wood_C (2)
+    - Wood_A
+    - Wood_B
+    - Wood_C
+    - Wood_B (1)
+    instanceIds: 10b400002eb90000e4b7000092b50000fab600004eb70000c6b4000002b50000cab70000ecb400000ab700001ab400006ab400000cb6000076b9000020b900008ab4000078ba00007cb5000024b40000f6b40000d0b80000aeb40000eab9000040b400008649fcff8449fcff8249fcff8049fcff7e49fcff7c49fcff7a49fcff7849fcff7649fcff7449fcff7249fcff7049fcff6e49fcff6c49fcff6a49fcff6849fcfff24bfcfff04bfcffee4bfcffec4bfcff424afcffbe49fcffde46fcff024afcff004afcfffe49fcff70b8000038b4000000b600003ab6000048b8000032b60000a6b40000c8b90000f8b8000034ba00009ab900006eb9000094b40000e2b90000b4b60000f4b9000032b80000dab90000
+    indexes:
+    - firstVertexIndex: 121
+      vertexCount: 121
+      firstTriangleIndex: 600
+      triangleCount: 600
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 242
+      vertexCount: 121
+      firstTriangleIndex: 1200
+      triangleCount: 600
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 363
+      vertexCount: 121
+      firstTriangleIndex: 1800
+      triangleCount: 600
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 484
+      vertexCount: 121
+      firstTriangleIndex: 2400
+      triangleCount: 600
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 605
+      vertexCount: 121
+      firstTriangleIndex: 3000
+      triangleCount: 600
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 726
+      vertexCount: 121
+      firstTriangleIndex: 3600
+      triangleCount: 600
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 847
+      vertexCount: 121
+      firstTriangleIndex: 4200
+      triangleCount: 600
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 968
+      vertexCount: 121
+      firstTriangleIndex: 4800
+      triangleCount: 600
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 1089
+      vertexCount: 121
+      firstTriangleIndex: 5400
+      triangleCount: 600
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 1210
+      vertexCount: 121
+      firstTriangleIndex: 6000
+      triangleCount: 600
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 1331
+      vertexCount: 121
+      firstTriangleIndex: 6600
+      triangleCount: 600
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 1452
+      vertexCount: 121
+      firstTriangleIndex: 7200
+      triangleCount: 600
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 1573
+      vertexCount: 121
+      firstTriangleIndex: 7800
+      triangleCount: 600
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 1694
+      vertexCount: 121
+      firstTriangleIndex: 8400
+      triangleCount: 600
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 1815
+      vertexCount: 121
+      firstTriangleIndex: 9000
+      triangleCount: 600
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 1936
+      vertexCount: 121
+      firstTriangleIndex: 9600
+      triangleCount: 600
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 2057
+      vertexCount: 121
+      firstTriangleIndex: 10200
+      triangleCount: 600
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 2178
+      vertexCount: 121
+      firstTriangleIndex: 10800
+      triangleCount: 600
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 2299
+      vertexCount: 121
+      firstTriangleIndex: 11400
+      triangleCount: 600
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 2420
+      vertexCount: 121
+      firstTriangleIndex: 12000
+      triangleCount: 600
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 2541
+      vertexCount: 121
+      firstTriangleIndex: 12600
+      triangleCount: 600
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 2662
+      vertexCount: 121
+      firstTriangleIndex: 13200
+      triangleCount: 600
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 2783
+      vertexCount: 121
+      firstTriangleIndex: 13800
+      triangleCount: 600
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 2904
+      vertexCount: 121
+      firstTriangleIndex: 14400
+      triangleCount: 600
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 3025
+      vertexCount: 121
+      firstTriangleIndex: 15000
+      triangleCount: 600
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 3507
+      vertexCount: 482
+      firstTriangleIndex: 15864
+      triangleCount: 864
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 3989
+      vertexCount: 482
+      firstTriangleIndex: 16728
+      triangleCount: 864
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 4631
+      vertexCount: 642
+      firstTriangleIndex: 17880
+      triangleCount: 1152
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 4729
+      vertexCount: 98
+      firstTriangleIndex: 18072
+      triangleCount: 192
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 5241
+      vertexCount: 512
+      firstTriangleIndex: 19032
+      triangleCount: 960
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 5297
+      vertexCount: 56
+      firstTriangleIndex: 19140
+      triangleCount: 108
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 5395
+      vertexCount: 98
+      firstTriangleIndex: 19332
+      triangleCount: 192
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 5451
+      vertexCount: 56
+      firstTriangleIndex: 19440
+      triangleCount: 108
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 5507
+      vertexCount: 56
+      firstTriangleIndex: 19548
+      triangleCount: 108
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 5723
+      vertexCount: 216
+      firstTriangleIndex: 19956
+      triangleCount: 408
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 5781
+      vertexCount: 58
+      firstTriangleIndex: 20064
+      triangleCount: 108
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 7829
+      vertexCount: 2048
+      firstTriangleIndex: 23904
+      triangleCount: 3840
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 8321
+      vertexCount: 492
+      firstTriangleIndex: 24768
+      triangleCount: 864
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 11531
+      vertexCount: 3210
+      firstTriangleIndex: 30528
+      triangleCount: 5760
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 12019
+      vertexCount: 488
+      firstTriangleIndex: 31392
+      triangleCount: 864
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 14911
+      vertexCount: 2892
+      firstTriangleIndex: 36576
+      triangleCount: 5184
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 15655
+      vertexCount: 744
+      firstTriangleIndex: 37680
+      triangleCount: 1104
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 16399
+      vertexCount: 744
+      firstTriangleIndex: 38784
+      triangleCount: 1104
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 17487
+      vertexCount: 1088
+      firstTriangleIndex: 40416
+      triangleCount: 1632
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 17715
+      vertexCount: 228
+      firstTriangleIndex: 40758
+      triangleCount: 342
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 18156
+      vertexCount: 441
+      firstTriangleIndex: 41295
+      triangleCount: 537
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 18597
+      vertexCount: 441
+      firstTriangleIndex: 41832
+      triangleCount: 537
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 19038
+      vertexCount: 441
+      firstTriangleIndex: 42369
+      triangleCount: 537
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 19086
+      vertexCount: 48
+      firstTriangleIndex: 42465
+      triangleCount: 96
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 19278
+      vertexCount: 192
+      firstTriangleIndex: 42837
+      triangleCount: 372
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 19328
+      vertexCount: 50
+      firstTriangleIndex: 42933
+      triangleCount: 96
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 19520
+      vertexCount: 192
+      firstTriangleIndex: 43305
+      triangleCount: 372
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 19568
+      vertexCount: 48
+      firstTriangleIndex: 43401
+      triangleCount: 96
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 19616
+      vertexCount: 48
+      firstTriangleIndex: 43497
+      triangleCount: 96
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 19664
+      vertexCount: 48
+      firstTriangleIndex: 43593
+      triangleCount: 96
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 19712
+      vertexCount: 48
+      firstTriangleIndex: 43689
+      triangleCount: 96
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 19760
+      vertexCount: 48
+      firstTriangleIndex: 43785
+      triangleCount: 96
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 19808
+      vertexCount: 48
+      firstTriangleIndex: 43881
+      triangleCount: 96
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 20000
+      vertexCount: 192
+      firstTriangleIndex: 44253
+      triangleCount: 372
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 20192
+      vertexCount: 192
+      firstTriangleIndex: 44625
+      triangleCount: 372
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 20384
+      vertexCount: 192
+      firstTriangleIndex: 44997
+      triangleCount: 372
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 20576
+      vertexCount: 192
+      firstTriangleIndex: 45369
+      triangleCount: 372
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 20768
+      vertexCount: 192
+      firstTriangleIndex: 45741
+      triangleCount: 372
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 20818
+      vertexCount: 50
+      firstTriangleIndex: 45837
+      triangleCount: 96
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 20868
+      vertexCount: 50
+      firstTriangleIndex: 45933
+      triangleCount: 96
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 20916
+      vertexCount: 48
+      firstTriangleIndex: 46029
+      triangleCount: 96
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 21108
+      vertexCount: 192
+      firstTriangleIndex: 46401
+      triangleCount: 372
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 21158
+      vertexCount: 50
+      firstTriangleIndex: 46497
+      triangleCount: 96
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 21350
+      vertexCount: 192
+      firstTriangleIndex: 46869
+      triangleCount: 372
+      showCombinedInstanceIndex: 0
+    showMeshCombined: 0
+  materialCombinedCount: 8
+  combinedMaterialCount: 1
+  meshesCombinedCount: 69
+  skinnedMeshesCombinedCount: 0
+  totalVertexCount: 22412
+  subMeshCount: 6
