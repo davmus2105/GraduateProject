@@ -371,8 +371,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5790a8c5e74f4224380c6b09538f7f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetZ: 6
-  offsetY: 4
+  offsetZ: 8
+  offsetY: 5
   smooth: 5
   target: {fileID: 0}
   camPosDestination: {x: 0, y: 0, z: 0}
