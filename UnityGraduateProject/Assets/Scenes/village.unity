@@ -523,6 +523,7 @@ GameObject:
   - component: {fileID: 1215817178}
   - component: {fileID: 1215817179}
   - component: {fileID: 1215817180}
+  - component: {fileID: 1215817181}
   m_Layer: 0
   m_Name: '[SETUP]'
   m_TagString: Untagged
@@ -556,9 +557,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f537ac06e942cb04cb3dfea9e9386e02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  managerTypes:
+  managers:
+  - TimeManager
+  - HUD_Controller
+  - QuestSystem.QuestManager
   - DialogueManager
+  - PoolManager
   - EventManager
+  - AI.AI_Manager
+  filename: managers_list.txt
+  inSAPath: /Kernel/
 --- !u!114 &1215817180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -577,6 +585,34 @@ MonoBehaviour:
   sky: {fileID: 28203262}
   sunMoon: {fileID: 1565573453}
   offsetX: 0
+--- !u!114 &1215817181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215817177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51b657e4bfb9b3a4ea4abca1ae876a8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialoguePanel: {fileID: 0}
+  npctextPanel: {fileID: 0}
+  answerPanel: {fileID: 0}
+  b_answ1: {fileID: 0}
+  b_answ2: {fileID: 0}
+  b_answ3: {fileID: 0}
+  b_answ4: {fileID: 0}
+  t_answ1: {fileID: 0}
+  t_answ2: {fileID: 0}
+  t_answ3: {fileID: 0}
+  t_answ4: {fileID: 0}
+  npctext: {fileID: 0}
+  currentlang: English
+  lastfilename: 
+  chosenans: 0
+  inDialogue: 0
 --- !u!1 &1258676109
 GameObject:
   m_ObjectHideFlags: 0
