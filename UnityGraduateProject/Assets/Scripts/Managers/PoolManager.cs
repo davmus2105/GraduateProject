@@ -29,6 +29,8 @@ public class PoolManager : MonoBehaviour
     void FillPoolOnStart()
     {
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
+        if (pools == null || pools.Count == 0)
+            return;
         foreach(Pool pool in pools)
         {
             Queue<GameObject> objPool = new Queue<GameObject>();
