@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Audio;
 
 public class PlayerAnimatorController : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class PlayerAnimatorController : MonoBehaviour
     // ----- instances of managers to work with -----
     HUD_Controller hudController;
     DialogueManager dialogueManager;
+    AudioSource audioSource;
+    public AudioCollection audio_collection;
 
     void Start()
     {
@@ -40,6 +43,9 @@ public class PlayerAnimatorController : MonoBehaviour
         // ---- Instances ----
         hudController = HUD_Controller.Instance;
         dialogueManager = DialogueManager.Instance;
+        audioSource = GetComponent<AudioSource>();
+        if (!audioSource)
+            audioSource = gameObject.AddComponent<AudioSource>();
     }
     void Update()
     {
@@ -112,6 +118,9 @@ public class PlayerAnimatorController : MonoBehaviour
         if (isArmored)
         {
             animator.SetTrigger(slash);
+            audioSource.volume = AudioManager.battleEffects_volume;
+            audioSource.clip = audio_collection.battle_grunts.GetRandomItem();
+            audioSource.Play();
         }
         else
         {
@@ -137,6 +146,9 @@ public class PlayerAnimatorController : MonoBehaviour
     {
         inhandplace.SetActive(true);
         hudController.WeaponIsReady(true);
+        audioSource.volume = AudioManager.battleEffects_volume;
+        audioSource.clip = audio_collection.get_sword;
+        audioSource.Play();
         // backplace.SetActive(false);
         // Show weapon and sounds
     }
@@ -150,6 +162,23 @@ public class PlayerAnimatorController : MonoBehaviour
     void PlayFootstepSound()
     {
         // Make audiomanager and add to it footsteps
+        if (audioSource == null)
+        {
+            if (GetComponent<AudioSource>() == null)
+                gameObject.AddComponent<AudioSource>();
+            else
+                audioSource = GetComponent<AudioSource>();
+        }
+        if (audio_collection != null)
+        {
+            audioSource.clip = audio_collection.footsteps_gravel.GetRandomItem();
+            audioSource.volume = AudioManager.footstep_volume;
+            audioSource.Play();
+        }
+        else
+        {
+            Debug.Log("There are no any AudioCollection component");
+        }
     }
 
     // ------ Coroutines -------

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Audio;
 
 namespace AI
 {
@@ -23,6 +24,9 @@ namespace AI
         int[] triggers;
         Collider weaponCollider;
         public bool isArmored;
+        // ---- Audio ----
+        AudioSource audioSource;
+        public AudioCollection audio_collection;
         #endregion
         #region Monobehaviours methods
         void Start()
@@ -50,6 +54,9 @@ namespace AI
             if (weaponCollider != null)
                 weaponCollider.enabled = false;
             isArmored = false;
+            audioSource = GetComponent<AudioSource>();
+            if (!audioSource)
+                audioSource = gameObject.AddComponent<AudioSource>();
         }
         private void Update()
         {
@@ -99,6 +106,9 @@ namespace AI
         public void Slash()
         {
             animator.SetTrigger(slash); // slash animation
+            audioSource.volume = AudioManager.battleEffects_volume;
+            audioSource.clip = audio_collection.battle_grunts.GetRandomItem();
+            audioSource.Play();
         }
 
         public void Arm()
@@ -115,6 +125,9 @@ namespace AI
         void EquipWeapon()
         {
             inhandplace.SetActive(true);
+            audioSource.volume = AudioManager.battleEffects_volume;
+            audioSource.clip = audio_collection.get_sword;
+            audioSource.Play();
         }
         void HideWeapon()
         {
@@ -133,6 +146,23 @@ namespace AI
         void PlayFootstepSound()
         {
             // Make audiomanager and add to it footsteps
+            if (audioSource == null)
+            {
+                if (GetComponent<AudioSource>() == null)
+                    gameObject.AddComponent<AudioSource>();
+                else
+                    audioSource = GetComponent<AudioSource>();
+            }
+            if (audio_collection != null)
+            {
+                audioSource.clip = audio_collection.footsteps_gravel.GetRandomItem();
+                audioSource.volume = AudioManager.footstep_volume;
+                audioSource.Play();
+            }
+            else
+            {
+                Debug.Log("There are no any AudioCollection component");
+            }
         }
         void TurnOnWeaponCollider()
         {

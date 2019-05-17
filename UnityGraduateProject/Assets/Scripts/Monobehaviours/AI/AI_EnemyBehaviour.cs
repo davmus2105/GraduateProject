@@ -28,7 +28,10 @@ namespace AI {
         #region MonoBehaviours methods
         private void OnEnable()
         {
-            AI_Manager.Instance.AddEnemy(this);
+            if (AI_Manager.Instance)
+                AI_Manager.Instance.AddEnemy(this);
+            else
+                StartCoroutine("WaitForAI_Manager");
             isblocking = false;
         }
         private void OnDisable()
@@ -124,5 +127,13 @@ namespace AI {
         }
 
         #endregion
+        IEnumerator WaitForAI_Manager()
+        {
+            yield return new WaitForSeconds(1f);
+            if (AI_Manager.Instance)
+                AI_Manager.Instance.AddEnemy(this);
+            else
+                StartCoroutine("WaitForAI_Manager");
+        }
     }
 }
