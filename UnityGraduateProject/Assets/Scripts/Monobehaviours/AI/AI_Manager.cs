@@ -50,6 +50,11 @@ namespace AI
 
         public List<Transform> FindEnemiesFromPoint(Vector3 point, float distance, out float enemyValue)
         {
+            if (enemies == null || enemies.Count == 0)
+            {
+                enemyValue = 0;
+                return null;
+            }                
             float tmpDist;
             enemyValue = distance;
             List<Transform> listToReturn = new List<Transform>();
@@ -68,6 +73,9 @@ namespace AI
         }
         public Transform FindNearestPeasant(Vector3 point, float distance)
         {
+            if (peasants == null || peasants.Count == 0)
+                return null;
+
             float nearestDist = Vector3.Distance(peasants[0].transform.position, point);
             float tempDist;
             Transform nearestPeasant = peasants[0].transform;

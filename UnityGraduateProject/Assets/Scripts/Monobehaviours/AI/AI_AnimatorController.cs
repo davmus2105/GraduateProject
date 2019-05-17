@@ -31,11 +31,21 @@ namespace AI
             ai_controller = GetComponentInParent<AI_BaseBehaviour>();
             if (!ai_controller)
                 ai_controller = gameObject.AddComponent<AI_BaseBehaviour>();
-            animator = GetComponent<Animator>();            
-            inhandplace = transform.Find("Armature").Find("Hips").Find("LowerSpine").
+            animator = GetComponent<Animator>();
+            try
+            {
+                inhandplace = transform.Find("Armature").Find("Hips").Find("LowerSpine").
                       Find("Chest").Find("ShoulderConnector.R").Find("Shoulder.R").
                       Find("UpperArm.R").Find("LowerArm.R").
                       Find("Hand.R").Find("WeaponInHandPlace").gameObject;
+            }
+            catch
+            {
+                inhandplace = transform.Find("Armature").Find("Hips").Find("Lower Spine").
+                      Find("Chest").Find("Connector.R").Find("Shouder.R").
+                      Find("UpperArm.R").Find("LowerArm.R").
+                      Find("Arm.R").Find("WeaponInHandPlace").gameObject;
+            }            
             weaponCollider = inhandplace.GetComponentInChildren<Collider>();
             if (weaponCollider != null)
                 weaponCollider.enabled = false;
