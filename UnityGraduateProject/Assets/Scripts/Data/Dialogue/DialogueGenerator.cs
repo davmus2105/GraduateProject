@@ -44,6 +44,8 @@ public class DialogueGenerator : MonoBehaviour
                     element.SetAttribute("toNode", node[i].playerAnswer[j].toNode.ToString());
                 if (node[i].playerAnswer[j].questid > 0)
                     element.SetAttribute("questid", node[i].playerAnswer[j].questid.ToString());
+                if (node[i].playerAnswer[j].value)
+                    element.SetAttribute("value", node[i].playerAnswer[j].value.ToString());
                 if (node[i].playerAnswer[j].exit)
                     element.SetAttribute("exit", node[i].playerAnswer[j].exit.ToString());
                 usernode.AppendChild(element);
@@ -89,6 +91,10 @@ public class DialogueGenerator : MonoBehaviour
                         if (attr != null && int.TryParse(attr.Value, out tempint))
                             answer.questid = tempint;
                         else answer.questid = 0;
+                        attr = xmlanswer.Attributes.GetNamedItem("value");               // 'exit'
+                        if (attr != null && bool.TryParse(attr.Value, out exit))
+                            answer.value = exit;
+                        else answer.value = false;
                         attr = xmlanswer.Attributes.GetNamedItem("exit");               // 'exit'
                         if (attr != null && bool.TryParse(attr.Value, out exit))
                             answer.exit = exit;
@@ -128,6 +134,8 @@ public class PlayerAnswer
     public int toNode;
     [Tooltip("If the answer gives a quest, then the field store its id")]
     public int questid;
+    [Tooltip("If the answer is right then value is equal to true, and if it is not - false")]
+    public bool value;
     [Tooltip("If this answer reach the end of the dialogue, then this value is true")]
     public bool exit;
 }

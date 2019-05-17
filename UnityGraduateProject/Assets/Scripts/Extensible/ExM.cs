@@ -24,4 +24,25 @@ public static class ExM
     {
         return collection[Random.Range(0, collection.Count - 1)];
     }
+    // --------------------------------------
+
+    #region Convert
+    //  ---- For int ----
+    public static bool ToBool(this int val)
+    {
+        if (val == 0)
+            return false;
+        else
+            return true;
+    }
+
+    // ---- For bool ----
+    public static int ToInt(this bool val)
+    {
+        if (val)
+            return 1;
+        else
+            return 0;
+    }
+    #endregion
 }

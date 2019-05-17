@@ -21,6 +21,7 @@ public class DialogueManager : MonoBehaviour
                    lastfilename; // the name of the file that was used the last one
     public int chosenans; // chosen answer
     public bool inDialogue;
+    public int rightResult; // Result of the dialogue
     bool isanswerchosed; // if answer is chosed then it is true
     // --------- Constants ---------
     public const int MAX_LETTERS_IN_NPCTEXT = 270;
@@ -109,6 +110,10 @@ public class DialogueManager : MonoBehaviour
                         if (attr != null && int.TryParse(attr.Value, out tempint))
                             answer.questid = tempint;
                         else answer.questid = 0;
+                        attr = xmlanswer.Attributes.GetNamedItem("value");               // 'exit'
+                        if (attr != null && bool.TryParse(attr.Value, out exit))
+                            answer.value = exit;
+                        else answer.exit = false;
                         attr = xmlanswer.Attributes.GetNamedItem("exit");               // 'exit'
                         if (attr != null && bool.TryParse(attr.Value, out exit))
                             answer.exit = exit;
@@ -133,6 +138,7 @@ public class DialogueManager : MonoBehaviour
         if (Load(language, file_name) == null)
             return;
         inDialogue = true;
+        rightResult = 0;
         hudController.SetActiveHUD(false);
         dialoguePanel.SetActive(true);
         HideAllAnswers();          
@@ -224,6 +230,10 @@ public class DialogueManager : MonoBehaviour
         }
         if (dialogue[number].answers[chosenans].questid != 0)
             QuestManager.Instance.AddQuest(dialogue[number].answers[chosenans].questid);
+        if (dialogue[number].answers[chosenans].value)
+        {
+            rightResult++;
+        }
         if (dialogue[number].answers[chosenans].exit)
         {
             EndDialogue();
@@ -252,5 +262,6 @@ public class Answer
     public string text;
     public int toNode;
     public int questid;
+    public bool value;
     public bool exit;
 }
