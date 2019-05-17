@@ -1112,6 +1112,8 @@ GameObject:
   - component: {fileID: 1215817180}
   - component: {fileID: 1215817181}
   - component: {fileID: 1215817182}
+  - component: {fileID: 1215817184}
+  - component: {fileID: 1215817183}
   m_Layer: 0
   m_Name: '[SETUP]'
   m_TagString: Untagged
@@ -1153,6 +1155,7 @@ MonoBehaviour:
   - PoolManager
   - EventManager
   - AI.AI_Manager
+  - Audio.AudioManager
   filename: managers_list.txt
   managerspath: /Kernel/
 --- !u!114 &1215817180
@@ -1215,6 +1218,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies: []
   peasants: []
+--- !u!114 &1215817183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215817177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a936a311ff8f914096b69e9fa3e5a45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!81 &1215817184
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215817177}
+  m_Enabled: 1
 --- !u!224 &1271411743 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2980287125923993789, guid: d07ed59a8d6866345940f02d1f4d8643,
