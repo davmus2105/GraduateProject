@@ -495,6 +495,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4618056960958440377, guid: 1e65cb9c6bfab7b449ec625fae4013ac,
+        type: 3}
+      propertyPath: m_Name
+      value: GENERATORS
+      objectReference: {fileID: 0}
     - target: {fileID: 4618056960958440372, guid: 1e65cb9c6bfab7b449ec625fae4013ac,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -549,11 +554,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4618056960958440377, guid: 1e65cb9c6bfab7b449ec625fae4013ac,
-        type: 3}
-      propertyPath: m_Name
-      value: GENERATORS
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e65cb9c6bfab7b449ec625fae4013ac, type: 3}
@@ -959,6 +959,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 783704646}
     m_Modifications:
+    - target: {fileID: 6298859242044367499, guid: ea8f42251c46c6b448c3b8cad29db44c,
+        type: 3}
+      propertyPath: m_Name
+      value: HUD
+      objectReference: {fileID: 0}
     - target: {fileID: 6298859242044367492, guid: ea8f42251c46c6b448c3b8cad29db44c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1063,11 +1068,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6298859242044367499, guid: ea8f42251c46c6b448c3b8cad29db44c,
-        type: 3}
-      propertyPath: m_Name
-      value: HUD
       objectReference: {fileID: 0}
     - target: {fileID: 6298859242179960834, guid: ea8f42251c46c6b448c3b8cad29db44c,
         type: 3}

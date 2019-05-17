@@ -7,7 +7,6 @@ namespace AI
     public class AI_AnimatorController : MonoBehaviour
     {
         #region Fields and properties
-        AI_CharacterController aicontroller;
         AI_BaseBehaviour ai_controller;
         Animator animator;
         GameObject inhandplace;
@@ -42,11 +41,12 @@ namespace AI
                 weaponCollider.enabled = false;
             isArmored = false;
         }
-        #endregion
         private void Update()
         {
             Move(ai_controller.agent.speed);
         }
+        #endregion
+
         #region Methods
         // Common animation behaviours
         public void Move(float _speed)
