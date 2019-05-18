@@ -4,50 +4,39 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Linq;
+using UnityEngine.Audio;
 
 
 
 public class MainMenu : MonoBehaviour
 {
 
-	//public SoundProperties soundProperties;
-	public Slider volumeMusic;
-	public Slider volumeEffect;
-    public Slider SliderOfLoad; //child slider
-    public Text progressText; //the text
+    
+    
+    [Header("   Loading  process")]
+    public GameObject Slider_of_load;   // the parent slider
+    public Slider SliderOfLoad;         //the child slider
+    public GameObject Progress;         // the parent progress obj
+    public Text progressText;           //the child text
+    [Header("   Screen settings")]
     public GameObject panelSettings;
-    public GameObject Slider_of_load; // the parent slider
-    public GameObject Progress; // the parent progress obj
     public Dropdown ResolutionDropdown;
     public Dropdown GraphicsDropdown;
-	Resolution[] res;
+    Resolution[] res;
+    [Header("   Audio Settings")]
+    public AudioMixer audioMixer;
+
+    public static bool IsActivated = false;
 	
-	public static bool IsActivated = false;
-	public enum typeSound { music,effect }; // you can select type 
-	public typeSound type;
-	AudioSource audioSource;
-    
-	
-	
-	/*private void Awake() {
-		
-	  soundProperties.volumeEffect = 0.5f;
-	  soundProperties.volumeMusic = 0.5f;
-	}*/
 	public void Start () {
 
         Slider_of_load.SetActive(false); // the emptu gameobj for slider (parent)
         Progress.SetActive(false);
-        audioSource = GetComponent<AudioSource>();
 		Resolution();
-
 	}
 
-	void Update () {
-		
-	}
-
-	public void Settings()
+    //-------------------------BUTTONS IN main menu--------------------------------
+    public void Settings()
 	{
 		panelSettings.SetActive(true);
 		/* if(IsActivated)
@@ -61,23 +50,21 @@ public class MainMenu : MonoBehaviour
 		}
 	*/
 	}
-	 
-	
-	public void Apply()
-	{	audioSource.volume = volumeMusic.value;
-		/*/soundProperties.volumeMusic = volumeMusic.value;
-		soundProperties.volumeEffect = volumeEffect.value;*/
-	}
-	public void Back()
-	{
-		panelSettings.SetActive(false);
-	}
+	        public void Back()
+	        {
+		        panelSettings.SetActive(false);
+	        }
 	
     public void LoadScene(int sceneIndex) // loading the next scene by index 
     {
         Time.timeScale = 1f;
         StartCoroutine(LoadAsync(sceneIndex));
     }
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+    //-------------------------LOADING PROGRESS slider settings--------------------------------
     IEnumerator LoadAsync(int sceneIndex) // ассинхронная загрузка сцены и калькуляция прогресса
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
@@ -97,34 +84,25 @@ public class MainMenu : MonoBehaviour
 
 
     }
-
-    public void QuitGame()
-	{
-		Application.Quit();
-	}
-	public void Resolution()
-	{
-	
     
+    //-------------------------SCREEN settings--------------------------------
+    public void Resolution()
+	{
 		GraphicsDropdown.ClearOptions(); //clear previos graphics levels
 		GraphicsDropdown.AddOptions(QualitySettings.names.ToList()); // create new graphics levels
 		GraphicsDropdown.value = QualitySettings.GetQualityLevel(); // set the current graphics level
-
-
         Resolution [] resolution = Screen.resolutions; 
         res = resolution.Distinct().ToArray();
         string[] strRes = new string[res.Length];
-        for(int i = 0; i < res.Length; i++)
-        {
-            strRes[i] = res[i].ToString();
-        } 
+            for(int i = 0; i < res.Length; i++)
+            {
+                strRes[i] = res[i].ToString();
+            } 
         ResolutionDropdown.ClearOptions();
         ResolutionDropdown.AddOptions(strRes.ToList()); // add new values of resolution dropdown
 		ResolutionDropdown.value = res.Length - 1;
-
         Screen.SetResolution(res[res.Length-1].width, res[res.Length - 1].height, true); // set last value of resolution for your screen
-
-		Debug.Log("Get rosolutions");
+		    Debug.Log("Get rosolutions");
 	}
 	public void SetRes ()
     {
@@ -140,4 +118,16 @@ public class MainMenu : MonoBehaviour
 	    QualitySettings.SetQualityLevel(GraphicsDropdown.value);
 		
 	}
+    //-------------------------AUDIO Mixer settings--------------------------------
+    public void SetEffectVoll(float setEffVoll) //to set it in inspector(On Value Changed) select Dynamic float
+    {
+        audioMixer.SetFloat("enemyVol", setEffVoll);
+        audioMixer.SetFloat("humanVol", setEffVoll);
+        audioMixer.SetFloat("playerVol", setEffVoll);
+    }
+    public void SetMusicVoll(float setMusVoll) //to set it in inspector (On Value Changed) select Dynamic float
+    {
+        audioMixer.SetFloat("backgrVol", setMusVoll);
+
+    }
 }

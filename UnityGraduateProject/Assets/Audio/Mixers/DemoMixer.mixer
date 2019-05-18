@@ -15,7 +15,15 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: 39422a050cd187d4694e032af8938da8
+    name: backgrVol
+  - guid: 57afaa93c3b824a49ac4d284b31f5140
+    name: enemyVol
+  - guid: 60586dd3ef80dcd4c97740a8dcb894dd
+    name: humanVol
+  - guid: 562aa909d9dc199489ea555934b81ecd
+    name: playerVol
   m_AudioMixerGroupViews:
   - guids:
     - 1428ee705b88d9541adbe9b4e04abe4d
