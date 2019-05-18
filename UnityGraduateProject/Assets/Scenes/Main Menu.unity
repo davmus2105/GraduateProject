@@ -2782,8 +2782,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ef59d98baf428940b5769300c0a1879, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeMusic: {fileID: 114352641314427021}
-  volumeEffect: {fileID: 114991159484313091}
   Slider_of_load: {fileID: 8346892554541446093}
   SliderOfLoad: {fileID: 8346892554541446095}
   Progress: {fileID: 699161521}
