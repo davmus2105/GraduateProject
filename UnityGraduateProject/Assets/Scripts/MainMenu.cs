@@ -5,14 +5,20 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Linq;
 
+
+
 public class MainMenu : MonoBehaviour
 {
 
 	//public SoundProperties soundProperties;
 	public Slider volumeMusic;
 	public Slider volumeEffect;
-	public GameObject panelSettings;
-	public Dropdown ResolutionDropdown;
+    public Slider SliderOfLoad; //child slider
+    public Text progressText; //the text
+    public GameObject panelSettings;
+    public GameObject Slider_of_load; // the parent slider
+    public GameObject Progress; // the parent progress obj
+    public Dropdown ResolutionDropdown;
     public Dropdown GraphicsDropdown;
 	Resolution[] res;
 	
@@ -29,7 +35,10 @@ public class MainMenu : MonoBehaviour
 	  soundProperties.volumeMusic = 0.5f;
 	}*/
 	public void Start () {
-		audioSource = GetComponent<AudioSource>();
+
+        Slider_of_load.SetActive(false); // the emptu gameobj for slider (parent)
+        Progress.SetActive(false);
+        audioSource = GetComponent<AudioSource>();
 		Resolution();
 
 	}
@@ -63,13 +72,33 @@ public class MainMenu : MonoBehaviour
 	{
 		panelSettings.SetActive(false);
 	}
-	public void StartGame()
-	{
-		Time.timeScale = 1f;
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-	}
+	
+    public void LoadScene(int sceneIndex) // loading the next scene by index 
+    {
+        Time.timeScale = 1f;
+        StartCoroutine(LoadAsync(sceneIndex));
+    }
+    IEnumerator LoadAsync(int sceneIndex) // ассинхронная загрузка сцены и калькуляция прогресса
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
+        Slider_of_load.SetActive(true); // the emptu gameobj for slider (parent)
+        Progress.SetActive(true);
+        while (!operation.isDone)
+        {
+            float progress = Mathf.Clamp01(operation.progress / .9f);
+            SliderOfLoad.value = progress; // the value of slider (child)
+            progressText.text = string.Format("{0:0}%",progress * 100);
+                if (SliderOfLoad.value == 1)
+                {
+                progressText.text = "Wait please...";
+                }
+            yield return null;
+        }
 
-	public void QuitGame()
+
+    }
+
+    public void QuitGame()
 	{
 		Application.Quit();
 	}
@@ -104,7 +133,7 @@ public class MainMenu : MonoBehaviour
     }
     public void SetFullScreen( bool isFull)
 	{
-		Screen.fullScreen = isFull; // set 
+		Screen.fullScreen = isFull; // set fullscrean mode
 	}
     public void SetQuality()
 	{
