@@ -802,10 +802,12 @@ MonoBehaviour:
   gravity: 20
   turnSpeed: 1
   rotSmooth: 0.5
+  inBattleDist: 10
   charcontr: {fileID: 0}
   canMove: 0
   isDead: 0
   charRotTarget: {fileID: 5240067607210325725}
+  audioManager: {fileID: 0}
   isMoving: 0
 --- !u!1 &1461554000902850677
 GameObject:

@@ -25,7 +25,30 @@ public class PlayerMovingControll : BaseMonoBehaviour, IDie
             animcontr.BlockAnimation(isblocking);
         }
     }
-    bool isblocking;
+    bool isblocking, in_battle;
+    
+    public bool inBattle
+    {
+        get { return in_battle; }
+        set
+        {
+            if (value != in_battle)
+            {
+                if (value == false)
+                {
+                    audioManager.isInBattle = false;
+                    audioManager.BackgroundChoose();
+                    in_battle = value;
+                }
+                else
+                {
+                    audioManager.isInBattle = true;
+                    audioManager.BackgroundChoose();
+                    in_battle = value;
+                }
+            }
+        }
+    }
     PlayerAnimatorController animcontr;
     Actor actor;
     Transform player;
@@ -33,7 +56,7 @@ public class PlayerMovingControll : BaseMonoBehaviour, IDie
     Vector3 movevector;
     Vector3 rotateVector;
     Quaternion playerRot;
-    public GraduateAudio.AudioManager audioManager = GraduateAudio.AudioManager.instance;
+    public GraduateAudio.AudioManager audioManager;
 
     public bool isMoving;
 
@@ -45,8 +68,9 @@ public class PlayerMovingControll : BaseMonoBehaviour, IDie
         charRotTarget = Camera.main.transform.GetChild(0);
         canMove = true;
         isblocking = false;
+        inBattle = false;
         actor = GetComponent<Actor>();
-
+        audioManager = GraduateAudio.AudioManager.Instance;
         // Vars start:
         turnSpeed = 2f;
     }
@@ -61,17 +85,11 @@ public class PlayerMovingControll : BaseMonoBehaviour, IDie
 
     void BattleControll()
     {
+        if (AI.AI_Manager.Instance.IsEnemyNear(transform.position, inBattleDist))         
+            inBattle = true;        
+        else      
+            inBattle = false;      
         
-        if (AI.AI_Manager.Instance.IsEnemyNear(transform.position, inBattleDist) && !audioManager.isInBattle) 
-        {
-            audioManager.isInBattle = true;
-            audioManager.BackgroundChoose();
-        }
-        else if (audioManager.isInBattle)
-        {
-            audioManager.isInBattle = false;
-            audioManager.BackgroundChoose();
-        }
 
     }
 

@@ -32,7 +32,8 @@ namespace GraduateAudio
         }
         
         // --------------------------------------------------------------
-        public static AudioManager instance = null;
+        private static AudioManager instance = null;
+        public static AudioManager Instance => instance;
         public static float footstep_volume = 0.1f;
         public static float battleEffects_volume = 1f;
         public bool isInBattle;
@@ -46,14 +47,7 @@ namespace GraduateAudio
         #region Methods
         private void Awake()
         {
-            if (instance == null)
-            {
-                instance = this;
-            }
-            else if (instance != this)
-            {
-                Destroy(gameObject);
-            }
+            instance = this;
         }
         private void Start()
         {
