@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Audio;
+using GraduateAudio;
 
 public class PlayerAnimatorController : MonoBehaviour
 {

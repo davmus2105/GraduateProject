@@ -63,13 +63,13 @@ public class PlayerMovingControll : BaseMonoBehaviour, IDie
         
         if (AI.AI_Manager.Instance.IsEnemyNear(transform.position, inBattleDist))
         {
-            Audio.AudioManager.instance.isInBattle = true;
-            Audio.AudioManager.instance.BackgroundChoose();
+            GraduateAudio.AudioManager.instance.isInBattle = true;
+            GraduateAudio.AudioManager.instance.BackgroundChoose();
         }
         else
         {
-            Audio.AudioManager.instance.isInBattle = false;
-            Audio.AudioManager.instance.BackgroundChoose();
+            GraduateAudio.AudioManager.instance.isInBattle = false;
+            GraduateAudio.AudioManager.instance.BackgroundChoose();
         }
 
     }

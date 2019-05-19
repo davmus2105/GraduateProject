@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Audio
+using UnityEngine.Audio;
+namespace GraduateAudio
 {
     [RequireComponent(typeof(AudioListener))]
     public class AudioManager : MonoBehaviour

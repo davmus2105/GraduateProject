@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Audio
+namespace GraduateAudio
 {
     [CreateAssetMenu(fileName = "AudioCollection", menuName = "AudioCollection/Create new Audio Collection")]
     public class AudioCollection : ScriptableObject
