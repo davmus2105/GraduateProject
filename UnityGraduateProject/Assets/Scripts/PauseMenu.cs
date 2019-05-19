@@ -4,26 +4,35 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class PauseMenu : MonoBehaviour {
-	public GameObject panelSettings;
-	public static bool GameIsPaused = false;
+
+    [Header("   Pause Menu Objects")]
+    public GameObject panelSettings;
 	public GameObject pauseMenuUI;
 	public GameObject resume_button;
 	public GameObject menu_button;
 	public GameObject quit_button;
 	public GameObject settings_button;
-	public Dropdown ResolutionDropdown;
+    [Header("   Screen settings")]
+    public Dropdown ResolutionDropdown;
     public Dropdown GraphicsDropdown;
+    public static bool GameIsPaused = false;
     Resolution[] res;
-    
+    [Header("   Audio settings")]
+    public AudioMixer audioMixer;
 
 
+    private void OnEnable()
+    {
+        pauseMenuUI = GameObject.Find("[UI]").transform.Find("PauseMenu").gameObject;
+        resume_button = GameObject.Find("[UI]").transform.Find("Resume_button").gameObject;
+        
+    }
     public void Start() {
 
-        Resolution();
-       
-        
+        Resolution();  
 	}
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.Escape))
@@ -38,61 +47,75 @@ public class PauseMenu : MonoBehaviour {
 			}
 		}
 	}
-	public void Resume()
+
+    //-------------------------BUTTONS IN pause menu--------------------------------
+    void Pause() // stop the game and call menu
+    {
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+
+        panelSettings.SetActive(false);
+
+        resume_button.SetActive(true);
+        settings_button.SetActive(true);
+        menu_button.SetActive(true);
+        quit_button.SetActive(true);
+
+    }
+    public void Resume()
 	{
 		pauseMenuUI.SetActive(false);
 		Time.timeScale = 1f;
 		GameIsPaused = false;
 
 	}
-	void Pause()
-	{
-		pauseMenuUI.SetActive(true);
-		Time.timeScale = 0f;
-		GameIsPaused = true;
-		
-		panelSettings.SetActive(false);
-		
-		resume_button.SetActive(true);
-		settings_button.SetActive(true);
-		menu_button.SetActive(true);
-		quit_button.SetActive(true);
-		
-	}
+    public void Settings() // hide manu buttons and show panel settings
+    {
+        resume_button.SetActive(false);
+        settings_button.SetActive(false);
+        menu_button.SetActive(false);
+        quit_button.SetActive(false);
 
-	public void Settings()
-	{
-		resume_button.SetActive(false);
-		settings_button.SetActive(false);
-		menu_button.SetActive(false);
-		quit_button.SetActive(false);
-		
-		panelSettings.SetActive(true);
+        panelSettings.SetActive(true);
 
-	}
-	 public void Apply()
-	{
-		Debug.Log("Apply");
-	}
-	public void Back()
-	{
-		
-		resume_button.SetActive(true);
-		settings_button.SetActive(true);
-		menu_button.SetActive(true);
-		quit_button.SetActive(true);
-		panelSettings.SetActive(false);
-	}
-	public void LoadMenu()
-	{
-		Time.timeScale = 1f;
-		SceneManager.LoadScene(0);
-	}
-	public void QuitGame()
-	{
-		Application.Quit();
-	}
-	public void Resolution()
+    }
+            public void Back()
+            {
+
+                resume_button.SetActive(true);
+                settings_button.SetActive(true);
+                menu_button.SetActive(true);
+                quit_button.SetActive(true);
+                panelSettings.SetActive(false);
+            }
+    public void LoadMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(0);
+    }
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    
+    
+    //-------------------------AUDIOMIXER settings--------------------------------
+    public void SetEffectVoll(float setEffVoll) //to set it in inspector(On Value Changed) select Dynamic float
+    {
+        audioMixer.SetFloat("enemyVol", setEffVoll);
+        audioMixer.SetFloat("humanVol", setEffVoll);
+        audioMixer.SetFloat("playerVol", setEffVoll);
+    }
+    public void SetMusicVoll(float setMusVoll) //to set it in inspector (On Value Changed) select Dynamic float
+    {
+        audioMixer.SetFloat("backgrVol", setMusVoll);
+
+    }
+
+    //-------------------------SCREEN settings--------------------------------
+    public void Resolution()
 	{
 		GraphicsDropdown.ClearOptions(); 
 		GraphicsDropdown.AddOptions(QualitySettings.names.ToList()); 
