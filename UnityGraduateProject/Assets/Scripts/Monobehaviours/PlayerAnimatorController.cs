@@ -113,7 +113,7 @@ public class PlayerAnimatorController : MonoBehaviour
     }
     void Attack()
     {
-        if (dialogueManager.inDialogue || hudController.inQuestMenu)
+        if (dialogueManager.inDialogue || hudController.inQuestMenu || PauseMenu.GameIsPaused)
             return;
         if (isArmored)
         {

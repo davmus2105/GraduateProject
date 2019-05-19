@@ -33,6 +33,7 @@ public class PlayerMovingControll : BaseMonoBehaviour, IDie
     Vector3 movevector;
     Vector3 rotateVector;
     Quaternion playerRot;
+    public GraduateAudio.AudioManager audioManager = GraduateAudio.AudioManager.instance;
 
     public bool isMoving;
 
@@ -61,15 +62,15 @@ public class PlayerMovingControll : BaseMonoBehaviour, IDie
     void BattleControll()
     {
         
-        if (AI.AI_Manager.Instance.IsEnemyNear(transform.position, inBattleDist))
+        if (AI.AI_Manager.Instance.IsEnemyNear(transform.position, inBattleDist) && !audioManager.isInBattle) 
         {
-            GraduateAudio.AudioManager.instance.isInBattle = true;
-            GraduateAudio.AudioManager.instance.BackgroundChoose();
+            audioManager.isInBattle = true;
+            audioManager.BackgroundChoose();
         }
-        else
+        else if (audioManager.isInBattle)
         {
-            GraduateAudio.AudioManager.instance.isInBattle = false;
-            GraduateAudio.AudioManager.instance.BackgroundChoose();
+            audioManager.isInBattle = false;
+            audioManager.BackgroundChoose();
         }
 
     }
