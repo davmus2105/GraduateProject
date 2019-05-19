@@ -40,6 +40,11 @@ public class ChiefManager : MonoBehaviour
                     gameObject.AddComponent(component);
             }
         }
+        DontDestroyOnLoad(this);
+        foreach(var components in GetComponents<MonoBehaviour>())
+        {
+            DontDestroyOnLoad(components);
+        }
         // ---- UI SETUP ----
 
     }

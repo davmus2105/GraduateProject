@@ -8,6 +8,7 @@ public class PlayerMovingControll : BaseMonoBehaviour, IDie
     [SerializeField] float gravity;
     [SerializeField] float turnSpeed;
     [SerializeField] float rotSmooth;
+    [SerializeField] float inBattleDist;
     [SerializeField] CharacterController charcontr;
     float inputX, inputY, angle;
     public bool canMove, isDead;
@@ -54,6 +55,23 @@ public class PlayerMovingControll : BaseMonoBehaviour, IDie
         if (canMove)
             Moving();
         Inputs();
+        BattleControll();
+    }
+
+    void BattleControll()
+    {
+        float enemyValue;
+        if (AI.AI_Manager.Instance.FindEnemiesFromPoint(transform.position, inBattleDist, out float enemyvalue).Count > 0)
+        {
+            Audio.AudioManager.instance.isInBattle = true;
+            Audio.AudioManager.instance.BackgroundChoose();
+        }
+        else
+        {
+            Audio.AudioManager.instance.isInBattle = false;
+            Audio.AudioManager.instance.BackgroundChoose();
+        }
+
     }
 
     void Moving()
