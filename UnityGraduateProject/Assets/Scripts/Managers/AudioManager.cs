@@ -58,6 +58,8 @@ namespace Audio
         {
             isInBattle = false;
             backgroundsource = GetComponent<AudioSource>();
+            if (!backgroundsource)
+                backgroundsource = gameObject.AddComponent<AudioSource>();
             if (audioCollection == null)
                 audioCollection = GameObject.FindGameObjectWithTag("Player").transform.Find("Model").GetComponent<PlayerAnimatorController>().audio_collection;
         }

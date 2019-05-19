@@ -48,6 +48,19 @@ namespace AI
             return true;
         }
 
+        public bool IsEnemyNear(Vector3 point, float distance)
+        {
+            if (enemies == null || enemies.Count == 0)
+                return false;
+            foreach (var enemy in enemies)
+            {
+                if (Vector3.Distance(point, enemy.transform.position) < distance)
+                {
+                    return true;                    
+                }
+            }
+            return false;
+        }
         public List<Transform> FindEnemiesFromPoint(Vector3 point, float distance, out float enemyValue)
         {
             if (enemies == null || enemies.Count == 0)

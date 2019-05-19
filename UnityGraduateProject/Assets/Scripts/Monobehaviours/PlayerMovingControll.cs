@@ -60,8 +60,8 @@ public class PlayerMovingControll : BaseMonoBehaviour, IDie
 
     void BattleControll()
     {
-        float enemyValue;
-        if (AI.AI_Manager.Instance.FindEnemiesFromPoint(transform.position, inBattleDist, out float enemyvalue).Count > 0)
+        
+        if (AI.AI_Manager.Instance.IsEnemyNear(transform.position, inBattleDist))
         {
             Audio.AudioManager.instance.isInBattle = true;
             Audio.AudioManager.instance.BackgroundChoose();
