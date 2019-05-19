@@ -29,12 +29,7 @@ public class PauseMenu : MonoBehaviour {
     {
         Instance = this;
     }
-    private void OnEnable()
-    {
-        pauseMenuUI = GameObject.Find("[UI]").transform.Find("PauseMenu").gameObject;
-        resume_button = GameObject.Find("[UI]").transform.Find("Resume_button").gameObject;
-        
-    }
+    
     public void Start() {
 
         Resolution();  
