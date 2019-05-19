@@ -8,6 +8,7 @@ using UnityEngine.Audio;
 
 public class PauseMenu : MonoBehaviour {
 
+    public static PauseMenu Instance;
     [Header("   Pause Menu Objects")]
     public GameObject panelSettings;
 	public GameObject pauseMenuUI;
@@ -24,6 +25,10 @@ public class PauseMenu : MonoBehaviour {
     public AudioMixer audioMixer;
 
 
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void OnEnable()
     {
         pauseMenuUI = GameObject.Find("[UI]").transform.Find("PauseMenu").gameObject;
