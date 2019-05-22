@@ -53,7 +53,7 @@ namespace AI {
         {
             // fill out the hunting enemies list
             EnemiesSearch();
-            if (huntingEnemies.Count > 0)
+            if (huntingEnemies != null && huntingEnemies.Count > 0)
                 isUnderAttack = true;
             else
                 isUnderAttack = false;
