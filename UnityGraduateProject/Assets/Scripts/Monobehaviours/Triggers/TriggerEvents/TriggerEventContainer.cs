@@ -14,6 +14,16 @@ namespace TES // TES - Trigger Event System
         private void Start()
         {
             host = transform.parent.gameObject;
+            IsUsedUpdate(onTriggerEnter);
+        }
+
+        void IsUsedUpdate(List<TriggerEventComponent> list)
+        {
+            foreach (var item in list)
+            {
+                if (item as DialogueTrigger != null)
+                    ((DialogueTrigger)item).isUsed = false;
+            }
         }
 
         void ExecuteComponents(List<TriggerEventComponent> list, Collider collider)

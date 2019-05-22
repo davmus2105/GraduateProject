@@ -8,7 +8,7 @@ namespace TES
     public class DialogueTrigger : TriggerEventComponent
     {
         public string dialogue_name;
-        bool isUsed = false;
+        public bool isUsed = false;
 
         public override void ExecuteEvent(Collider collider = null, TriggerEventContainer container = null)
         {
