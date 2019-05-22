@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isArmored: 0
+  audio_collection: {fileID: 11400000, guid: de3a2525c00606a499ddc1dd9fbee96c, type: 2}
 --- !u!114 &1033326214995068523
 MonoBehaviour:
   m_ObjectHideFlags: 0
