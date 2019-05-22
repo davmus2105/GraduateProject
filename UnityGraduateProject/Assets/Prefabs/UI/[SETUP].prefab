@@ -16,8 +16,11 @@ GameObject:
   - component: {fileID: 7689395400392436111}
   - component: {fileID: 7689395400392436110}
   - component: {fileID: 7689395400392436108}
+<<<<<<< HEAD
   - component: {fileID: 8012841632593705077}
   - component: {fileID: 2489432706008345282}
+=======
+>>>>>>> parent of 98b10e5... questions added
   m_Layer: 0
   m_Name: '[SETUP]'
   m_TagString: Untagged
@@ -235,6 +238,7 @@ MonoBehaviour:
   lobjects:
   - {fileID: 0}
   - {fileID: 0}
+<<<<<<< HEAD
 --- !u!114 &8012841632593705077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,3 +282,5 @@ MonoBehaviour:
   chosenans: 0
   inDialogue: 0
   rightResult: 0
+=======
+>>>>>>> parent of 98b10e5... questions added
