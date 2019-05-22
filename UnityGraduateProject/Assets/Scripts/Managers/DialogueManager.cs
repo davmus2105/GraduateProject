@@ -65,8 +65,7 @@ public class DialogueManager : MonoBehaviour
         {
             int param = i + 1;
             Button button = b_answers[i].GetComponent<Button>();
-            button.onClick.AddListener(delegate { SetAnswer(param); });
-            Debug.Log("Button " + param + "is ready");
+            button.onClick.AddListener(delegate { SetAnswer(param); });           
         }
         npctext = npctextPanel.transform.Find("npcText").GetComponent<Text>();
         // ---- instances ----
