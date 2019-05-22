@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4567174921804171376}
   - component: {fileID: 7327821148389946972}
   - component: {fileID: 4493413928436165082}
+  - component: {fileID: 274573163435627823}
   m_Layer: 0
   m_Name: wooden platform 1
   m_TagString: Untagged
@@ -92,3 +93,16 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: 37217bc68a83bb9498f561247219611a, type: 3}
+--- !u!65 &274573163435627823
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8777745895783862440}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.030314032, y: 0.07533349, z: 0.027938737}
+  m_Center: {x: -0.000000058734315, y: 0.004019807, z: 0.014014649}
