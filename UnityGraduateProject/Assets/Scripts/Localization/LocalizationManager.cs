@@ -61,13 +61,13 @@ public class LocalizationManager : MonoBehaviour
         int objind = 0;
         
         for (int i = 0; i < localStrings.Length; i+=2)
-        {          
-            objind = i;
+        {
+            objind = int.Parse(localStrings[i]);
             lobjects.Find(obj => obj.id == objind).text = localStrings[i+1];
         }
         foreach (var localizable in lobjects)
         {
-
+            localizable.LocalizeComponent();
         }
     }
     public void LoadLocalizable()
