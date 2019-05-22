@@ -66,15 +66,14 @@ public class DialogueManager : MonoBehaviour
     }
     #endregion
     #region DialogueManagers Methods
-    public List<DialogueElement> Load(string filename) // Read xml file to get dialogs from it
+    public List<DialogueElement> Load(string langfolder, string filename) // Read xml file to get dialogs from it
     {
-        currentlang = LocalizationManager.Instance.Language;
-        string path = Application.streamingAssetsPath + "/Localisation/" + currentlang + "/Dialogues/" + filename + ".xml";
-        if (!File.Exists(path))
+        string path = Application.streamingAssetsPath + "/Localisation/" + langfolder + "/Dialogues/" + filename + ".xml";
+        if (!File.Exists(Application.streamingAssetsPath + "/Localisation/" + langfolder + "/Dialogues/" + filename + ".xml"))
         {
             return null;
         }
-        if (currentlang + filename == lastfilename)
+        if (langfolder + filename == lastfilename)
         {
             return dialogue;
         }
@@ -134,9 +133,9 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void StartDialogue(string file_name, string language = "Ukrainian")
+    public void StartDialogue(string file_name, string language = "English")
     {
-        if (Load(file_name) == null)
+        if (Load(language, file_name) == null)
             return;
         inDialogue = true;
         rightResult = 0;

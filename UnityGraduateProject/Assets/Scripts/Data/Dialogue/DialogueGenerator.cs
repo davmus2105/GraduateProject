@@ -56,7 +56,7 @@ public class DialogueGenerator : MonoBehaviour
         Debug.Log(this + " Створено XML файл діалогу [" + filename + "] за адресою: " + path);
     }
     public void LoadDialogue()
-    {    
+    {
         node = new List<DialogueNode>();
         try //XML elements reading and loading attributes values to collections
         {
