@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace TES
 {
+    [CreateAssetMenu(fileName = "SceneChangeTrigger", menuName = "TES/Components/SceneChanger")]
     public class SceneChangeTrigger : TriggerEventComponent
     {
         public int requiredamount;
@@ -13,12 +14,12 @@ namespace TES
                 ChangeScene();
             else
             {
-                Debug.Log("You have not completed your quest");
+                HUD_Controller.Instance.ShowInfoMessage("Ви не відповили правильно на всі питання");
             }
         }
         void ChangeScene()
         {
-            //QuestSystem.QuestManager.Instance.CompleteQuest(#quest id);
+            QuestSystem.QuestManager.Instance.CompleteQuest(1);
             // TODO:
             // The way that scene will be changed
             Debug.Log("Your way is finished");

@@ -1,0 +1,12 @@
+<quests>
+  <quest id="1">
+    <title>Смерть ворогам.</title>
+    <description>Ви повинні вбити 4 ворогів.</description>
+    <goal goaltype="Kill" required_amount="4" />
+  </quest>
+  <quest id="2" one_time="True">
+    <title>Дістатися човна</title>
+    <description>Знайти човен і відправитися до Києва</description>
+    <goal goaltype="Get" />
+  </quest>
+</quests>

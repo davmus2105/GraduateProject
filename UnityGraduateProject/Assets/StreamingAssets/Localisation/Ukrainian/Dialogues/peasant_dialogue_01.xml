@@ -1,0 +1,23 @@
+<dialogue name="peasant_dialogue_01">
+  <node id="0" npcText="Вітаю, добродію">
+    <answer text="Доброго дня." toNode="1" />
+    <answer text="Мені нема коли." exit="True" />
+  </node>
+  <node id="1" npcText="Вороги захопили ці землі, смерть принесли із собою. Відбирають їжу у беззахисних селян. Прошу, допоможи люду здихатися від них.">
+    <answer text="Добре, а що потрібно зробити?" toNode="2" />
+    <answer text="Самі розбирайтеся з ворогом. А мені час іти." exit="True" />
+  </node>
+  <node id="2" npcText="Потрібно знищити 4 нападників.">
+    <answer text="Ну, то допоможу вам." questid="1" exit="True" />
+    <answer text="Ой, та чогось лячно мені. Піду я..." exit="True" />
+  </node>
+  <node id="3" npcText="...">
+    <answer text="Чи потрібна допомога?" />
+    <answer text="А підкажи-ка, як мені потрапити до Києва." toNode="4" />
+    <answer text="Бувай." toNode="4" exit="True" />
+  </node>
+  <node id="4" npcText="Раніше можна було потрапити на човні, але зараз це неможливо.">
+    <answer text="А що сталося?" toNode="1" />
+    <answer text="Ну що ж... То піду я." toNode="4" exit="True" />
+  </node>
+</dialogue>
