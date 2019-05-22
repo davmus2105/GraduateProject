@@ -24,7 +24,7 @@ namespace QuestSystem
         }
 
         public void Generate()
-        {
+        {           
             string path = Application.streamingAssetsPath + "/Localisation/" 
                           + _temp_lang_path_ + "/Quests/" + filename + ".xml";
 
@@ -160,6 +160,7 @@ namespace QuestSystem
         
         public List<Quest> LoadQuestList()
         {
+            _temp_lang_path_ = LocalizationManager.Instance.Language;
             if (quests == null)
                 Load();
             return quests;
