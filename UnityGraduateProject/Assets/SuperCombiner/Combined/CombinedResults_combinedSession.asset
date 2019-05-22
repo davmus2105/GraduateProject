@@ -15,7 +15,7 @@ MonoBehaviour:
   showCombinedMaterials: 0
   showCombinedMeshes: 0
   combinedMaterials:
-  - material: {fileID: 2100000, guid: b605c0062a573ec43b70d72e85e8f639, type: 2}
+  - material: {fileID: 2100000, guid: 83f18ae2851b22f48b427146f6021311, type: 2}
     uvs:
     - serializedVersion: 2
       x: 0
@@ -24,11 +24,11 @@ MonoBehaviour:
       height: 1
     uvs2: []
     scaleFactors:
-    - 1
+    - 2
     meshUVBounds:
     - serializedVersion: 2
-      x: 0
-      y: 0
+      x: -0.5
+      y: -0.5
       width: 1
       height: 1
     isOriginalMaterial: 1
@@ -39,7 +39,7 @@ MonoBehaviour:
   meshResults: []
   materialCombinedCount: 1
   combinedMaterialCount: 1
-  meshesCombinedCount: 10
+  meshesCombinedCount: 64
   skinnedMeshesCombinedCount: 0
   totalVertexCount: 0
   subMeshCount: 0
