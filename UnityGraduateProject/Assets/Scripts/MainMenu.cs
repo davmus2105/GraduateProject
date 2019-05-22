@@ -77,7 +77,7 @@ public class MainMenu : MonoBehaviour
             progressText.text = string.Format("{0:0}%",progress * 100);
                 if (SliderOfLoad.value == 1)
                 {
-                progressText.text = "Wait please...";
+                progressText.text = "Зачекайте...";
                 }
             yield return null;
         }

@@ -31,7 +31,7 @@ public class PauseMenu : MonoBehaviour {
     }
     
     public void Start() {
-
+        
         Resolution();  
 	}
 	void Update () {

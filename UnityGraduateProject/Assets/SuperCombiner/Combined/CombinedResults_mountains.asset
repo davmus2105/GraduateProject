@@ -1,0 +1,157 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a7375f37a1ffc945b478bd41f115dab, type: 3}
+  m_Name: CombinedResults_mountains
+  m_EditorClassIdentifier: 
+  showCombinedMaterials: 0
+  showCombinedMeshes: 0
+  combinedMaterials:
+  - material: {fileID: 2100000, guid: 83f18ae2851b22f48b427146f6021311, type: 2}
+    uvs:
+    - serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    uvs2: []
+    scaleFactors:
+    - 1
+    meshUVBounds:
+    - serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    isOriginalMaterial: 1
+    displayedIndex: 0
+    showCombinedMaterial: 0
+    showUVs: 0
+    showMeshUVBounds: 0
+  meshResults:
+  - names:
+    - Mountains and clouds
+    - mountain
+    - mountain optimized v2
+    - mountain optimized v2 (2)
+    - mountain optimized v2 (3)
+    - Decorate Mountains (1)
+    - DM
+    - Decorative Mountains
+    - DM (1)
+    - DM (2)
+    - Brown mountains
+    - DM (3)
+    - Decorative Mountains (1)
+    - Decorative Mountains (2)
+    - Decorate Mountains (2)
+    - Decorative Mountains (3)
+    - mountain optimized v2 (4)
+    - Decorative Mountains (4)
+    instanceIds: 8c5cfefff064feffa85cfeff5e5ffefff85dfeff286bfeff3858feff1858feffec62feff905bfeff1e58feffe466feff2061feffee6afeffbe69feffce6bfeff985bfeff5062feff
+    indexes:
+    - firstVertexIndex: 76
+      vertexCount: 76
+      firstTriangleIndex: 108
+      triangleCount: 108
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 836
+      vertexCount: 760
+      firstTriangleIndex: 1272
+      triangleCount: 1164
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 1440
+      vertexCount: 604
+      firstTriangleIndex: 2184
+      triangleCount: 912
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 2044
+      vertexCount: 604
+      firstTriangleIndex: 3096
+      triangleCount: 912
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 2648
+      vertexCount: 604
+      firstTriangleIndex: 4008
+      triangleCount: 912
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 3356
+      vertexCount: 708
+      firstTriangleIndex: 4881
+      triangleCount: 873
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 4101
+      vertexCount: 745
+      firstTriangleIndex: 5736
+      triangleCount: 855
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 4830
+      vertexCount: 729
+      firstTriangleIndex: 6591
+      triangleCount: 855
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 5575
+      vertexCount: 745
+      firstTriangleIndex: 7446
+      triangleCount: 855
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 6320
+      vertexCount: 745
+      firstTriangleIndex: 8301
+      triangleCount: 855
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 7039
+      vertexCount: 719
+      firstTriangleIndex: 9183
+      triangleCount: 882
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 7784
+      vertexCount: 745
+      firstTriangleIndex: 10038
+      triangleCount: 855
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 8513
+      vertexCount: 729
+      firstTriangleIndex: 10893
+      triangleCount: 855
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 9242
+      vertexCount: 729
+      firstTriangleIndex: 11748
+      triangleCount: 855
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 9950
+      vertexCount: 708
+      firstTriangleIndex: 12621
+      triangleCount: 873
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 10679
+      vertexCount: 729
+      firstTriangleIndex: 13476
+      triangleCount: 855
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 11283
+      vertexCount: 604
+      firstTriangleIndex: 14388
+      triangleCount: 912
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 12012
+      vertexCount: 729
+      firstTriangleIndex: 15243
+      triangleCount: 855
+      showCombinedInstanceIndex: 0
+    showMeshCombined: 0
+  materialCombinedCount: 1
+  combinedMaterialCount: 1
+  meshesCombinedCount: 18
+  skinnedMeshesCombinedCount: 0
+  totalVertexCount: 12295
+  subMeshCount: 0

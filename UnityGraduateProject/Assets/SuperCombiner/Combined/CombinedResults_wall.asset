@@ -1,0 +1,433 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a7375f37a1ffc945b478bd41f115dab, type: 3}
+  m_Name: CombinedResults_wall
+  m_EditorClassIdentifier: 
+  showCombinedMaterials: 0
+  showCombinedMeshes: 0
+  combinedMaterials:
+  - material: {fileID: 2100000, guid: 83f18ae2851b22f48b427146f6021311, type: 2}
+    uvs:
+    - serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    uvs2: []
+    scaleFactors:
+    - 1
+    meshUVBounds:
+    - serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    isOriginalMaterial: 1
+    displayedIndex: 0
+    showCombinedMaterial: 0
+    showUVs: 0
+    showMeshUVBounds: 0
+  meshResults:
+  - names:
+    - 'wooden wall '
+    - wooden wall (1)
+    - wooden wall (2)
+    - wooden wall (3)
+    - wooden wall (4)
+    - wooden wall (5)
+    - wooden wall (6)
+    - wooden wall (7)
+    - wooden wall (8)
+    - wooden wall (9)
+    - wooden wall (10)
+    - wooden wall (11)
+    - wooden wall (12)
+    - wooden wall (13)
+    - wooden wall (14)
+    - wooden wall (15)
+    - wooden wall (16)
+    - wooden wall (17)
+    - wooden wall (18)
+    - wooden wall (19)
+    - wooden wall (22)
+    - wooden wall (23)
+    - wooden wall (24)
+    - wooden wall (25)
+    - wooden wall (26)
+    - wooden wall (27)
+    - wooden wall (28)
+    - wooden wall (29)
+    - wooden wall (30)
+    - wooden wall (31)
+    - wooden wall (32)
+    - wooden wall (33)
+    - wooden wall (34)
+    - wooden wall (35)
+    - wooden wall (36)
+    - wooden wall (37)
+    - wooden wall (38)
+    - wooden wall (39)
+    - wooden wall (40)
+    - wooden wall (41)
+    - wooden wall (42)
+    - wooden wall (43)
+    - wooden wall (44)
+    - wooden wall (45)
+    - wooden wall (46)
+    - wooden wall (47)
+    - wooden wall (48)
+    - wooden wall (49)
+    - wooden wall (50)
+    - wooden wall (51)
+    - wooden wall (52)
+    - wooden wall (53)
+    - wooden wall (20)
+    - wooden wall (21)
+    - wooden wall (54)
+    - wooden wall (55)
+    - wooden wall (56)
+    - wooden wall (57)
+    - wooden wall (58)
+    - wooden wall (59)
+    - wooden wall (60)
+    - wooden wall (61)
+    - wooden wall (62)
+    - wooden wall (63)
+    instanceIds: d468feff6664feff825bfefffe59feff0c63fefff05bfefff864feff6e5ffeffcc68feffd064feff7061feff7862feff5862feff1463feffb86bfeff0859feff3061feff7069fefffc62feff1869feff525cfeff3861feffae64feff5c63feffda59feffb664fefff660feffd662feff3868feff9869feff845cfeff445efeff6062feff2c5efefff058feff0068feff8a5bfeff0466feff5869feff9061feffb468feffe858feff066bfeff266cfeff8861feff2463feff365ffeff3865feff6e64feffae58feff6061feff7062feff066cfeff9e58feffe869feff6869feffb662feff5068feffe85bfeff4e64feffa061feff9e62feffe05dfeff166cfeff
+    indexes:
+    - firstVertexIndex: 528
+      vertexCount: 528
+      firstTriangleIndex: 720
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 1056
+      vertexCount: 528
+      firstTriangleIndex: 1440
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 1584
+      vertexCount: 528
+      firstTriangleIndex: 2160
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 2112
+      vertexCount: 528
+      firstTriangleIndex: 2880
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 2640
+      vertexCount: 528
+      firstTriangleIndex: 3600
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 3168
+      vertexCount: 528
+      firstTriangleIndex: 4320
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 3696
+      vertexCount: 528
+      firstTriangleIndex: 5040
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 4224
+      vertexCount: 528
+      firstTriangleIndex: 5760
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 4752
+      vertexCount: 528
+      firstTriangleIndex: 6480
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 5280
+      vertexCount: 528
+      firstTriangleIndex: 7200
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 5808
+      vertexCount: 528
+      firstTriangleIndex: 7920
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 6336
+      vertexCount: 528
+      firstTriangleIndex: 8640
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 6864
+      vertexCount: 528
+      firstTriangleIndex: 9360
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 7392
+      vertexCount: 528
+      firstTriangleIndex: 10080
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 7920
+      vertexCount: 528
+      firstTriangleIndex: 10800
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 8448
+      vertexCount: 528
+      firstTriangleIndex: 11520
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 8976
+      vertexCount: 528
+      firstTriangleIndex: 12240
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 9504
+      vertexCount: 528
+      firstTriangleIndex: 12960
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 10032
+      vertexCount: 528
+      firstTriangleIndex: 13680
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 10560
+      vertexCount: 528
+      firstTriangleIndex: 14400
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 11088
+      vertexCount: 528
+      firstTriangleIndex: 15120
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 11616
+      vertexCount: 528
+      firstTriangleIndex: 15840
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 12144
+      vertexCount: 528
+      firstTriangleIndex: 16560
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 12672
+      vertexCount: 528
+      firstTriangleIndex: 17280
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 13200
+      vertexCount: 528
+      firstTriangleIndex: 18000
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 13728
+      vertexCount: 528
+      firstTriangleIndex: 18720
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 14256
+      vertexCount: 528
+      firstTriangleIndex: 19440
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 14784
+      vertexCount: 528
+      firstTriangleIndex: 20160
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 15312
+      vertexCount: 528
+      firstTriangleIndex: 20880
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 15840
+      vertexCount: 528
+      firstTriangleIndex: 21600
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 16368
+      vertexCount: 528
+      firstTriangleIndex: 22320
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 16896
+      vertexCount: 528
+      firstTriangleIndex: 23040
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 17424
+      vertexCount: 528
+      firstTriangleIndex: 23760
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 17952
+      vertexCount: 528
+      firstTriangleIndex: 24480
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 18480
+      vertexCount: 528
+      firstTriangleIndex: 25200
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 19008
+      vertexCount: 528
+      firstTriangleIndex: 25920
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 19536
+      vertexCount: 528
+      firstTriangleIndex: 26640
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 20064
+      vertexCount: 528
+      firstTriangleIndex: 27360
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 20592
+      vertexCount: 528
+      firstTriangleIndex: 28080
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 21120
+      vertexCount: 528
+      firstTriangleIndex: 28800
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 21648
+      vertexCount: 528
+      firstTriangleIndex: 29520
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 22176
+      vertexCount: 528
+      firstTriangleIndex: 30240
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 22704
+      vertexCount: 528
+      firstTriangleIndex: 30960
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 23232
+      vertexCount: 528
+      firstTriangleIndex: 31680
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 23760
+      vertexCount: 528
+      firstTriangleIndex: 32400
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 24288
+      vertexCount: 528
+      firstTriangleIndex: 33120
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 24816
+      vertexCount: 528
+      firstTriangleIndex: 33840
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 25344
+      vertexCount: 528
+      firstTriangleIndex: 34560
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 25872
+      vertexCount: 528
+      firstTriangleIndex: 35280
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 26400
+      vertexCount: 528
+      firstTriangleIndex: 36000
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 26928
+      vertexCount: 528
+      firstTriangleIndex: 36720
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 27456
+      vertexCount: 528
+      firstTriangleIndex: 37440
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 27984
+      vertexCount: 528
+      firstTriangleIndex: 38160
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 28512
+      vertexCount: 528
+      firstTriangleIndex: 38880
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 29040
+      vertexCount: 528
+      firstTriangleIndex: 39600
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 29568
+      vertexCount: 528
+      firstTriangleIndex: 40320
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 30096
+      vertexCount: 528
+      firstTriangleIndex: 41040
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 30624
+      vertexCount: 528
+      firstTriangleIndex: 41760
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 31152
+      vertexCount: 528
+      firstTriangleIndex: 42480
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 31680
+      vertexCount: 528
+      firstTriangleIndex: 43200
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 32208
+      vertexCount: 528
+      firstTriangleIndex: 43920
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 32736
+      vertexCount: 528
+      firstTriangleIndex: 44640
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 33264
+      vertexCount: 528
+      firstTriangleIndex: 45360
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    - firstVertexIndex: 33792
+      vertexCount: 528
+      firstTriangleIndex: 46080
+      triangleCount: 720
+      showCombinedInstanceIndex: 0
+    showMeshCombined: 0
+  materialCombinedCount: 1
+  combinedMaterialCount: 1
+  meshesCombinedCount: 64
+  skinnedMeshesCombinedCount: 0
+  totalVertexCount: 34168
+  subMeshCount: 0
