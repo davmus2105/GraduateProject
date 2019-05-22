@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class LocalizationManager : MonoBehaviour
@@ -20,6 +22,8 @@ public class LocalizationManager : MonoBehaviour
     }
     private string language;
     private string std_language = "Ukrainian";
+    private Localizable[] objects;
+    public List<Localizable> lobjects;
 
     public static LocalizationManager Instance => instance;
     private static LocalizationManager instance;
@@ -29,6 +33,48 @@ public class LocalizationManager : MonoBehaviour
             instance = this;
         else
             Destroy(this);
+    }
+    
+    public void SaveLocalization()
+    {
+        string path = Application.streamingAssetsPath + "/Localisation/" + Language + "/Scenes/" + SceneManager.GetActiveScene().buildIndex + ".txt";
+        
+
+        List<string> writeStrings = new List<string>();
+        foreach(var lobject in objects)
+        {
+            // ID of the element
+            writeStrings.Add(lobject.id.ToString());
+            // localize text
+            writeStrings.Add(lobject.text);
+        }
+        
+
+        File.WriteAllLines(path, writeStrings);
+    }
+    public void LoadLocalization()
+    {
+        string path = Application.streamingAssetsPath + "/Localisation/" + Language + "/Scenes/" + SceneManager.GetActiveScene().buildIndex + ".txt";
+        LoadLocalizable();
+        string[] localStrings;
+        localStrings = File.ReadAllLines(path);
+        int objind = 0;
+        
+        for (int i = 0; i < localStrings.Length; i+=2)
+        {          
+            objind = i;
+            lobjects.Find(obj => obj.id == objind).text = localStrings[i+1];
+        }
+        foreach (var localizable in lobjects)
+        {
+
+        }
+    }
+    public void LoadLocalizable()
+    {
+        objects = FindObjectsOfType<Localizable>();
+        lobjects = new List<Localizable>();
+        lobjects.AddRange(objects);
     }
 }
 
