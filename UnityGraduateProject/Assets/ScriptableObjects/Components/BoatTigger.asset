@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 335e1e776933b514c8d4fcc81eae0a6c, type: 3}
   m_Name: BoatTigger
   m_EditorClassIdentifier: 
-  requiredamount: 6
+  requiredamount: 5

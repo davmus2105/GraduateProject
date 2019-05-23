@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using System.Xml;
 using System.IO;
 using QuestSystem;
@@ -59,6 +60,12 @@ public class DialogueManager : MonoBehaviour
         for (int i = 0; i <= 3; i++)
         {
             t_answers[i] = b_answers[i].GetComponentInChildren<Text>();
+        }
+        for (int i = 0; i <= 3; i++)
+        {
+            int param = i + 1;
+            Button button = b_answers[i].GetComponent<Button>();
+            button.onClick.AddListener(delegate { SetAnswer(param); });           
         }
         npctext = npctextPanel.transform.Find("npcText").GetComponent<Text>();
         // ---- instances ----
