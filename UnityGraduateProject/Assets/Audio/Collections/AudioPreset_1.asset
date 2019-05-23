@@ -36,6 +36,5 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2ef9c6600f76d0d4b80e7db5be1d1016, type: 3}
   - {fileID: 8300000, guid: 1d0a0b7231070a74ab9a5a3b2c87297f, type: 3}
   tranqul_music:
-  - {fileID: 8300000, guid: 5e6112fba704cbe45b88eb6c55a168e8, type: 3}
-  - {fileID: 8300000, guid: 906df143e00ff914b88d21c7643a53bd, type: 3}
   - {fileID: 8300000, guid: a48b6f92487a9354987622a39ba62a17, type: 3}
+  - {fileID: 8300000, guid: 906df143e00ff914b88d21c7643a53bd, type: 3}
