@@ -8,7 +8,19 @@ namespace TES
     public class DialogueTrigger : TriggerEventComponent
     {
         public string dialogue_name;
-        public bool isUsed = false;
+        bool isused;
+        public bool isUsed
+        {
+            get { return isused; }
+            set
+            {
+                if (isOneTime && value)
+                    isused = value;
+                else
+                    isused = false;
+            }
+        }
+        public bool isOneTime;        
 
         public override void ExecuteEvent(Collider collider = null, TriggerEventContainer container = null)
         {

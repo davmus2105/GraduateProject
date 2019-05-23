@@ -62,7 +62,6 @@ namespace GraduateAudio
         {
             if (!backgroundsource.isPlaying)
                 BackgroundChoose();
-            Debug.Log("is Playing: " + backgroundsource.isPlaying);
         }
         
         public void BackgroundChoose()

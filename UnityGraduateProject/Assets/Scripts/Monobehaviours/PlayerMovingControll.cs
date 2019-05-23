@@ -26,7 +26,9 @@ public class PlayerMovingControll : BaseMonoBehaviour, IDie
         }
     }
     bool isblocking, in_battle;
-    
+
+    public static PlayerMovingControll Instance;
+    private static PlayerMovingControll instance;
     public bool inBattle
     {
         get { return in_battle; }
@@ -59,6 +61,11 @@ public class PlayerMovingControll : BaseMonoBehaviour, IDie
     public GraduateAudio.AudioManager audioManager;
 
     public bool isMoving;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
@@ -95,16 +102,21 @@ public class PlayerMovingControll : BaseMonoBehaviour, IDie
 
     void Moving()
     {
-        if (charcontr.isGrounded)
+        if (DialogueManager.Instance.inDialogue)
+        {
+            isMoving = false;
+            return;
+        }
+        else if (charcontr.isGrounded)
         {
             float speed = 0;
             /*movevector = new Vector3(Input.GetAxis("Horizontal"), 
                                      0f, Input.GetAxis("Vertical"));
             movevector = transform.TransformDirection(movevector);
             movevector *= movespeed;*/
-                                       
+
             if (Input.GetButton("Right"))
-            {                
+            {
                 player.rotation = Quaternion.Lerp(player.rotation, Quaternion.Euler(0, player.rotation.y + 90, 0), rotSmooth);
                 speed = movespeed;
             }
@@ -133,7 +145,8 @@ public class PlayerMovingControll : BaseMonoBehaviour, IDie
         else
         {
             movevector.y -= gravity * Time.deltaTime;
-        }        
+        }  
+        
         charcontr.Move(movevector * Time.deltaTime);
     }
     void Inputs()

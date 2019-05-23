@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: BoatTigger
   m_EditorClassIdentifier: 
   requiredamount: 5
+  dialogue_name: bazhen_questions

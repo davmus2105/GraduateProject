@@ -7,6 +7,7 @@ using System.Xml;
 using System.IO;
 using QuestSystem;
 
+[RequireComponent(typeof(ResultManager))]
 public class DialogueManager : MonoBehaviour
 {
     #region Variables
@@ -28,6 +29,7 @@ public class DialogueManager : MonoBehaviour
     public const int MAX_LETTERS_IN_NPCTEXT = 270;
     public const float SEC_WAIT_IN_DIALOGUE = 5f; // How long the npc text will be shown
     List<DialogueElement> dialogue;
+    string currentDialogue;
     DialogueElement dialogue_el;
     Answer answer;
     Transform[] b_answers;
@@ -76,6 +78,7 @@ public class DialogueManager : MonoBehaviour
     public List<DialogueElement> Load(string filename) // Read xml file to get dialogs from it
     {
         currentlang = LocalizationManager.Instance.Language;
+        currentDialogue = filename;
         string path = Application.streamingAssetsPath + "/Localisation/" + currentlang + "/Dialogues/" + filename + ".xml";
         if (!File.Exists(path))
         {
@@ -154,6 +157,7 @@ public class DialogueManager : MonoBehaviour
     }
     void EndDialogue()
     {
+        ResultManager.Instance.SaveResult(currentDialogue, rightResult);
         dialoguePanel.SetActive(false);
         hudController.SetActiveHUD(true);
         inDialogue = false;

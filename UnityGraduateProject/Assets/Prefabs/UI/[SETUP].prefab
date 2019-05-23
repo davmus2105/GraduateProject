@@ -58,6 +58,7 @@ MonoBehaviour:
   - EventManager
   - AI.AI_Manager
   - LocalizationManager
+  - ResultManager
   filename: managers_list.txt
   managerspath: /Kernel/
 --- !u!114 &7689395400392436107

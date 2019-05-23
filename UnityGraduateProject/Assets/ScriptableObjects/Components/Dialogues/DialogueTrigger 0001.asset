@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: DialogueTrigger 0001
   m_EditorClassIdentifier: 
   dialogue_name: peasant_dialogue_01
+  isOneTime: 1

@@ -10,6 +10,10 @@ public class PlayerCamera_1 : MonoBehaviour
     Camera cam;
     [SerializeField] Vector3 camPosDestination, offsetVector;
 
+    [SerializeField] LayerMask layers;
+    Ray ray;
+    RaycastHit hit;
+
 
     void Start()
     {

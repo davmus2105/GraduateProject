@@ -362,8 +362,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5790a8c5e74f4224380c6b09538f7f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetZ: 8
-  offsetY: 5
+  offsetZ: 10
+  offsetY: 3
   smooth: 5
   target: {fileID: 0}
   camPosDestination: {x: 0, y: 0, z: 0}
@@ -785,7 +785,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.9, z: 0}
+  m_Center: {x: 0, y: 0.95, z: 0}
 --- !u!114 &1635935508935154839
 MonoBehaviour:
   m_ObjectHideFlags: 0

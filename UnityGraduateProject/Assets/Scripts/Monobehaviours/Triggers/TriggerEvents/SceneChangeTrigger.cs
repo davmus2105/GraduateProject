@@ -7,10 +7,11 @@ namespace TES
     public class SceneChangeTrigger : TriggerEventComponent
     {
         public int requiredamount;
+        public string dialogue_name;
         public override void ExecuteEvent(Collider collider = null, TriggerEventContainer container = null)
         {
-            int result = DialogueManager.Instance.rightResult;
-            if (result == requiredamount)
+            int result = ResultManager.Instance.GetResult(dialogue_name);
+            if (result >= requiredamount)
                 ChangeScene();
             else
             {
