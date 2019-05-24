@@ -107,7 +107,7 @@ namespace AI {
             {
                 target = peasant;
             }
-            else if (!playerContr.isDead || DialogueManager.Instance.inDialogue || HUD_Controller.Instance.inQuestMenu || PauseMenu.GameIsPaused)
+            else if (!playerMovContr.isDead || DialogueManager.Instance.inDialogue || HUD_Controller.Instance.inQuestMenu || PauseMenu.GameIsPaused)
             {
                 target = player;
             }

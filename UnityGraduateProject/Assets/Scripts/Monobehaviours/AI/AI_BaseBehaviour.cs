@@ -24,7 +24,7 @@ namespace AI {
         protected Actor actor; // Actor component for this ai
         protected Transform target; 
         protected Transform player; // player transform 
-        protected PlayerBehaviour playerContr;
+        protected PlayerMovingControll playerMovContr;
         protected AI_AnimatorController animator;    
         
         public NavMeshAgent agent;
@@ -50,7 +50,7 @@ namespace AI {
             agent = GetComponent<NavMeshAgent>();
             player = GameObject.FindGameObjectWithTag("Player").transform;
             target = player;
-            playerContr = player.GetComponent<PlayerBehaviour>();
+            playerMovContr = player.GetComponent<PlayerMovingControll>();
             agent.speed = runSpeed;
             agent.stoppingDistance = stoppingDistance;
             isDead = false;

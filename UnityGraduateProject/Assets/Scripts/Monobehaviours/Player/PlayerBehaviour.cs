@@ -82,8 +82,7 @@ public class PlayerBehaviour : MonoBehaviour, IDie
         isMoving = false;
         actor = GetComponent<Actor>();
         audioManager = GraduateAudio.AudioManager.Instance;
-        cam = Camera.main;        
-        Cursor.lockState = CursorLockMode.Locked;
+        cam = Camera.main;
     }
 
     private void Update()
@@ -93,11 +92,6 @@ public class PlayerBehaviour : MonoBehaviour, IDie
             Moving();
         Inputs();
         BattleControll();
-
-        if (PauseMenu.GameIsPaused)
-            Cursor.lockState = CursorLockMode.None;
-        else
-            Cursor.lockState = CursorLockMode.Locked;
     }
 
 
@@ -121,14 +115,13 @@ public class PlayerBehaviour : MonoBehaviour, IDie
         InputMagnitude();
         if (isGrounded)
         {
-            movespeed = Mathf.Clamp(movespeed, 0, 1f);
             verticalVel -= 0;
             movevector = new Vector3(0, 0, movespeed);            
         }
         else
         {
             verticalVel -= 2;
-        }        
+        }
         movevector.y = verticalVel;
         movevector = transform.TransformDirection(movevector * movespeed * speed * Time.deltaTime);
         charcontr.Move(movevector);
