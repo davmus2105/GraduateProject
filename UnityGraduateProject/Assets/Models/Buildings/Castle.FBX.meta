@@ -1,0 +1,198 @@
+fileFormatVersion: 2
+guid: 4c919c917d493554eb56af6ada069775
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: 1st tower
+    100002: 2nd tower
+    100004: //RootNode
+    100006: fundament
+    100008: kolonna 10
+    100010: kolonna 11
+    100012: kolonna 2
+    100014: kolonna 3
+    100016: kolonna 4
+    100018: kolonna 5
+    100020: kolonna 6
+    100022: kolonna 7
+    100024: kolonna 8
+    100026: kolonna 9
+    100028: roof
+    100030: the enter
+    400000: 1st tower
+    400002: 2nd tower
+    400004: //RootNode
+    400006: fundament
+    400008: kolonna 10
+    400010: kolonna 11
+    400012: kolonna 2
+    400014: kolonna 3
+    400016: kolonna 4
+    400018: kolonna 5
+    400020: kolonna 6
+    400022: kolonna 7
+    400024: kolonna 8
+    400026: kolonna 9
+    400028: roof
+    400030: the enter
+    2100000: "\u0411\u0430\u0448\u043D\u044F"
+    2100002: "\u041A\u043E\u043B\u043E\u043D\u043D\u0430"
+    2100004: "\u043A\u0440\u044B\u0448\u0430"
+    2100006: "\u0441\u0442\u0435\u043D\u0430 \u0432\u0445\u043E\u0434"
+    2100008: 'Material #3'
+    2300000: 1st tower
+    2300002: 2nd tower
+    2300004: fundament
+    2300006: kolonna 10
+    2300008: kolonna 11
+    2300010: kolonna 2
+    2300012: kolonna 3
+    2300014: kolonna 4
+    2300016: kolonna 5
+    2300018: kolonna 6
+    2300020: kolonna 7
+    2300022: kolonna 8
+    2300024: kolonna 9
+    2300026: roof
+    2300028: the enter
+    3300000: 1st tower
+    3300002: 2nd tower
+    3300004: fundament
+    3300006: kolonna 10
+    3300008: kolonna 11
+    3300010: kolonna 2
+    3300012: kolonna 3
+    3300014: kolonna 4
+    3300016: kolonna 5
+    3300018: kolonna 6
+    3300020: kolonna 7
+    3300022: kolonna 8
+    3300024: kolonna 9
+    3300026: roof
+    3300028: the enter
+    4300000: 1st tower
+    4300002: kolonna 3
+    4300004: kolonna 2
+    4300006: kolonna 4
+    4300008: kolonna 5
+    4300010: kolonna 6
+    4300012: kolonna 7
+    4300014: kolonna 8
+    4300016: kolonna 9
+    4300018: kolonna 10
+    4300020: kolonna 11
+    4300022: roof
+    4300024: the enter
+    4300026: 2nd tower
+    4300028: fundament
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #3'
+    second: {fileID: 2100000, guid: dd8def6255db92a498e88e0d8ab46d2b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "\u0411\u0430\u0448\u043D\u044F"
+    second: {fileID: 2100000, guid: fca63237db5d41847ac69b5aaa71dcd6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "\u041A\u043E\u043B\u043E\u043D\u043D\u0430"
+    second: {fileID: 2100000, guid: e28f7f3340d0522469026a0538da0ef6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "\u043A\u0440\u044B\u0448\u0430"
+    second: {fileID: 2100000, guid: 910d281d2b9e82c48a77822974f318d9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "\u0441\u0442\u0435\u043D\u0430 \u0432\u0445\u043E\u0434"
+    second: {fileID: 2100000, guid: 77caecb991a7cfb4db6e54a8e5e2ef25, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 5
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

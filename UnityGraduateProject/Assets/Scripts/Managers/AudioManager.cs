@@ -56,7 +56,7 @@ namespace GraduateAudio
             if (!backgroundsource)
                 backgroundsource = gameObject.AddComponent<AudioSource>();
             if (audioCollection == null)
-                audioCollection = GameObject.FindGameObjectWithTag("Player").transform.Find("Model").GetComponent<PlayerAnimatorController>().audio_collection;
+                audioCollection = GameObject.FindGameObjectWithTag("Player").transform.Find("Model").GetComponent<Player_Animator_Controller>().audio_collection;
         }
         private void Update()
         {
