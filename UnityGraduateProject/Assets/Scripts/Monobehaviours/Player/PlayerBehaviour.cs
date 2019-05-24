@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour, IDie
-{    
-    [SerializeField] float movespeed;
+{
+    [SerializeField] float speed;
+    [HideInInspector]public float movespeed;
     [SerializeField] float gravity;
     [SerializeField] float turnSpeed;
     [SerializeField] float rotSmooth;
     [SerializeField] float inBattleDist;
+    [Tooltip("standard is ")] [SerializeField] float diffToTarget;
     [SerializeField] CharacterController charcontr;
     float inputX, inputY, angle;
     public bool canMove, isDead;
@@ -53,7 +55,7 @@ public class PlayerBehaviour : MonoBehaviour, IDie
     }
     PlayerAnimatorController animcontr;
     Actor actor;
-    Transform playeModel;
+    Transform playerModel;
     [SerializeField] Transform charRotTarget;
     Vector3 movevector;
     Vector3 rotateVector;
@@ -70,7 +72,7 @@ public class PlayerBehaviour : MonoBehaviour, IDie
     private void Start()
     {
         charcontr = GetComponent<CharacterController>();
-        playeModel = transform.Find("Model");
+        playerModel = transform.Find("Model");
         animcontr = GetComponentInChildren<PlayerAnimatorController>();
         charRotTarget = Camera.main.transform.GetChild(0);
         canMove = true;
@@ -78,8 +80,6 @@ public class PlayerBehaviour : MonoBehaviour, IDie
         inBattle = false;
         actor = GetComponent<Actor>();
         audioManager = GraduateAudio.AudioManager.Instance;
-        // Vars start:
-        turnSpeed = 2f;
     }
 
     private void Update()
@@ -88,6 +88,14 @@ public class PlayerBehaviour : MonoBehaviour, IDie
             Moving();
         Inputs();
         BattleControll();
+    }
+
+    void RotateToCam()
+    {        
+        transform.rotation = Quaternion.Euler(0f, charRotTarget.rotation.eulerAngles.y, 0);
+        Quaternion newRotation = Quaternion.LookRotation(new Vector3(movevector.x, 0f, movevector.z));
+        playerModel.rotation = Quaternion.Slerp(playerModel.rotation, newRotation, turnSpeed * Time.deltaTime);
+        Debug.Log($"Rotation is {playerModel.rotation.y}");
     }
 
     void BattleControll()
@@ -107,47 +115,28 @@ public class PlayerBehaviour : MonoBehaviour, IDie
             isMoving = false;
             return;
         }
-        else if (charcontr.isGrounded)
+        else 
         {
-            float speed = 0;
-            /*movevector = new Vector3(Input.GetAxis("Horizontal"), 
-                                        0f, Input.GetAxis("Vertical"));
-            movevector = transform.TransformDirection(movevector);
-            movevector *= movespeed;*/
-
-            if (Input.GetButton("Right"))
-            {
-                playeModel.rotation = Quaternion.Lerp(playeModel.rotation, Quaternion.Euler(0, playeModel.rotation.y + 90, 0), rotSmooth);
-                speed = movespeed;
-            }
-            if (Input.GetButton("Left"))
-            {
-                playeModel.rotation = Quaternion.Lerp(playeModel.rotation, Quaternion.Euler(0, playeModel.rotation.y - 90, 0), rotSmooth);
-                speed = movespeed;
-            }
-            if (Input.GetButton("Forward"))
-            {
-                playeModel.rotation = Quaternion.Lerp(playeModel.rotation, Quaternion.Euler(0, playeModel.rotation.y, 0), rotSmooth);
-                speed = movespeed;
-            }
-            if (Input.GetButton("Back"))
-            {
-                playeModel.rotation = Quaternion.Lerp(playeModel.rotation, Quaternion.Euler(0, playeModel.rotation.y + 180, 0), rotSmooth);
-                speed = movespeed;
-            }
-            if (speed != 0)
-                isMoving = true;
-            else
-                isMoving = false;
-            movevector = playeModel.TransformDirection(Vector3.forward);
-            movevector *= speed;
+            float yStore = movevector.y;
+            inputX = Input.GetAxisRaw("Horizontal");
+            inputY = Input.GetAxisRaw("Vertical");
+            movevector = (transform.forward * inputY) + (transform.right * inputX);
+            movevector = movevector.normalized * movespeed;
+            movevector.y = yStore;
         }
+        if (charcontr.isGrounded)
+        {
+            movevector.y = 0;
+        }
+        movespeed = Mathf.Clamp((Mathf.Abs(inputX) + Mathf.Abs(inputY)), 0, 1);
+        if (movespeed > 0)
+            isMoving = true;
         else
-        {
-            movevector.y -= gravity * Time.deltaTime;
-        }
-
-        charcontr.Move(movevector * Time.deltaTime);
+            isMoving = false;
+        movevector.y = movevector.y + (Physics.gravity.y * gravity * Time.deltaTime);
+        charcontr.Move(movevector * Time.deltaTime * speed);
+        if (isMoving)
+            RotateToCam();
     }
     void Inputs()
     {

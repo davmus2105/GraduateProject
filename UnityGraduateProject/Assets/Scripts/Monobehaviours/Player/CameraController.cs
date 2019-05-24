@@ -4,15 +4,31 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Transform target;
+    public Vector3 offset;
+    public bool useOffsetValues;
+    public float rotateSpeed;
+    public Transform pivot;
+    private void Start()
     {
-        
-    }
+        if (!useOffsetValues)
+        {
+            offset = target.position - transform.position;
+        }
+        pivot.transform.position = target.transform.position;
+        pivot.transform.parent = target.transform;
 
-    // Update is called once per frame
-    void Update()
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+    private void LateUpdate()
     {
-        
+        Rotate();
+    }
+    void Rotate()
+    {
+        float inputX = Input.GetAxis("Mouse X") * rotateSpeed;
+        target.Rotate(0, inputX, 0);
+        float inputY = Input.GetAxis("Mouse Y") * rotateSpeed;
+        target.Rotate(inputY, 0, 0);
     }
 }

@@ -54,7 +54,7 @@ public class Player_Animator_Controller : MonoBehaviour
     }
     void MoveAnimations()
     {
-        animator.SetFloat(speed_hash, Convert.ToInt32(player.isMoving));
+        animator.SetFloat(speed_hash, Convert.ToInt32(player.movespeed));
     }
     public void JumpAnimation()
     {
