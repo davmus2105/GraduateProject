@@ -8,7 +8,6 @@ using UnityEngine.Audio;
 
 
 
-
 public class MainMenu : MonoBehaviour
 {
 
@@ -18,14 +17,7 @@ public class MainMenu : MonoBehaviour
     public GameObject Slider_of_load;   // the parent slider
     public Slider SliderOfLoad;         //the child slider
     public GameObject Progress;         // the parent progress obj
-    public Text progressText;          //the child text
-    [Header("   Main Menu Buttons")]
-    [SerializeField]
-    private GameObject Start_button; // to hide
-    [SerializeField]
-    private GameObject Settings_button; // to hide
-    [SerializeField]
-    private GameObject Quit_bitton; // to hide
+    public Text progressText;           //the child text
     [Header("   Screen settings")]
     public GameObject panelSettings;
     public Dropdown ResolutionDropdown;
@@ -34,14 +26,11 @@ public class MainMenu : MonoBehaviour
     [Header("   Audio Settings")]
     public AudioMixer audioMixer;
 
-    public bool SettingsActive = false;
+    public static bool IsActivated = false;
 	
 	public void Start () {
 
         Slider_of_load.SetActive(false); // the emptu gameobj for slider (parent)
-        Start_button.SetActive(true);
-        Settings_button.SetActive(true);
-        Quit_bitton.SetActive(true);
         Progress.SetActive(false);
 		Resolution();
 	}
@@ -49,12 +38,7 @@ public class MainMenu : MonoBehaviour
     //-------------------------BUTTONS IN main menu--------------------------------
     public void Settings()
 	{
-        
-        panelSettings.SetActive(true);
-        
-        Start_button.SetActive(false);
-        Settings_button.SetActive(false);
-        Quit_bitton.SetActive(false);
+		panelSettings.SetActive(true);
 		/* if(IsActivated)
 		{
 			
@@ -69,9 +53,6 @@ public class MainMenu : MonoBehaviour
 	        public void Back()
 	        {
 		        panelSettings.SetActive(false);
-                Start_button.SetActive(true);
-                Settings_button.SetActive(true);
-                Quit_bitton.SetActive(true);
 	        }
 	
     public void LoadScene(int sceneIndex) // loading the next scene by index 
@@ -96,8 +77,7 @@ public class MainMenu : MonoBehaviour
             progressText.text = string.Format("{0:0}%",progress * 100);
                 if (SliderOfLoad.value == 1)
                 {
-                progressText.text = "ЗАЧЕКАЙТЕ";
-                
+                progressText.text = "Зачекайте...";
                 }
             yield return null;
         }
