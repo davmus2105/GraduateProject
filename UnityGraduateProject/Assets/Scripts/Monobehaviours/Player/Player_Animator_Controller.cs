@@ -53,8 +53,8 @@ public class Player_Animator_Controller : MonoBehaviour
         KeyInputControll();
     }
     void MoveAnimations()
-    {
-        animator.SetFloat(speed_hash, Convert.ToInt32(player.movespeed));
+    {        
+        animator.SetFloat(speed_hash, player.movespeed, 0.0f, Time.deltaTime);
     }
     public void JumpAnimation()
     {

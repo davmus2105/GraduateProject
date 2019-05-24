@@ -5,14 +5,14 @@ using UnityEngine;
 public class PlayerBehaviour : MonoBehaviour, IDie
 {
     [SerializeField] float speed;
-    [HideInInspector]public float movespeed;
+    [HideInInspector] public float movespeed;
     [SerializeField] float gravity;
     [SerializeField] float turnSpeed;
-    [SerializeField] float rotSmooth;
+    public float allowPlayerRotation;
     [SerializeField] float inBattleDist;
     [Tooltip("standard is ")] [SerializeField] float diffToTarget;
     [SerializeField] CharacterController charcontr;
-    float inputX, inputY, angle;
+    float inputX, inputY, verticalVel;
     public bool canMove, isDead;
     public bool isBlocking
     {
@@ -27,7 +27,7 @@ public class PlayerBehaviour : MonoBehaviour, IDie
             animcontr.BlockAnimation(isblocking);
         }
     }
-    bool isblocking, in_battle;
+    bool isblocking, in_battle, isGrounded;
 
     public static PlayerBehaviour Instance;
     private static PlayerBehaviour instance;
@@ -56,13 +56,14 @@ public class PlayerBehaviour : MonoBehaviour, IDie
     PlayerAnimatorController animcontr;
     Actor actor;
     Transform playerModel;
+    Camera cam;
     [SerializeField] Transform charRotTarget;
-    Vector3 movevector;
+    public Vector3 movevector, desiredMoveDirection;
     Vector3 rotateVector;
     Quaternion playerRot;
     public GraduateAudio.AudioManager audioManager;
 
-    public bool isMoving;
+    public bool isMoving, blockRotationPlayer;
 
     private void Awake()
     {
@@ -74,29 +75,25 @@ public class PlayerBehaviour : MonoBehaviour, IDie
         charcontr = GetComponent<CharacterController>();
         playerModel = transform.Find("Model");
         animcontr = GetComponentInChildren<PlayerAnimatorController>();
-        charRotTarget = Camera.main.transform.GetChild(0);
+        //charRotTarget = Camera.main.transform.GetChild(0);
         canMove = true;
         isblocking = false;
         inBattle = false;
+        isMoving = false;
         actor = GetComponent<Actor>();
         audioManager = GraduateAudio.AudioManager.Instance;
+        cam = Camera.main;
     }
 
     private void Update()
     {
+        isGrounded = charcontr.isGrounded;
         if (canMove)
             Moving();
         Inputs();
         BattleControll();
     }
 
-    void RotateToCam()
-    {        
-        transform.rotation = Quaternion.Euler(0f, charRotTarget.rotation.eulerAngles.y, 0);
-        Quaternion newRotation = Quaternion.LookRotation(new Vector3(movevector.x, 0f, movevector.z));
-        playerModel.rotation = Quaternion.Slerp(playerModel.rotation, newRotation, turnSpeed * Time.deltaTime);
-        Debug.Log($"Rotation is {playerModel.rotation.y}");
-    }
 
     void BattleControll()
     {
@@ -115,28 +112,44 @@ public class PlayerBehaviour : MonoBehaviour, IDie
             isMoving = false;
             return;
         }
-        else 
+        InputMagnitude();
+        if (isGrounded)
         {
-            float yStore = movevector.y;
-            inputX = Input.GetAxisRaw("Horizontal");
-            inputY = Input.GetAxisRaw("Vertical");
-            movevector = (transform.forward * inputY) + (transform.right * inputX);
-            movevector = movevector.normalized * movespeed;
-            movevector.y = yStore;
+            verticalVel -= 0;
+            movevector = new Vector3(0, 0, movespeed);            
         }
-        if (charcontr.isGrounded)
-        {
-            movevector.y = 0;
-        }
-        movespeed = Mathf.Clamp((Mathf.Abs(inputX) + Mathf.Abs(inputY)), 0, 1);
-        if (movespeed > 0)
-            isMoving = true;
         else
-            isMoving = false;
-        movevector.y = movevector.y + (Physics.gravity.y * gravity * Time.deltaTime);
-        charcontr.Move(movevector * Time.deltaTime * speed);
-        if (isMoving)
-            RotateToCam();
+        {
+            verticalVel -= 2;
+        }
+        movevector.y = verticalVel;
+        movevector = transform.TransformDirection(movevector * movespeed * speed * Time.deltaTime);
+        charcontr.Move(movevector);
+    }
+    void InputMagnitude()
+    {
+        inputX = Input.GetAxis("Horizontal");
+        inputY = Input.GetAxis("Vertical");
+
+        movespeed = new Vector2(inputX, inputY).sqrMagnitude;
+        if (movespeed > allowPlayerRotation)
+            PlayerMoveAndRotation();
+    }
+    void PlayerMoveAndRotation()
+    {        
+        var forward = cam.transform.forward;
+        var right = cam.transform.right;
+        forward.y = 0f;
+        right.y = 0f;
+        forward.Normalize();
+        right.Normalize();
+        
+
+        desiredMoveDirection = forward * inputY + right * inputX;
+        if (!blockRotationPlayer)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(desiredMoveDirection), turnSpeed);
+        }
     }
     void Inputs()
     {
