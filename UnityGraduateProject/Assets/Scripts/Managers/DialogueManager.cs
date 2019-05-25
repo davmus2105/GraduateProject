@@ -8,7 +8,7 @@ using System.IO;
 using QuestSystem;
 
 [RequireComponent(typeof(ResultManager))]
-public class DialogueManager : MonoBehaviour
+public class DialogueManager : MonoBehaviour, Initializable
 {
     #region Variables
     // -------------------- Objects for UI -----------------
@@ -48,6 +48,10 @@ public class DialogueManager : MonoBehaviour
     }
     private void Start()
     {
+        Initialize();
+    }
+    public void Initialize()
+    {
         lastfilename = string.Empty;
         dialoguePanel = GameObject.Find("[UI]").transform.Find("DialoguePanel").gameObject;
         npctextPanel = dialoguePanel.transform.Find("NPCtext_panel").GetComponent<RectTransform>();
@@ -67,7 +71,7 @@ public class DialogueManager : MonoBehaviour
         {
             int param = i + 1;
             Button button = b_answers[i].GetComponent<Button>();
-            button.onClick.AddListener(delegate { SetAnswer(param); });           
+            button.onClick.AddListener(delegate { SetAnswer(param); });
         }
         npctext = npctextPanel.transform.Find("npcText").GetComponent<Text>();
         // ---- instances ----
@@ -151,9 +155,13 @@ public class DialogueManager : MonoBehaviour
         inDialogue = true;
         rightResult = 0;
         hudController.SetActiveHUD(false);
-        dialoguePanel.SetActive(true);
+        SetActiveDialoguePanel(true);
         HideAllAnswers();          
         StartCoroutine("BuildDialogue", 0);
+    }
+    public void SetActiveDialoguePanel(bool state)
+    {
+        dialoguePanel.SetActive(state);
     }
     void EndDialogue()
     {

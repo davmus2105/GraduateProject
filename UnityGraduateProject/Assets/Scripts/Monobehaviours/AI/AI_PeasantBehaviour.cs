@@ -16,7 +16,7 @@ namespace AI {
 
         private void OnEnable()
         {
-            AI_Manager.Instance.AddPeasant(this);
+            AI_Manager.Instance?.AddPeasant(this);
         }
         private void OnDisable()
         {

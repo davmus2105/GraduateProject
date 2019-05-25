@@ -5,7 +5,7 @@ using UnityEngine.Audio;
 namespace GraduateAudio
 {
     [RequireComponent(typeof(AudioListener))]
-    public class AudioManager : MonoBehaviour
+    public class AudioManager : MonoBehaviour, Initializable
     {
         #region Properties and Fields
         public float TotalAudioVolume
@@ -51,13 +51,20 @@ namespace GraduateAudio
         }
         private void Start()
         {
+            Initialize();
+        }
+        public void Initialize()
+        {
             isInBattle = false;
             backgroundsource = GetComponent<AudioSource>();
             if (!backgroundsource)
                 backgroundsource = gameObject.AddComponent<AudioSource>();
             if (audioCollection == null)
-                audioCollection = GameObject.FindGameObjectWithTag("Player").transform.Find("Model").GetComponent<Player_Animator_Controller>().audio_collection;
+                audioCollection = GameObject.FindGameObjectWithTag("Player").
+                                  transform.Find("Model").GetComponent<Player_Animator_Controller>().
+                                  audio_collection;
         }
+        
         private void Update()
         {
             if (!backgroundsource.isPlaying)

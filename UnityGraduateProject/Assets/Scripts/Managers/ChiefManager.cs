@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class ChiefManager : MonoBehaviour
@@ -11,6 +12,8 @@ public class ChiefManager : MonoBehaviour
     [Space(25)]
     [SerializeField]string filename = "managers_list.txt";
     [SerializeField]string managerspath = "/Kernel/";
+    public List<string> unsettupable_scenes = new List<string>() { "Main Menu" };
+    public List<int> unsettupable_index = new List<int>() { 0 };
 
     private void Awake()
     {
@@ -21,7 +24,11 @@ public class ChiefManager : MonoBehaviour
     }
     private void OnEnable()
     {
-        LoadManagersList();
+        Initializing();
+    }
+    private void OnLevelWasLoaded(int level)
+    {
+        Initializing();
     }
     private void OnDisable()
     {
@@ -29,27 +36,47 @@ public class ChiefManager : MonoBehaviour
     }
     void Start()
     {
-        // ----- Managers setup -----
-        if (managers.Count > 0)
+    }
+
+    void Initializing()
+    {
+        if (unsettupable_index.Contains(SceneManager.GetActiveScene().buildIndex))
         {
-            List<MonoBehaviour> managerexists = new List<MonoBehaviour>();
-            foreach (var manager in managers)
+            Debug.Log("Scene is contained");
+            Initializable[] initializables = gameObject.GetComponents<Initializable>();
+            foreach (var item in initializables)
             {
-                var component = System.Type.GetType(manager);
-                if (gameObject.GetComponent(component) == null)
-                    gameObject.AddComponent(component);
+                ((MonoBehaviour)item).enabled = false;
             }
         }
+        else
+        {
+            Debug.Log("Initializing");
+            LoadManagersList();
+            if (managers.Count > 0)
+            {
+                List<MonoBehaviour> managerexists = new List<MonoBehaviour>();
+                foreach (var manager in managers)
+                {
+                    var component = System.Type.GetType(manager);
+                    if (gameObject.GetComponent(component) == null)
+                        gameObject.AddComponent(component);
+                }
+            }
+            Initializable[] initializables = gameObject.GetComponents<Initializable>();
+            foreach (var item in initializables)
+            {
+                ((MonoBehaviour)item).enabled = true;
+                item.Initialize();
+            }
+        }
+        
         DontDestroyOnLoad(this);
-        foreach(var components in GetComponents<MonoBehaviour>())
+        foreach (var components in GetComponents<MonoBehaviour>())
         {
             DontDestroyOnLoad(components);
         }
-        // ---- UI SETUP ----
-
     }
-
-    
     bool LoadManagersList()
     {
         string path = Application.streamingAssetsPath + managerspath + filename;

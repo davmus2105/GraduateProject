@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using QuestSystem;
 
-public class HUD_Controller : MonoBehaviour
+public class HUD_Controller : MonoBehaviour, Initializable
 {
     const float STD_MESSAGE_TERM = 3f;
     GameObject hud;
@@ -34,6 +34,10 @@ public class HUD_Controller : MonoBehaviour
     }
     private void Start()
     {
+        Initialize();
+    }    
+    public void Initialize()
+    {
         hud = GameObject.Find("[UI]").transform.Find("HUD").gameObject;
         infomessage_panel = hud.transform.Find("InfoMessagePanel").gameObject;
         infomessage_text = infomessage_panel.GetComponentInChildren<Text>();
@@ -47,8 +51,8 @@ public class HUD_Controller : MonoBehaviour
         inQuestMenu = false;
         Transform temp_panel = quest_panel.transform.Find("buttons_panel");
         b_quests = new Transform[] { temp_panel.Find("b_quest_1"),
-                                     temp_panel.Find("b_quest_2"),
-                                     temp_panel.Find("b_quest_3") };
+                                        temp_panel.Find("b_quest_2"),
+                                        temp_panel.Find("b_quest_3") };
         t_quests = new Text[] { b_quests[0].GetComponentInChildren<Text>(),
                                 b_quests[1].GetComponentInChildren<Text>(),
                                 b_quests[0].GetComponentInChildren<Text>() };

@@ -6,7 +6,8 @@ using System.Linq;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 
-public class PauseMenu : MonoBehaviour {
+public class PauseMenu : MonoBehaviour, Initializable
+{
 
     public static PauseMenu Instance;
     [Header("   Pause Menu Objects")]
@@ -24,6 +25,9 @@ public class PauseMenu : MonoBehaviour {
     [Header("   Audio settings")]
     public AudioMixer audioMixer;
 
+    // Additional parameters
+    bool wasInDialogue;
+
 
     private void Awake()
     {
@@ -31,9 +35,24 @@ public class PauseMenu : MonoBehaviour {
     }
     
     public void Start() {
-        
-        Resolution();  
+
+        Initialize(); 
 	}
+    
+    public void Initialize()
+    {
+        pauseMenuUI = GameObject.Find("[UI]").transform.Find("PauseMenu").gameObject;
+        panelSettings = pauseMenuUI.transform.Find("Panel_Settings").gameObject;        
+        resume_button = pauseMenuUI.transform.Find("Resume_button").gameObject;
+        menu_button = pauseMenuUI.transform.Find("Menu_button").gameObject;
+        quit_button = pauseMenuUI.transform.Find("Quit_button").gameObject;
+        settings_button = pauseMenuUI.transform.Find("Settings_button").gameObject;
+        ResolutionDropdown = panelSettings.transform.Find("Resolution Dropdown").GetComponent<Dropdown>();
+        GraphicsDropdown = panelSettings.transform.Find("Graphics Dropdown").GetComponent<Dropdown>();
+        Resolution();
+        wasInDialogue = false;
+    }
+
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
@@ -54,6 +73,13 @@ public class PauseMenu : MonoBehaviour {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+        if (DialogueManager.Instance.inDialogue)
+        {
+            wasInDialogue = true;
+            DialogueManager.Instance.SetActiveDialoguePanel(false);
+        }
+        else
+            wasInDialogue = false;
 
         panelSettings.SetActive(false);
 
@@ -68,6 +94,8 @@ public class PauseMenu : MonoBehaviour {
 		pauseMenuUI.SetActive(false);
 		Time.timeScale = 1f;
 		GameIsPaused = false;
+        if (wasInDialogue)
+            DialogueManager.Instance.SetActiveDialoguePanel(true);
 
 	}
     public void Settings() // hide manu buttons and show panel settings

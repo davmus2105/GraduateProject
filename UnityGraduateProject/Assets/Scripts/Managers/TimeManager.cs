@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TimeManager : MonoBehaviour
+public class TimeManager : MonoBehaviour, Initializable
 {
     public float dayLength = 120f;
     [SerializeField][Range(0, 1)] private float currentTime;
@@ -19,6 +19,10 @@ public class TimeManager : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
+    {
+        Initialize();
+    }
+    public void Initialize()
     {
         clouds = GameObject.Find("[SCENE]").transform.Find("===== STATIC =====").Find("Sky").Find("Clouds").gameObject;
         sky = GameObject.Find("[SCENE]").transform.Find("===== STATIC =====").Find("Sky").Find("SkyDome").gameObject;

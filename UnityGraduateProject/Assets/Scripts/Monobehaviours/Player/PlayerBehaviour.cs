@@ -53,7 +53,7 @@ public class PlayerBehaviour : MonoBehaviour, IDie
             }
         }
     }
-    PlayerAnimatorController animcontr;
+    Player_Animator_Controller animcontr;
     Actor actor;
     Transform playerModel;
     Camera cam;
@@ -74,7 +74,7 @@ public class PlayerBehaviour : MonoBehaviour, IDie
     {
         charcontr = GetComponent<CharacterController>();
         playerModel = transform.Find("Model");
-        animcontr = GetComponentInChildren<PlayerAnimatorController>();
+        animcontr = GetComponentInChildren<Player_Animator_Controller>();
         //charRotTarget = Camera.main.transform.GetChild(0);
         canMove = true;
         isblocking = false;
@@ -94,7 +94,7 @@ public class PlayerBehaviour : MonoBehaviour, IDie
         Inputs();
         BattleControll();
 
-        if (PauseMenu.GameIsPaused)
+        if (PauseMenu.GameIsPaused || DialogueManager.Instance.inDialogue)
             Cursor.lockState = CursorLockMode.None;
         else
             Cursor.lockState = CursorLockMode.Locked;
@@ -116,6 +116,7 @@ public class PlayerBehaviour : MonoBehaviour, IDie
         if (DialogueManager.Instance.inDialogue)
         {
             isMoving = false;
+            movespeed = 0;
             return;
         }
         InputMagnitude();
@@ -134,7 +135,7 @@ public class PlayerBehaviour : MonoBehaviour, IDie
         charcontr.Move(movevector);
     }
     void InputMagnitude()
-    {
+    {            
         inputX = Input.GetAxis("Horizontal");
         inputY = Input.GetAxis("Vertical");
 
