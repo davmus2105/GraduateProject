@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1149649678553790786}
   - component: {fileID: 8091053989603314695}
   - component: {fileID: 1191991445746903965}
-  - component: {fileID: 3632562747254109932}
+  - component: {fileID: 4748014260419462124}
   m_Layer: 0
   m_Name: broken ference p2
   m_TagString: Untagged
@@ -78,8 +78,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &3632562747254109932
-MeshCollider:
+--- !u!65 &4748014260419462124
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -88,7 +88,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300000, guid: 93a739fac99655648b65624fecd72c0c, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.013861258, y: 0.00374477, z: 0.013499998}
+  m_Center: {x: 0.011070166, y: -0.00071584346, z: 0.007086157}
