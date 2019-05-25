@@ -93,11 +93,6 @@ public class PlayerBehaviour : MonoBehaviour, IDie
             Moving();
         Inputs();
         BattleControll();
-
-        if (PauseMenu.GameIsPaused || DialogueManager.Instance.inDialogue)
-            Cursor.lockState = CursorLockMode.None;
-        else
-            Cursor.lockState = CursorLockMode.Locked;
     }
 
 

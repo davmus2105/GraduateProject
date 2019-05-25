@@ -98,10 +98,10 @@ public class Player_Animator_Controller : MonoBehaviour
     }
     void KeyInputControll()
     {
-        if (Input.GetButtonDown("Jump"))
+        /*if (Input.GetButtonDown("Jump"))
         {
             JumpAnimation();
-        }
+        }*/
         if (Input.GetButtonDown("Attack"))
         {
             Attack();

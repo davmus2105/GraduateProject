@@ -51,6 +51,13 @@ public class PauseMenu : MonoBehaviour, Initializable
         GraphicsDropdown = panelSettings.transform.Find("Graphics Dropdown").GetComponent<Dropdown>();
         Resolution();
         wasInDialogue = false;
+        // Buttons onclick init
+        resume_button.GetComponent<Button>().onClick.AddListener(delegate { Resume(); });
+        menu_button.GetComponent<Button>().onClick.AddListener(delegate { LoadMenu(); });
+        quit_button.GetComponent<Button>().onClick.AddListener(delegate { QuitGame(); });
+        settings_button.GetComponent<Button>().onClick.AddListener(delegate { Settings(); });
+        // back button in settings
+        panelSettings.transform.Find("Back").GetComponent<Button>().onClick.AddListener(delegate { Back(); });
     }
 
 	void Update () {
@@ -80,6 +87,7 @@ public class PauseMenu : MonoBehaviour, Initializable
         }
         else
             wasInDialogue = false;
+        Cursor.lockState = CursorLockMode.None;
 
         panelSettings.SetActive(false);
 
@@ -94,6 +102,7 @@ public class PauseMenu : MonoBehaviour, Initializable
 		pauseMenuUI.SetActive(false);
 		Time.timeScale = 1f;
 		GameIsPaused = false;
+        Cursor.lockState = CursorLockMode.Locked;
         if (wasInDialogue)
             DialogueManager.Instance.SetActiveDialoguePanel(true);
 

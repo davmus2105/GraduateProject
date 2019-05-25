@@ -162,11 +162,21 @@ public class DialogueManager : MonoBehaviour, Initializable
     public void SetActiveDialoguePanel(bool state)
     {
         dialoguePanel.SetActive(state);
+        if (state) // if active
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Camera.main.transform.GetComponent<Cinemachine.CinemachineBrain>().enabled = false;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Camera.main.transform.GetComponent<Cinemachine.CinemachineBrain>().enabled = true;
+        }
     }
     void EndDialogue()
     {
         ResultManager.Instance.SaveResult(currentDialogue, rightResult);
-        dialoguePanel.SetActive(false);
+        SetActiveDialoguePanel(false);
         hudController.SetActiveHUD(true);
         inDialogue = false;
         StopCoroutine("BuildDialogue");
