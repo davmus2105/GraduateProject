@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3255861156793173376}
   - component: {fileID: 565906189663580111}
   - component: {fileID: 4021515667395023373}
-  - component: {fileID: 2212310734388599082}
   m_Layer: 0
   m_Name: oak
   m_TagString: Untagged
@@ -78,17 +77,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2212310734388599082
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 110838836679501340}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300000, guid: 3537adb3e406b6c478abc806d892700a, type: 3}

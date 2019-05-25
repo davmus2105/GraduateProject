@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8665826473665224290}
   - component: {fileID: 6582535119085426100}
   - component: {fileID: 5126841367714196295}
-  - component: {fileID: 2002721980568587455}
-  m_Layer: 0
+  - component: {fileID: 9179823888421404234}
+  m_Layer: 9
   m_Name: tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,8 +78,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2002721980568587455
-MeshCollider:
+--- !u!65 &9179823888421404234
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -88,7 +88,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300000, guid: 1b368af5bf1b74c45a26fa7a52d64df0, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.03607196, y: 0.03549727, z: 0.0788532}
+  m_Center: {x: 0, y: 0.000081387334, z: 0.039492045}
