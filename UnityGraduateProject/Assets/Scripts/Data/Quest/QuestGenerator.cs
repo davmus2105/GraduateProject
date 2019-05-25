@@ -24,7 +24,8 @@ namespace QuestSystem
         }
 
         public void Generate()
-        {           
+        {
+            _temp_lang_path_ = LocalizationManager.Instance.Language;
             string path = Application.streamingAssetsPath + "/Localisation/" 
                           + _temp_lang_path_ + "/Quests/" + filename + ".xml";
 
@@ -76,12 +77,13 @@ namespace QuestSystem
         }
 
         public void Load()
-        {
+        {            
             quests = new List<Quest>();
             try //XML elements reading and loading attributes values to collections
             {
                 string path = Application.streamingAssetsPath + "/Localisation/" 
                               + _temp_lang_path_ + "/Quests/" + filename + ".xml";
+                Debug.Log($"language of quest is: {_temp_lang_path_}");
                 XmlDocument xmlDoc = new XmlDocument();
                 xmlDoc.Load(path);
                 XmlElement xmlroot = xmlDoc.DocumentElement; // Reading root node in document
@@ -161,8 +163,10 @@ namespace QuestSystem
         public List<Quest> LoadQuestList()
         {
             _temp_lang_path_ = LocalizationManager.Instance.Language;
-            if (quests == null)
-                Load();
+            //if (quests == null)
+            //    Load();
+            //return quests;
+            Load();
             return quests;
         }
     }

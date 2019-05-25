@@ -21,15 +21,7 @@ namespace QuestSystem
         private void Awake()
         {
             _instance = this;
-        }
-        void Start()
-        {
-
-        }
-        void Update()
-        {
-            
-        }
+        }        
         #endregion
         #region Methods
         public List<Quest> GetActiveQuests()

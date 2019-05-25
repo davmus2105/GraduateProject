@@ -88,7 +88,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: cce9d957cabdd6f40a13e6e8a064bc91,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -5341,8 +5342,8 @@ Transform:
   - {fileID: 1828228905}
   - {fileID: 1902707275}
   - {fileID: 1312481044}
-  - {fileID: 212073132}
   - {fileID: 685433881}
+  - {fileID: 212073132}
   m_Father: {fileID: 2103053637}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6538,6 +6539,51 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[SETUP]'
       objectReference: {fileID: 0}
+    - target: {fileID: 7689395400392436104, guid: 9e2ba5f8dc516cb4b87b11b1bfa2a469,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7689395400392436104, guid: 9e2ba5f8dc516cb4b87b11b1bfa2a469,
+        type: 3}
+      propertyPath: panelSettings
+      value: 
+      objectReference: {fileID: 830997134}
+    - target: {fileID: 7689395400392436104, guid: 9e2ba5f8dc516cb4b87b11b1bfa2a469,
+        type: 3}
+      propertyPath: pauseMenuUI
+      value: 
+      objectReference: {fileID: 1551199854}
+    - target: {fileID: 7689395400392436104, guid: 9e2ba5f8dc516cb4b87b11b1bfa2a469,
+        type: 3}
+      propertyPath: resume_button
+      value: 
+      objectReference: {fileID: 1222300050}
+    - target: {fileID: 7689395400392436104, guid: 9e2ba5f8dc516cb4b87b11b1bfa2a469,
+        type: 3}
+      propertyPath: menu_button
+      value: 
+      objectReference: {fileID: 128364988}
+    - target: {fileID: 7689395400392436104, guid: 9e2ba5f8dc516cb4b87b11b1bfa2a469,
+        type: 3}
+      propertyPath: quit_button
+      value: 
+      objectReference: {fileID: 234561298}
+    - target: {fileID: 7689395400392436104, guid: 9e2ba5f8dc516cb4b87b11b1bfa2a469,
+        type: 3}
+      propertyPath: settings_button
+      value: 
+      objectReference: {fileID: 1741378001}
+    - target: {fileID: 7689395400392436104, guid: 9e2ba5f8dc516cb4b87b11b1bfa2a469,
+        type: 3}
+      propertyPath: ResolutionDropdown
+      value: 
+      objectReference: {fileID: 246985508}
+    - target: {fileID: 7689395400392436104, guid: 9e2ba5f8dc516cb4b87b11b1bfa2a469,
+        type: 3}
+      propertyPath: GraphicsDropdown
+      value: 
+      objectReference: {fileID: 283834469}
     - target: {fileID: 7689395400392436101, guid: 9e2ba5f8dc516cb4b87b11b1bfa2a469,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6603,51 +6649,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7689395400392436104, guid: 9e2ba5f8dc516cb4b87b11b1bfa2a469,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7689395400392436104, guid: 9e2ba5f8dc516cb4b87b11b1bfa2a469,
-        type: 3}
-      propertyPath: panelSettings
-      value: 
-      objectReference: {fileID: 830997134}
-    - target: {fileID: 7689395400392436104, guid: 9e2ba5f8dc516cb4b87b11b1bfa2a469,
-        type: 3}
-      propertyPath: pauseMenuUI
-      value: 
-      objectReference: {fileID: 1551199854}
-    - target: {fileID: 7689395400392436104, guid: 9e2ba5f8dc516cb4b87b11b1bfa2a469,
-        type: 3}
-      propertyPath: resume_button
-      value: 
-      objectReference: {fileID: 1222300050}
-    - target: {fileID: 7689395400392436104, guid: 9e2ba5f8dc516cb4b87b11b1bfa2a469,
-        type: 3}
-      propertyPath: menu_button
-      value: 
-      objectReference: {fileID: 128364988}
-    - target: {fileID: 7689395400392436104, guid: 9e2ba5f8dc516cb4b87b11b1bfa2a469,
-        type: 3}
-      propertyPath: quit_button
-      value: 
-      objectReference: {fileID: 234561298}
-    - target: {fileID: 7689395400392436104, guid: 9e2ba5f8dc516cb4b87b11b1bfa2a469,
-        type: 3}
-      propertyPath: settings_button
-      value: 
-      objectReference: {fileID: 1741378001}
-    - target: {fileID: 7689395400392436104, guid: 9e2ba5f8dc516cb4b87b11b1bfa2a469,
-        type: 3}
-      propertyPath: ResolutionDropdown
-      value: 
-      objectReference: {fileID: 246985508}
-    - target: {fileID: 7689395400392436104, guid: 9e2ba5f8dc516cb4b87b11b1bfa2a469,
-        type: 3}
-      propertyPath: GraphicsDropdown
-      value: 
-      objectReference: {fileID: 283834469}
     - target: {fileID: 7689395400392436111, guid: 9e2ba5f8dc516cb4b87b11b1bfa2a469,
         type: 3}
       propertyPath: m_Enabled
@@ -7426,22 +7427,22 @@ PrefabInstance:
     - target: {fileID: 4397967581710816465, guid: 61cb2ddd938875a4095eba8f23acd689,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.102684826
+      value: 0.10268818
       objectReference: {fileID: 0}
     - target: {fileID: 4397967581710816465, guid: 61cb2ddd938875a4095eba8f23acd689,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.056009468
+      value: 0.056012597
       objectReference: {fileID: 0}
     - target: {fileID: 4397967581710816465, guid: 61cb2ddd938875a4095eba8f23acd689,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00579117
+      value: -0.005791687
       objectReference: {fileID: 0}
     - target: {fileID: 4397967581710816465, guid: 61cb2ddd938875a4095eba8f23acd689,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99311894
+      value: 0.9931184
       objectReference: {fileID: 0}
     - target: {fileID: 4397967581710816465, guid: 61cb2ddd938875a4095eba8f23acd689,
         type: 3}
@@ -7521,22 +7522,22 @@ PrefabInstance:
     - target: {fileID: 4397967582425878004, guid: 61cb2ddd938875a4095eba8f23acd689,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.10268427
+      value: 0.10268722
       objectReference: {fileID: 0}
     - target: {fileID: 4397967582425878004, guid: 61cb2ddd938875a4095eba8f23acd689,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.05600817
+      value: 0.056008477
       objectReference: {fileID: 0}
     - target: {fileID: 4397967582425878004, guid: 61cb2ddd938875a4095eba8f23acd689,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0057935286
+      value: -0.0057937857
       objectReference: {fileID: 0}
     - target: {fileID: 4397967582425878004, guid: 61cb2ddd938875a4095eba8f23acd689,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99311906
+      value: 0.9931188
       objectReference: {fileID: 0}
     - target: {fileID: 4397967582425878004, guid: 61cb2ddd938875a4095eba8f23acd689,
         type: 3}
@@ -7566,7 +7567,7 @@ PrefabInstance:
     - target: {fileID: 4397967582225634073, guid: 61cb2ddd938875a4095eba8f23acd689,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0043370742
+      value: -0.004337052
       objectReference: {fileID: 0}
     - target: {fileID: 4397967582225634073, guid: 61cb2ddd938875a4095eba8f23acd689,
         type: 3}

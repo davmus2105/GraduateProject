@@ -4,7 +4,7 @@ using System.IO;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class LocalizationManager : MonoBehaviour
+public class LocalizationManager : MonoBehaviour, Initializable
 {
     public string Language
     {
@@ -34,7 +34,12 @@ public class LocalizationManager : MonoBehaviour
         else
             Destroy(this);
     }
-    
+    public void Initialize()
+    {
+        LoadLocalizable();
+        LoadLocalization();
+    }
+
     public void SaveLocalization()
     {
         string path = Application.streamingAssetsPath + "/Localisation/" + Language + "/Scenes/" + SceneManager.GetActiveScene().buildIndex + ".txt";
@@ -76,5 +81,7 @@ public class LocalizationManager : MonoBehaviour
         lobjects = new List<Localizable>();
         lobjects.AddRange(objects);
     }
+
+
 }
 
