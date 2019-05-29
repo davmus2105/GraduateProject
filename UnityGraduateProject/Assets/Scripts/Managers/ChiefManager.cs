@@ -14,12 +14,24 @@ public class ChiefManager : MonoBehaviour
     [SerializeField]string managerspath = "/Kernel/";
     public List<string> unsettupable_scenes = new List<string>() { "Main Menu" };
     public List<int> unsettupable_index = new List<int>() { 0 };
+    public static ChiefManager Instance=>instance;
+    private static ChiefManager instance;
 
     private void Awake()
     {
         if (!LoadManagersList())
         {
             managers = new List<string>();
+        }
+        Init();
+    }
+    void Init()
+    {
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+        {
+            Destroy(gameObject);
         }
     }
     private void OnEnable()
@@ -40,6 +52,8 @@ public class ChiefManager : MonoBehaviour
 
     void Initializing()
     {
+        Init();
+        Debug.Log($"build index = {SceneManager.GetActiveScene().buildIndex}");
         if (unsettupable_index.Contains(SceneManager.GetActiveScene().buildIndex))
         {
             Debug.Log("Scene is contained");
@@ -48,6 +62,7 @@ public class ChiefManager : MonoBehaviour
             {
                 ((MonoBehaviour)item).enabled = false;
             }
+            GetComponent<AudioSource>().enabled = false;
         }
         else
         {
@@ -69,6 +84,7 @@ public class ChiefManager : MonoBehaviour
                 ((MonoBehaviour)item).enabled = true;
                 item.Initialize();
             }
+            GetComponent<AudioSource>().enabled = true;
         }
         
         DontDestroyOnLoad(this);

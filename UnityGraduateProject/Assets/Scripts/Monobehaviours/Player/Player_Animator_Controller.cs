@@ -124,7 +124,7 @@ public class Player_Animator_Controller : MonoBehaviour
         }
         else
         {
-            hudController.ShowInfoMessage("You are not armored");
+            hudController.ShowInfoMessage("Спочатку дістаньте зброю");
         }
     }
 
