@@ -82,8 +82,8 @@ public class PlayerBehaviour : MonoBehaviour, IDie
         isMoving = false;
         actor = GetComponent<Actor>();
         audioManager = GraduateAudio.AudioManager.Instance;
-        cam = Camera.main;        
-        Cursor.lockState = CursorLockMode.Locked;
+        cam = Camera.main;
+        ExM.SetActiveCursor(false);
     }
 
     private void Update()

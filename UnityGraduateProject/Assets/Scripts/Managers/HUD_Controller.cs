@@ -81,7 +81,7 @@ public class HUD_Controller : MonoBehaviour, Initializable
         {
             inQuestMenu = false;
             quest_panel.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
+            ExM.SetActiveCursor(false);
             Camera.main.transform.GetComponent<Cinemachine.CinemachineBrain>().enabled = true;
             return;
         }            
@@ -99,7 +99,7 @@ public class HUD_Controller : MonoBehaviour, Initializable
         GetQuestDescription(0);
         inQuestMenu = true;
         quest_panel.SetActive(true);
-        Cursor.lockState = CursorLockMode.None;
+        ExM.SetActiveCursor(true);
         Camera.main.transform.GetComponent<Cinemachine.CinemachineBrain>().enabled = false;
     }
     public void GetQuestDescription(int num)

@@ -45,4 +45,11 @@ public static class ExM
             return 0;
     }
     #endregion
+    #region Cursor
+    public static void SetActiveCursor(bool active)
+    {
+        Cursor.lockState = active ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = active;
+    }
+    #endregion
 }

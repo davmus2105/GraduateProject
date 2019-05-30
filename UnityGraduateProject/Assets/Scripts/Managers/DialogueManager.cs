@@ -164,12 +164,12 @@ public class DialogueManager : MonoBehaviour, Initializable
         dialoguePanel.SetActive(state);
         if (state) // if active
         {
-            Cursor.lockState = CursorLockMode.None;
+            ExM.SetActiveCursor(true);
             Camera.main.transform.GetComponent<Cinemachine.CinemachineBrain>().enabled = false;
         }
         else
         {
-            Cursor.lockState = CursorLockMode.Locked;
+            ExM.SetActiveCursor(false);
             Camera.main.transform.GetComponent<Cinemachine.CinemachineBrain>().enabled = true;
         }
     }

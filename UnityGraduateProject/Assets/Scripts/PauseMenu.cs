@@ -87,7 +87,7 @@ public class PauseMenu : MonoBehaviour, Initializable
         }
         else
             wasInDialogue = false;
-        Cursor.lockState = CursorLockMode.None;
+        ExM.SetActiveCursor(true);
 
         panelSettings.SetActive(false);
 
@@ -102,7 +102,7 @@ public class PauseMenu : MonoBehaviour, Initializable
 		pauseMenuUI.SetActive(false);
 		Time.timeScale = 1f;
 		GameIsPaused = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        ExM.SetActiveCursor(false);
         if (wasInDialogue)
             DialogueManager.Instance.SetActiveDialoguePanel(true);
 
