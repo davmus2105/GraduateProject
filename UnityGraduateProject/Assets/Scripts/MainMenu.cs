@@ -131,8 +131,10 @@ public class MainMenu : MonoBehaviour
     }
     public void SetFullScreen( bool isFull)
 	{
-		Screen.fullScreen = isFull; // set fullscrean mode
-	}
+		Screen.fullScreen = isFull;
+        //Screen.SetResolution(res[ResolutionDropdown.value - 3].width, res[ResolutionDropdown.value - 3].height, true);// set fullscrean mode
+
+    }
     public void SetQuality()
 	{
 	    QualitySettings.SetQualityLevel(GraphicsDropdown.value);
