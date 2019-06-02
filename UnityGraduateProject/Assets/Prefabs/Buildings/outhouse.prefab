@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7434206602221603412}
   - component: {fileID: 5356521501894728446}
   - component: {fileID: 3738295297113710854}
-  - component: {fileID: 5344516650088775810}
+  - component: {fileID: 4156239776490363672}
   m_Layer: 0
   m_Name: outhouse
   m_TagString: Untagged
@@ -78,8 +78,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &5344516650088775810
-MeshCollider:
+--- !u!65 &4156239776490363672
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -88,7 +88,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300000, guid: a4c62e400c533724fa4d6d20d8efff18, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.013801279, y: 0.025027689, z: 0.026675599}
+  m_Center: {x: 0.000021089567, y: -0.00023557986, z: 0.013467188}

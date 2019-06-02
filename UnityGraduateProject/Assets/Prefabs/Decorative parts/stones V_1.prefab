@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1307686620}
   - component: {fileID: 1307686619}
   - component: {fileID: 1307686618}
+  - component: {fileID: 2158652944495638534}
   m_Layer: 0
   m_Name: stones V_1
   m_TagString: Untagged
@@ -77,3 +78,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &2158652944495638534
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307686617}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.29759514, y: 0.14444783, z: 0.066901445}
+  m_Center: {x: -0.014016955, y: 0.0016407184, z: 0.034481775}

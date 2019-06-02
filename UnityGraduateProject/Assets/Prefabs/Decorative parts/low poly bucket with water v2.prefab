@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7071778845351478956}
   - component: {fileID: 9098493093529385634}
   - component: {fileID: 9062635543489868656}
-  - component: {fileID: 1632655115467116464}
+  - component: {fileID: 8055496580490692621}
   m_Layer: 0
   m_Name: low poly bucket with water v2
   m_TagString: Untagged
@@ -78,8 +78,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1632655115467116464
-MeshCollider:
+--- !u!65 &8055496580490692621
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -88,7 +88,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300000, guid: bfd37c1826fee434bb4f4fbe080e193e, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.006434663, y: 0.0074301073, z: 0.0063956487}
+  m_Center: {x: 0, y: 0, z: 0.0032031608}

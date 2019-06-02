@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6339070460938316198}
   - component: {fileID: 2530236082893491402}
   - component: {fileID: 6260502647228317151}
-  - component: {fileID: 4150718730121560852}
+  - component: {fileID: 7245416213112650213}
   m_Layer: 0
   m_Name: wooden house l
   m_TagString: Untagged
@@ -78,7 +78,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4150718730121560852
+--- !u!64 &7245416213112650213
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

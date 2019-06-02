@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4136715503448304831}
   - component: {fileID: 8483775576025201382}
   - component: {fileID: 436342737161576898}
+  - component: {fileID: 1724622846248070155}
   m_Layer: 0
   m_Name: Decorate Mountains
   m_TagString: Untagged
@@ -77,3 +78,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &1724622846248070155
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4107684771152789257}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: c618781f2c94f3c47ad2128609d5d363, type: 3}

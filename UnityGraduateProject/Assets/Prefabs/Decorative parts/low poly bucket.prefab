@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2199823272803662609}
   - component: {fileID: 8656359905105349035}
   - component: {fileID: 4837580096101458929}
-  - component: {fileID: 8394226798539438009}
+  - component: {fileID: 333764509015487865}
   m_Layer: 0
   m_Name: low poly bucket
   m_TagString: Untagged
@@ -78,8 +78,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8394226798539438009
-MeshCollider:
+--- !u!65 &333764509015487865
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -88,7 +88,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300000, guid: 747e0c5ff38fa014db97fdca9ee2afd4, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.0054400004, y: 0.0060799997, z: 0.0035199996}
+  m_Center: {x: 0, y: -0.0000015479743, z: 0.0017714939}
