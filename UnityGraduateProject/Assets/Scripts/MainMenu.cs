@@ -138,8 +138,9 @@ public class MainMenu : MonoBehaviour
     public void SetQuality()
 	{
 	    QualitySettings.SetQualityLevel(GraphicsDropdown.value);
-		
-	}
+        Debug.Log("set quality" + GraphicsDropdown.value);
+
+    }
     //-------------------------AUDIO Mixer settings--------------------------------
     public void SetEffectVoll(float setEffVoll) //to set it in inspector(On Value Changed) select Dynamic float
     {

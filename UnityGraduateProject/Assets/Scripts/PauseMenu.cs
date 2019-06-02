@@ -6,6 +6,7 @@ using System.Linq;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 
+
 public class PauseMenu : MonoBehaviour, Initializable
 {
 
@@ -24,9 +25,13 @@ public class PauseMenu : MonoBehaviour, Initializable
     Resolution[] res;
     [Header("   Audio settings")]
     public AudioMixer audioMixer;
+    public Slider Music;
+    public Slider Effects;
+    public Toggle Fullscreen;
 
     // Additional parameters
     bool wasInDialogue;
+    public bool isFull = true;
 
 
     private void Awake()
@@ -49,6 +54,7 @@ public class PauseMenu : MonoBehaviour, Initializable
         settings_button = pauseMenuUI.transform.Find("Settings_button").gameObject;
         ResolutionDropdown = panelSettings.transform.Find("Resolution Dropdown").GetComponent<Dropdown>();
         GraphicsDropdown = panelSettings.transform.Find("Graphics Dropdown").GetComponent<Dropdown>();
+        Fullscreen = panelSettings.transform.Find("FullScreen Togle").GetComponent<Toggle>();
         Resolution();
         wasInDialogue = false;
         // Buttons onclick init
@@ -56,11 +62,18 @@ public class PauseMenu : MonoBehaviour, Initializable
         menu_button.GetComponent<Button>().onClick.AddListener(delegate { LoadMenu(); });
         quit_button.GetComponent<Button>().onClick.AddListener(delegate { QuitGame(); });
         settings_button.GetComponent<Button>().onClick.AddListener(delegate { Settings(); });
+        ResolutionDropdown.GetComponent<Dropdown>().onValueChanged.AddListener(delegate { SetRes(); });
+        GraphicsDropdown.GetComponent<Dropdown>().onValueChanged.AddListener(delegate { SetQuality(); });
+        Fullscreen.GetComponent<Toggle>().onValueChanged.AddListener(delegate { SetFullScreen(); });
         // back button in settings
         panelSettings.transform.Find("Back").GetComponent<Button>().onClick.AddListener(delegate { Back(); });
+        
+        //panelSettings.transform.Find("Slider Music").GetComponent<Slider>().onValueChanged.AddListener(delegate { SetMusicVoll(45); });
+       // panelSettings.transform.Find("Slider Effect").GetComponent<Slider>().onValueChanged.AddListener(delegate { SetEffectVoll(40); });
+
     }
 
-	void Update () {
+    void Update () {
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
 			if(GameIsPaused)
@@ -178,13 +191,26 @@ public class PauseMenu : MonoBehaviour, Initializable
        Screen.SetResolution(res[ResolutionDropdown.value].width, res[ResolutionDropdown.value].height,true);
 
     }
-    public void SetFullScreen( bool isFull)
+    public void SetFullScreen()
 	{
-		Screen.fullScreen = isFull;
+       
+         if(Fullscreen.isOn == true)
+        {
+            Screen.fullScreen = Screen.fullScreen;
+            Debug.Log("SETFULL screen on");
+            return;
+        }
+        else if(Fullscreen.isOn == false)
+        {
+            Screen.fullScreen = !Screen.fullScreen;
+            return;
+        }
+       
 	}
     public void SetQuality()
 	{
 	QualitySettings.SetQualityLevel(GraphicsDropdown.value);
+        Debug.Log("set quality" + GraphicsDropdown.value);
 		
 	}
 }
