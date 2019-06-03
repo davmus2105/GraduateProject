@@ -22,7 +22,10 @@ public class HUD_Controller : MonoBehaviour, Initializable
     [SerializeField] Text quest_description;
     const int MAX_ACTIVE_QUEST_AMOUNT = 3;
     public bool inQuestMenu;
-    
+    // ----- health
+    Transform healthpanel;
+    Slider health_slider;
+    Actor player;
 
     
 
@@ -35,7 +38,13 @@ public class HUD_Controller : MonoBehaviour, Initializable
     private void Start()
     {
         Initialize();
-    }    
+    }
+    private void Update()
+    {
+        if (!player)
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Actor>();
+        health_slider.value = player.Health;
+    }
     public void Initialize()
     {
         hud = GameObject.Find("[UI]").transform.Find("HUD").gameObject;
@@ -57,6 +66,11 @@ public class HUD_Controller : MonoBehaviour, Initializable
                                 b_quests[1].GetComponentInChildren<Text>(),
                                 b_quests[0].GetComponentInChildren<Text>() };
         quest_description = quest_panel.transform.Find("active_quest_description").Find("description").GetComponent<Text>();
+        // --------------- Health ----------------
+        healthpanel = hud.transform.Find("HealthPanel");
+        health_slider = healthpanel.Find("healthSlider").GetComponent<Slider>();
+        player = GameObject.FindGameObjectWithTag("Player")?.GetComponent<Actor>();
+        health_slider.value = player?.Health ?? 100f;
     }
     #region Methods
     public void ShowInfoMessage(string message, float sec = STD_MESSAGE_TERM)
@@ -111,6 +125,7 @@ public class HUD_Controller : MonoBehaviour, Initializable
     {
         quest_description.text = quests[num].description;
     }
+
 
     #endregion
 
