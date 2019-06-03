@@ -49,7 +49,7 @@ namespace TES // TES - Trigger Event System
         private void OnTriggerEnter(Collider col)
         {
             ExecuteComponents(onTriggerEnter, col);
-            if (onTriggerStay != null && onTriggerStay.Count > 0)
+            if (onTriggerStay != null && onTriggerStay.Count > 0 && onTriggerStay.Find(trigger => (trigger as DialogueTrigger).isUsed == false) != null)
                 StartCoroutine(WaitForConfirmation(onTriggerStay, col));
         }
         private void OnTriggerStay(Collider col)

@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42bfe5a2200c9284a902d5b8ad23cdb7, type: 3}
+  m_Name: AudioPreset
+  m_EditorClassIdentifier: 
+  footsteps_gravel:
+  - {fileID: 8300000, guid: 4a8041b75f9b995438b7c093153fee9f, type: 3}
+  - {fileID: 8300000, guid: d532fd26d314ab64b82afa3bedd734f8, type: 3}
+  - {fileID: 8300000, guid: 71e04ff3eb625f842ba881bfd696d1fa, type: 3}
+  - {fileID: 8300000, guid: 49ffeb4158f08364eb9b628c9c90ff24, type: 3}
+  footsteps_grass: []
+  footsteps_mud:
+  - {fileID: 8300000, guid: c5b8c5c919b48594c8228091a5fe4d16, type: 3}
+  ambience_inForest_birdsSong: []
+  battleCry: []
+  battle_grunts:
+  - {fileID: 8300000, guid: 63db1b1c340b4684899418dc26844936, type: 3}
+  - {fileID: 8300000, guid: 22593f8f6f78dd84fa4055a40a53a23b, type: 3}
+  - {fileID: 8300000, guid: 5b6aa4b0f0c51864f8a905f2b63cbbad, type: 3}
+  - {fileID: 8300000, guid: 7ee7592167b504340a7c6c863d4055bf, type: 3}
+  - {fileID: 8300000, guid: 4e625f9b50899ac41b90349f10381bad, type: 3}
+  get_sword: {fileID: 8300000, guid: e751398ba21d7274695fb555ae4f63cf, type: 3}
+  hide_sword: {fileID: 8300000, guid: e751398ba21d7274695fb555ae4f63cf, type: 3}
+  battle_music:
+  - {fileID: 8300000, guid: af5e8bd84b774f94fa21120ae0a2e5fa, type: 3}
+  - {fileID: 8300000, guid: 9e5a874a420d7794b832a0d62c908e5e, type: 3}
+  - {fileID: 8300000, guid: 2ef9c6600f76d0d4b80e7db5be1d1016, type: 3}
+  - {fileID: 8300000, guid: 1d0a0b7231070a74ab9a5a3b2c87297f, type: 3}
+  tranqul_music:
+  - {fileID: 8300000, guid: a48b6f92487a9354987622a39ba62a17, type: 3}
+  - {fileID: 8300000, guid: 906df143e00ff914b88d21c7643a53bd, type: 3}
