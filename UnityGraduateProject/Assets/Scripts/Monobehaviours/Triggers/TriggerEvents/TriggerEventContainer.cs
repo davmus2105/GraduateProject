@@ -11,6 +11,7 @@ namespace TES // TES - Trigger Event System
                                            onTriggerExit;
         public GameObject host;
 
+
         private void Start()
         {
             host = transform.parent.gameObject;
@@ -37,9 +38,33 @@ namespace TES // TES - Trigger Event System
             }           
         }
 
+        bool ConfirmationCheck()
+        {
+            if (Input.GetButton("Confirm"))
+                return true;
+            else
+                return false;
+        }
+
         private void OnTriggerEnter(Collider col)
         {
             ExecuteComponents(onTriggerEnter, col);
         }
+        private void OnTriggerStay(Collider other)
+        {
+            StartCoroutine(WaitForConfirmation(onTriggerStay, other));
+            ExecuteComponents(onTriggerStay, other);
+        }
+
+        IEnumerator WaitForConfirmation(List<TriggerEventComponent> list, Collider col)
+        {
+            // send message on screen that you can press button "E"
+            while (!ConfirmationCheck())
+            {
+                yield return new WaitForEndOfFrame();
+            }                         
+            ExecuteComponents(list, col);                
+        }
+        
     }
 }
