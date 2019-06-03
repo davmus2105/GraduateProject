@@ -29,7 +29,7 @@ namespace TES // TES - Trigger Event System
 
         void ExecuteComponents(List<TriggerEventComponent> list, Collider collider)
         {
-            if (list != null)
+            if (list != null && list.Count > 0)
             {
                 foreach (var component in list)
                 {
@@ -49,16 +49,25 @@ namespace TES // TES - Trigger Event System
         private void OnTriggerEnter(Collider col)
         {
             ExecuteComponents(onTriggerEnter, col);
+            if (onTriggerStay != null && onTriggerStay.Count > 0)
+                StartCoroutine(WaitForConfirmation(onTriggerStay, col));
         }
-        private void OnTriggerStay(Collider other)
+        private void OnTriggerStay(Collider col)
         {
-            StartCoroutine(WaitForConfirmation(onTriggerStay, other));
-            ExecuteComponents(onTriggerStay, other);
+            //StartCoroutine(WaitForConfirmation(onTriggerStay, other));
+            //ExecuteComponents(onTriggerStay, other);
         }
+        private void OnTriggerExit(Collider col)
+        {
+            if (onTriggerStay != null && onTriggerStay.Count > 0)
+                HUD_Controller.Instance.StopInfoMessage();
+        }
+
 
         IEnumerator WaitForConfirmation(List<TriggerEventComponent> list, Collider col)
         {
             // send message on screen that you can press button "E"
+            HUD_Controller.Instance.ShowInfoMessage("Щоб почати діалог, натисніть Е");
             while (!ConfirmationCheck())
             {
                 yield return new WaitForEndOfFrame();

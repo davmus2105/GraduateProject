@@ -64,6 +64,11 @@ public class HUD_Controller : MonoBehaviour, Initializable
         infomessage_text.text = message;        
         StartCoroutine("WaitForSec", sec);        
     }
+    public void StopInfoMessage()
+    {
+        StopCoroutine("WaitForSec");
+        infomessage_panel.SetActive(false);
+    }
 
     public void WeaponIsReady(bool isready)
     {
