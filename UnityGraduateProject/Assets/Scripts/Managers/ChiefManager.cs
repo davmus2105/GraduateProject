@@ -13,7 +13,7 @@ public class ChiefManager : MonoBehaviour
     [SerializeField]string filename = "managers_list.txt";
     [SerializeField]string managerspath = "/Kernel/";
     public List<string> unsettupable_scenes = new List<string>() { "Main Menu" };
-    public List<int> unsettupable_index = new List<int>() { 0 };
+    public List<int> unsettupable_index = new List<int>() { 0, 2, 3 };
     public static ChiefManager Instance=>instance;
     private static ChiefManager instance;
 

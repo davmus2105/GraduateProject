@@ -63,7 +63,7 @@ MonoBehaviour:
   managerspath: /Kernel/
   unsettupable_scenes:
   - Main Menu
-  unsettupable_index: 00000000
+  unsettupable_index: 000000000200000003000000
 --- !u!114 &7689395400392436107
 MonoBehaviour:
   m_ObjectHideFlags: 0

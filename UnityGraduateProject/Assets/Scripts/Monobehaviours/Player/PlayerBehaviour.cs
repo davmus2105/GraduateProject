@@ -175,5 +175,6 @@ public class PlayerBehaviour : MonoBehaviour, IDie
     public void Death()
     {
         EventManager.TriggerEvent("PlayerDeath");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(3);
     }
 }
