@@ -194,15 +194,15 @@ public class PauseMenu : MonoBehaviour, Initializable
     public void SetFullScreen()
 	{
        
-         if(Fullscreen.isOn == true)
+        if(Fullscreen.isOn)
         {
-            Screen.fullScreen = Screen.fullScreen;
+            Screen.fullScreen = true;
             Debug.Log("SETFULL screen on");
             return;
         }
-        else if(Fullscreen.isOn == false)
+        else
         {
-            Screen.fullScreen = !Screen.fullScreen;
+            Screen.fullScreen = false;
             return;
         }
        
