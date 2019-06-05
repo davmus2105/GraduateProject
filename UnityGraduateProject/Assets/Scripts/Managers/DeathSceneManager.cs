@@ -16,6 +16,7 @@ public class DeathSceneManager : MonoBehaviour
 
     void Quit()
     {
+        ExM.SetActiveCursor(true);
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
