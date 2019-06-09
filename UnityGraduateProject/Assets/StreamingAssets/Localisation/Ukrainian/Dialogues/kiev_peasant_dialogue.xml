@@ -1,6 +1,6 @@
 <dialogue name="kiev_peasant_dialogue">
   <node id="0" npcText="Доброго дня, мандрівнику">
-    <answer text="І тобі того ж. А чи далеко ще до Києва?" toNode="1" />
+    <answer text="І тобі того ж. А чи далеко ще до Києва?" toNode="1" value="True" />
   </node>
   <node id="1" npcText="Та ні. Іди стежкою, а там побачиш стіни. То і є Київ.">
     <answer text="Дякую." value="True" exit="True" />

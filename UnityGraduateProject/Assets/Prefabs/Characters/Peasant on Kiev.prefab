@@ -453,7 +453,8 @@ MonoBehaviour:
   onTriggerEnter:
   - {fileID: 11400000, guid: 9bde9f995342a3c42a6da9e7e842d3bb, type: 2}
   onTriggerStay: []
-  onTriggerExit: []
+  onTriggerExit:
+  - {fileID: 11400000, guid: 4f0b447903ea8aa4791d16e58b079562, type: 2}
   host: {fileID: 0}
 --- !u!1 &3592548533364750259
 GameObject:
