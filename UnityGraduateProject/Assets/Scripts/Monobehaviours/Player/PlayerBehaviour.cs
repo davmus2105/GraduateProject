@@ -108,7 +108,7 @@ public class PlayerBehaviour : MonoBehaviour, IDie
 
     void Moving()
     {
-        if (DialogueManager.Instance.inDialogue)
+        if (DialogueManager.Instance.inDialogue || HUD_Controller.Instance.inQuestMenu)
         {
             isMoving = false;
             movespeed = 0;

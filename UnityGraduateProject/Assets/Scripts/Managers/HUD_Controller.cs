@@ -26,6 +26,7 @@ public class HUD_Controller : MonoBehaviour, Initializable
     Transform healthpanel;
     Slider health_slider;
     Actor player;
+    PlayerBehaviour playerBehaviour;
 
     
 
@@ -43,6 +44,7 @@ public class HUD_Controller : MonoBehaviour, Initializable
     {
         if (!player)
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<Actor>();
+        
         health_slider.value = player.Health;
     }
     public void Initialize()
@@ -70,6 +72,7 @@ public class HUD_Controller : MonoBehaviour, Initializable
         healthpanel = hud.transform.Find("HealthPanel");
         health_slider = healthpanel.Find("healthSlider").GetComponent<Slider>();
         player = GameObject.FindGameObjectWithTag("Player")?.GetComponent<Actor>();
+        playerBehaviour = player.GetComponent<PlayerBehaviour>();
         health_slider.value = player?.Health ?? 100f;
     }
     #region Methods

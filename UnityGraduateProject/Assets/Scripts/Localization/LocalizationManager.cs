@@ -36,8 +36,8 @@ public class LocalizationManager : MonoBehaviour, Initializable
     }
     public void Initialize()
     {
-        LoadLocalizable();
-        LoadLocalization();
+        if (LoadLocalizable())
+            LoadLocalization();
     }
 
     public void SaveLocalization()
@@ -59,12 +59,12 @@ public class LocalizationManager : MonoBehaviour, Initializable
     }
     public void LoadLocalization()
     {
-        string path = Application.streamingAssetsPath + "/Localisation/" + Language + "/Scenes/" + SceneManager.GetActiveScene().buildIndex + ".txt";
-        LoadLocalizable();
+        if (!LoadLocalizable())
+            return;
+        string path = Application.streamingAssetsPath + "/Localisation/" + Language + "/Scenes/" + SceneManager.GetActiveScene().buildIndex + ".txt";        
         string[] localStrings;
         localStrings = File.ReadAllLines(path);
-        int objind = 0;
-        
+        int objind = 0;        
         for (int i = 0; i < localStrings.Length; i+=2)
         {
             objind = int.Parse(localStrings[i]);
@@ -75,11 +75,16 @@ public class LocalizationManager : MonoBehaviour, Initializable
             localizable.LocalizeComponent();
         }
     }
-    public void LoadLocalizable()
+    public bool LoadLocalizable()
     {
         objects = FindObjectsOfType<Localizable>();
-        lobjects = new List<Localizable>();
-        lobjects.AddRange(objects);
+        if (objects != null && objects.Length > 0)
+        {
+            lobjects = new List<Localizable>();
+            lobjects.AddRange(objects);
+            return true;
+        }
+        return false;
     }
 
 
