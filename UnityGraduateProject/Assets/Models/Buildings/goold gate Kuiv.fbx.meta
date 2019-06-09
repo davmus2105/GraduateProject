@@ -5,17 +5,22 @@ ModelImporter:
   fileIDToRecycleName:
     100000: gold gate
     100002: //RootNode
-    100004: wooden wall.001
+    100004: wall L
+    100006: wall R
     400000: gold gate
     400002: //RootNode
-    400004: wooden wall.001
+    400004: wall L
+    400006: wall R
     2100000: colors
     2300000: gold gate
-    2300002: wooden wall.001
+    2300002: wall L
+    2300004: wall R
     3300000: gold gate
-    3300002: wooden wall.001
-    4300000: gold gate
-    4300002: wooden wall.001
+    3300002: wall L
+    3300004: wall R
+    4300000: wall L
+    4300002: gold gate
+    4300004: wall R
     2186277476908879412: ImportLogs
   externalObjects:
   - first:
