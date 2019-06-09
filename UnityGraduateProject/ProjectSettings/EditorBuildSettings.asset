@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Dead.unity
     guid: ba4161e9f13c5a74dba65b49d6e2c156
+  - enabled: 1
+    path: Assets/Scenes/ToKiev.unity
+    guid: d8ad945acedd9f84cb4b2ce0ff7b8655
   m_configObjects: {}
