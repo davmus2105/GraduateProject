@@ -61,7 +61,10 @@ public class LocalizationManager : MonoBehaviour, Initializable
     {
         if (!LoadLocalizable())
             return;
-        string path = Application.streamingAssetsPath + "/Localisation/" + Language + "/Scenes/" + SceneManager.GetActiveScene().buildIndex + ".txt";        
+        Debug.Log($"Load Localization. Localizebles: {lobjects}");
+        string path = Application.streamingAssetsPath + "/Localisation/" + Language + "/Scenes/" + SceneManager.GetActiveScene().buildIndex + ".txt";
+        if (!File.Exists(path))
+            return;
         string[] localStrings;
         localStrings = File.ReadAllLines(path);
         int objind = 0;        

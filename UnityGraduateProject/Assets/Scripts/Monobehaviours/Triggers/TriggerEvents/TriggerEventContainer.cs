@@ -61,6 +61,7 @@ namespace TES // TES - Trigger Event System
         {
             if (onTriggerStay != null && onTriggerStay.Count > 0)
                 HUD_Controller.Instance.StopInfoMessage();
+            ExecuteComponents(onTriggerExit, col);
         }
 
 

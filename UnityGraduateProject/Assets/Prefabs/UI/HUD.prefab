@@ -375,7 +375,7 @@ GameObject:
   - component: {fileID: 6298859242436327019}
   - component: {fileID: 6298859242436327012}
   m_Layer: 0
-  m_Name: Slider
+  m_Name: healthSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
